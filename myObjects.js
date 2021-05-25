@@ -31,9 +31,6 @@ class Offer {
     }
 }
 
-
-
-
 const ben = new Person('Ben', 29);
 const armagan = new Person('Armagan', 29);
 
