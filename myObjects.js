@@ -1,15 +1,17 @@
 class Person {
-    constructor(name, age, profilePhoto, location) {
+    constructor(name, emailAddress, age, profilePhoto, location) {
         this.name = name;
+        this.emailAddress = emailAddress;
         this.age = age;
+        this.profilePhoto = profilePhoto;
         this.location = location;
-        this.profilePhoto = [];
+
         this.offers = [];
 
     }
     
-    addOffer(offer) {
-        this.offers.push(offer);
+    createOffer(offerID, category, location) {
+        return new Offer(offerID, category, location);
     }
 
     likeOffer(offer) {
@@ -23,22 +25,36 @@ class Person {
 }
 
 class Offer {
-    constructor(offerID, category = 'none') {
-        this.offerID = offerID
-        this.likedBy = []
-        this.savedBy = []
+    constructor(title, category = 'none', location) {
+        this.title = title;
         this.category = category;
+        this.location = location;
+        this.creationTime = Date.now();
+        this.duration = 604800;                  // 4 weeks in seconds
+        this.offerUUID = Math.floor(Math.random() * 10);
+        this.isOpen = true;
+        this.likedBy = [];
+        this.savedBy = [];
+
+    }
+
+    expire() {
+        const age = Date.now() - creationTime;
+        if (age > duration) {
+            isOpen = false;
+        }   
     }
 }
 
-const ben = new Person('Ben', 29);
-const armagan = new Person('Armagan', 29);
+const ben = new Person('Ben', 'bsukstorf@gmail.com', 29, null, 'Leipzig');
+const armagan = new Person('Armagan', 'armagan@cototiv.org', null, 29, 'Berlin');
 
-const offer = new Offer(123456);
+ben.createOffer('My old pillbox hat', 'Clothing', '04317');
+ben.createOffer('Wash dishes', 'Services', '04317');
 
-console.log(offer);
+armagan.createOffer('Dish Washer', 'Electrical Devices', '11231');
 
-ben.addOffer(offer);
-armagan.likeOffer(offer);
+console.log(ben);
 
-console.log(ben, ben.offers[0].likedBy);
+// armagan.likeOffer(offer);
+// console.log(ben, ben.offers[0].likedBy);
