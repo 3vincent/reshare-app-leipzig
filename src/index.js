@@ -1,4 +1,4 @@
-const Person = require('./src/person.js')
+const Person = require('./person.js')
 
 
 const ben = new Person('Ben', 'ben@someemail.com', 29, null, 'Leipzig');
@@ -18,4 +18,4 @@ console.log(armagan);
 
 console.log(ben.profile);
 
-// console.log('Bens Offers output:', ben.offers[0].likedBy);
+console.log('Bens Offers Liked by output:', ben.offers[0].likedBy);
