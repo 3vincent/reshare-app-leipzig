@@ -14,4 +14,6 @@ armagan.likeOffer(bensOffer2);
 console.log(ben);
 console.log(armagan);
 
+console.log(ben.profile);
+
 // console.log('Bens Offers output:', ben.offers[0].likedBy);

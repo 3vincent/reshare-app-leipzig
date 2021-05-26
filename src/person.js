@@ -26,4 +26,21 @@ module.exports = class Person {
         offer.savedBy.push(this)
     }
 
+    get profile() {
+        return `
+# ${this.name}'s Profile (${this.age})
+
+## ${this.name} has ${this.offers.length} Offers
+
+## Offers (${this.offers.length})
+
+Which are liked by
+
+${this.offers
+    .map(offer => { 
+        return offer.likedBy.map((person) => person.name).join(', ')
+    })
+    .join('\n')}
+        `;
+    }
 }
