@@ -34,13 +34,13 @@ module.exports = class Person {
 
 ## Offers (${this.offers.length})
 
-Which are liked by
-
 ${this.offers
-    .map(offer => { 
-        return offer.likedBy.map((person) => person.name).join(', ')
-    })
-    .join('\n')}
+    .map(offer => {
+        return `${offer.title} \n =>> Liked by ${offer.likedBy.map((person) => person.name).join(', ')} \n`;
+    }) 
+    .join('\n')
+    }
+
         `;
     }
 }

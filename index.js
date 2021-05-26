@@ -11,6 +11,8 @@ armagan.createOffer('Dish Washer', '11231', 'Electrical Devices');
 armagan.likeOffer(bensOffer);
 armagan.likeOffer(bensOffer2);
 
+ben.likeOffer(bensOffer);
+
 console.log(ben);
 console.log(armagan);
 
