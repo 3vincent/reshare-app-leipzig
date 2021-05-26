@@ -5,6 +5,7 @@ module.exports = class Offer {
         this.title = title;
         this.location = location;
         this.category = category;
+        this.descripton = '';
         this.creationTime = Date.now();
         this.duration = 604800;                  // 4 weeks in seconds
         this.offerUUID = uuidv4();
