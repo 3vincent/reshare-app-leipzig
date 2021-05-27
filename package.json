@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/3vincent/example-project.git"
   },
-  "author": "Ben Sukstorf",
+  "author": "Ben Sukstorf <bsukstorf@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/3vincent/example-project/issues"
