@@ -8,10 +8,25 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "lint-staged"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "pretty-quick --staged",
+      "eslint --fix"
+    ],
+    "*.+(json|css|md)": [
+      "pretty-quick --staged"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/3vincent/example-project.git"
   },
+  "keywords": [],
   "author": "Ben Sukstorf <bsukstorf@gmail.com>",
   "license": "MIT",
   "bugs": {
