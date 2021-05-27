@@ -1,46 +1,63 @@
-const Offer = require('./offer.js')
+const Offer = require('./offer')
 
 module.exports = class Person {
-    constructor(name, emailAddress, age, profilePhoto, location) {
-        this.name = name;
-        this.emailAddress = emailAddress;
-        this.age = age;
-        this.profilePhoto = profilePhoto;
-        this.location = location;
+  constructor(name, emailAddress, age, profilePhoto, location) {
+    this.name = name
+    this.emailAddress = emailAddress
+    this.age = age
+    this.profilePhoto = profilePhoto
+    this.location = location
 
-        this.offers = [];
+    this.offers = []
+  }
 
-    }
-    
-    createOffer(title, location, category) {
-        const newOffer = new Offer(title, location, category); //is there a better way other than binding the "new Offer" to a const
-        this.offers.push(newOffer);                              //i.e. returning and pushing it directly ?!
-        return newOffer;
-    }
+  createOffer(title, location, category) {
+    const newOffer = new Offer(title, location, category) // is there a better way other than binding the "new Offer" to a const
+    this.offers.push(newOffer) // i.e. returning and pushing it directly ?!
+    return newOffer
+  }
 
-    likeOffer(offer) {
-        offer.likedBy.push(this)
-    }
+  prolongOffer(offerUUID) {
+    // rethink 'offer duration'
+    // maybe make it a counter that runs out.. when it is zero
+    // the offer is marked as 'expired'
+    // the user/person can then mark re-add it
+    //
+    return offerUUID
+  }
 
-    saveOffer(offer) {
-        offer.savedBy.push(this)
-    }
+  likeOffer(offer) {
+    offer.likedBy.push(this)
+  }
 
-    get profile() {
-        return `
+  saveOffer(offer) {
+    offer.savedBy.push(this)
+  }
+
+  get profile() {
+    return `
 # ${this.name}'s Profile (${this.age})
-
+Ben lives in ${this.location
+      .reverse()
+      .map(x => x)
+      .join(' ')}
 ## ${this.name} has ${this.offers.length} Offers
 
 ## Offers (${this.offers.length})
 
 ${this.offers
-    .map(offer => {
-        return `${offer.title} \n =>> Liked by ${offer.likedBy.map((person) => person.name).join(', ')} \n`;
-    }) 
-    .join('\n')
-    }
+  .map(
+    (offer, index) =>
+      `${index + 1}. ${offer.title} 
+   Category: ${offer.category}
+   Location: ${this.location
+     .reverse()
+     .map(x => x)
+     .join(' ')}
+   => Liked by ${offer.likedBy.map(person => person.name).join(', ')} \n`
+  )
+  .join('\n')}
 
-        `;
-    }
+        `
+  }
 }
