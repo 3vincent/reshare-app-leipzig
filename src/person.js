@@ -1,3 +1,5 @@
+const logSymbols = require('log-symbols')
+
 const Offer = require('./offer')
 
 module.exports = class Person {
@@ -41,7 +43,7 @@ Ben lives in ${this.location
       .reverse()
       .map(x => x)
       .join(' ')}
-## ${this.name} has ${this.offers.length} Offers
+## ${logSymbols.info} ${this.name} has ${this.offers.length} Offers 
 
 ## Offers (${this.offers.length})
 
