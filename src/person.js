@@ -14,8 +14,8 @@ module.exports = class Person {
   }
 
   createOffer(title, location, category) {
-    const newOffer = new Offer(title, location, category) // is there a better way other than binding the "new Offer" to a const
-    this.offers.push(newOffer) // i.e. returning and pushing it directly ?!
+    const newOffer = new Offer(title, location, category)
+    this.offers.push(newOffer)
     return newOffer
   }
 
