@@ -11,6 +11,7 @@ module.exports = class Offer {
     this.offerUUID = uuidv4()
     this.isOpen = true
     this.likedBy = []
+    this.comments = []
     this.savedBy = []
   }
 
