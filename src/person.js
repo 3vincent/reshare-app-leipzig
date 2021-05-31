@@ -11,7 +11,7 @@ module.exports = class Person {
     this.age = age
     this.profilePhoto = profilePhoto
     this.location = location
-
+    this.savedOffers = []
     this.offers = []
   }
 
@@ -21,15 +21,6 @@ module.exports = class Person {
     return newOffer
   }
 
-  prolongOffer(offerUUID) {
-    // rethink 'offer duration'
-    // maybe make it a counter that runs out.. when it is zero
-    // the offer is marked as 'expired'
-    // the user/person can then mark re-add it
-    //
-    return offerUUID
-  }
-
   likeOffer(offer) {
     offer.likedBy.push(this)
   }
@@ -37,18 +28,17 @@ module.exports = class Person {
   leaveComment(offer, comment) {
     const newComment = new Comment(offer, this, comment)
     return newComment
-  saveOffer(offer) {
-    offer.savedBy.push(this)
   }
 
   get profile() {
     return `
-# ${this.name}'s Profile (${this.age})
-Ben lives in ${this.location
+
+# ${logSymbols.info} ${this.name}'s Profile (${this.age})
+${this.name} lives in ${this.location
       .reverse()
       .map(x => x)
       .join(' ')}
-## ${logSymbols.info} ${this.name} has ${this.offers.length} Offers 
+## ${this.name} has ${this.offers.length} Offers 
 
 ## Offers (${this.offers.length})
 
