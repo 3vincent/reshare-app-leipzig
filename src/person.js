@@ -2,6 +2,8 @@ const logSymbols = require('log-symbols')
 
 const Offer = require('./offer')
 
+const Comment = require('./comments')
+
 module.exports = class Person {
   constructor(name, emailAddress, age, profilePhoto, location) {
     this.name = name
@@ -32,6 +34,9 @@ module.exports = class Person {
     offer.likedBy.push(this)
   }
 
+  leaveComment(offer, comment) {
+    const newComment = new Comment(offer, this, comment)
+    return newComment
   saveOffer(offer) {
     offer.savedBy.push(this)
   }

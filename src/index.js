@@ -18,3 +18,11 @@ console.log(armagan)
 console.log(ben.profile)
 
 // console.log('Bens Offers Liked by output:', ben.offers[0].likedBy)
+
+// toDo for Weekend: Create Comment Class
+
+ben.leaveComment(armaganOffer, 'This is a very good dish washer')
+ben.leaveComment(armaganOffer, 'Again and again')
+const armagansComment = armagan.leaveComment(armaganOffer, 'Bump')
+console.log(armaganOffer)
+console.log(armagansComment)
