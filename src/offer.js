@@ -9,17 +9,19 @@ module.exports = class Offer {
     this.creationTime = Date.now()
     this.duration = 4 * 7 * 24 * 60 * 60
     this.offerUUID = uuidv4()
-    this.isOpen = true
+    this.status = 'open'
     this.likedBy = []
     this.comments = []
-    this.savedBy = []
   }
 
   expire() {
     const age = Date.now() - this.creationTime
     if (age > this.duration) {
-      this.isOpen = false
+      this.status = 'expired' // make distinction between expired, withdrawn or taken
     }
   }
 
+  get offerView() {
+    return ``
+  }
 }
