@@ -15,18 +15,19 @@ module.exports = class Person {
     this.offers = []
   }
 
-  createOffer(title, location, category) {
-    const newOffer = new Offer(title, location, category)
+  createOffer(title, location, category, descripton) {
+    const newOffer = new Offer(title, location, category, descripton)
     this.offers.push(newOffer)
     return newOffer
   }
 
   likeOffer(offer) {
-    offer.likedBy.push(this)
+    offer.likedBy.push(this.name)
   }
 
   leaveComment(offer, comment) {
     const newComment = new Comment(offer, this, comment)
+    offer.comments.push(newComment)
     return newComment
   }
 
@@ -35,26 +36,29 @@ module.exports = class Person {
 
 # ${logSymbols.info} ${this.name}'s Profile (${this.age})
 ${this.name} lives in ${this.location
+      .slice()
       .reverse()
-      .map(x => x)
+      .map(area => area)
       .join(' ')}
-## ${this.name} has ${this.offers.length} Offers 
+
+## ${this.name} has ${this.offers.length} Offers
 
 ## Offers (${this.offers.length})
-
 ${this.offers
   .map(
-    (offer, index) =>
-      `${index + 1}. ${offer.title} 
+    (offer, index) => `
+${index + 1}. ${offer.title}
    Category: ${offer.category}
-   Location: ${this.location
+   Location: ${offer.location
+     .slice()
      .reverse()
      .map(x => x)
      .join(' ')}
-   => Liked by ${offer.likedBy.map(person => person.name).join(', ')} \n`
+   => Liked by ${offer.likedBy.map(person => person).join(', ')} (${offer.likedBy.length})
+   => Commenters: ${offer.commenters.join(', ')}
+   => Total Comments: ${offer.commenters.length}`
   )
   .join('\n')}
-
         `
   }
 }

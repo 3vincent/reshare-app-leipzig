@@ -1,0 +1,32 @@
+@startuml Leipzig Share App Class Diagram
+
+class Person {
+  name: string
+  age: number
+  photos: [Photo]
+
+  constructor(name: string, age: number)
+  addPhoto(photo: Photo)
+  likePhoto(photo: Photo)
+}
+
+class Offer {
+  title: string
+  location: string
+  category: string
+  likedBy: [Person]
+  comments: [???]
+
+  constructor(title: string, location: string, category: string)
+}
+
+class Comments {
+  offer: string
+  whom: string
+  comment: string
+  
+
+  constructor(offer: string, whom: string, comment: string)
+}
+
+@enduml
