@@ -28,7 +28,7 @@ const armaganOffer = armagan.createOffer(
   'Dish Washer',
   ['Berlin', '11234'],
   'Electrical Devices',
-  'It is like new. Give it as is.'
+  'It is like new. Give it as-is.'
 )
 ben.likeOffer(armaganOffer)
 ben.leaveComment(armaganOffer, 'This is a very good dish washer')
