@@ -40,10 +40,10 @@ ${this.name} lives in ${this.location
       .reverse()
       .map(area => area)
       .join(' ')}
-## ${this.name} has ${this.offers.length} Offers 
+
+## ${this.name} has ${this.offers.length} Offers
 
 ## Offers (${this.offers.length})
-
 ${this.offers
   .map(
     (offer, index) => `
@@ -54,8 +54,9 @@ ${index + 1}. ${offer.title}
      .reverse()
      .map(x => x)
      .join(' ')}
-   => Liked by ${offer.likedBy.map(person => person).join(', ')}
-   Commenters: ${offer.commenters}`
+   => Liked by ${offer.likedBy.map(person => person).join(', ')} (${offer.likedBy.length})
+   => Commenters: ${offer.commenters.join(', ')}
+   => Total Comments: ${offer.commenters.length}`
   )
   .join('\n')}
         `
