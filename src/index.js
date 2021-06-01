@@ -1,39 +1,23 @@
-const logSymbols = require('log-symbols')
-
 const Person = require('./person')
 
 const ben = new Person('Ben', 'ben@someemail.com', 29, '', ['Leipzig', '04277'])
 const armagan = new Person('Armagan', 'armagan@someemail.com', 29, '', ['Berlin', '11234'])
 
 const bensOffer = ben.createOffer('My old pillbox hat', ['Leipzig', '04277'], 'Clothing')
+armagan.likeOffer(bensOffer)
+ben.likeOffer(bensOffer)
+armagan.leaveComment(bensOffer, 'Does it run with battery too?')
+
 const bensOffer2 = ben.createOffer('Wash dishes', ['Leipzig', '04277'], 'Services')
+armagan.likeOffer(bensOffer2)
+armagan.leaveComment(bensOffer2, 'Awesome')
+ben.leaveComment(bensOffer2, 'Thank you')
 
 const armaganOffer = armagan.createOffer('Dish Washer', ['Berlin', '11234'], 'Electrical Devices')
-armagan.likeOffer(bensOffer)
-armagan.likeOffer(bensOffer2)
-
-ben.likeOffer(bensOffer)
 ben.likeOffer(armaganOffer)
-
-// console.log(ben)
-// console.log(armagan)
-
-console.log(armagan.profile)
-// console.log(ben.profile)
-
-// console.log('Bens Offers Liked by output:', ben.offers[0].likedBy)
-
 ben.leaveComment(armaganOffer, 'This is a very good dish washer')
 ben.leaveComment(armaganOffer, 'Again and again')
-const armagansComment = armagan.leaveComment(armaganOffer, 'Bump')
-// console.log(armagansComment)
-// console.log(`${logSymbols.warning} Placeholder`)
-// console.log(armaganOffer)
-// console.log('Armagan Offer: ', armaganOffer.comments)
-// console.log('Armagan Comment: ', armagansComment)
+armagan.leaveComment(armaganOffer, 'Bump')
 
-console.log('did:', armagan.offers.map(offer => offer.commenters).join(''))
-// console.log(
-//   'Diese: ',
-//   armagan.offers.map(offer => offer.comments.map(x => x.sender))
-// )
+console.log(armagan.profile)
+console.log(ben.profile)
