@@ -22,7 +22,7 @@ module.exports = class Offer {
   }
 
   get commenters() {
-    return this.comments.map(comment => comment.sender).join(', ')
+    return this.comments.map(comment => comment.sender)
   }
 
   get offerView() {
