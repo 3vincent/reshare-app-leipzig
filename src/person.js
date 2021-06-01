@@ -55,7 +55,11 @@ ${index + 1}. ${offer.title}
      .map(x => x)
      .join(' ')}
    => Liked by ${offer.likedBy.map(person => person).join(', ')} (${offer.likedBy.length})
-   => Commenters: ${offer.commenters.join(', ')}
+   => Commenters: ${offer.commenters
+     .slice()
+     .sort()
+     .filter((commenter, index2, array) => array.indexOf(commenter) === index2)
+     .join(', ')}
    => Total Comments: ${offer.commenters.length}`
   )
   .join('\n')}
