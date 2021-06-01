@@ -1,11 +1,11 @@
 const uuidv4 = require('./uuid-func')
 
 module.exports = class Offer {
-  constructor(title, location, category = 'none') {
+  constructor(title, location, category = 'none', descripton = '') {
     this.title = title
     this.location = location
     this.category = category
-    this.descripton = ''
+    this.descripton = descripton
     this.creationTime = Date.now()
     this.duration = 4 * 7 * 24 * 60 * 60
     this.offerUUID = uuidv4()
@@ -21,7 +21,26 @@ module.exports = class Offer {
     }
   }
 
+  get commenters() {
+    return this.comments.map(comment => comment.sender)
+  }
+
   get offerView() {
-    return ``
+    return `
+# Offer: "${this.title}"
+## Location: ${this.location
+      .slice()
+      .reverse()
+      .map(x => x)
+      .join(' ')}
+## Offer created: ${this.creationTime}
+## Description:
+   ${this.descripton}
+
+## Comments:
+   ${this.comments.map(comment => `${comment.creationTime} '${comment.sender}' said: ${comment.comment}`).join('\n   ')}
+
+## Offer UUID: ${this.offerUUID}   
+    `
   }
 }

@@ -1,7 +1,8 @@
 module.exports = class Comment {
-  constructor(offer, whom, comment) {
-    this.offer = offer
-    this.whom = whom
+  constructor(offer, sender, comment) {
+    this.offerUUID = offer.offerUUID
+    this.sender = sender.name
+    this.creationTime = Date.now()
     this.comment = comment
   }
 }
