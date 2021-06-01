@@ -1,3 +1,5 @@
+const logSymbols = require('log-symbols')
+
 const Person = require('./person')
 
 const ben = new Person('Ben', 'ben@someemail.com', 29, '', ['Leipzig', '04277'])
@@ -13,18 +15,25 @@ armagan.likeOffer(bensOffer2)
 ben.likeOffer(bensOffer)
 ben.likeOffer(armaganOffer)
 
-console.log(ben)
-console.log(armagan)
+// console.log(ben)
+// console.log(armagan)
 
 console.log(armagan.profile)
-console.log(ben.profile)
+// console.log(ben.profile)
 
 // console.log('Bens Offers Liked by output:', ben.offers[0].likedBy)
-
-// toDo for Weekend: Create Comment Class
 
 ben.leaveComment(armaganOffer, 'This is a very good dish washer')
 ben.leaveComment(armaganOffer, 'Again and again')
 const armagansComment = armagan.leaveComment(armaganOffer, 'Bump')
-console.log(armaganOffer)
-console.log(armagansComment)
+// console.log(armagansComment)
+// console.log(`${logSymbols.warning} Placeholder`)
+// console.log(armaganOffer)
+// console.log('Armagan Offer: ', armaganOffer.comments)
+// console.log('Armagan Comment: ', armagansComment)
+
+console.log('did:', armagan.offers.map(offer => offer.commenters).join(''))
+// console.log(
+//   'Diese: ',
+//   armagan.offers.map(offer => offer.comments.map(x => x.sender))
+// )
