@@ -63,7 +63,6 @@ ${index + 1}. ${offer.title}
      .join(', ')}
    => Total Comments: ${offer.commenters.length}`
   )
-  .join('\n')}
-        `
+  .join('\n')}`
   }
 }
