@@ -54,6 +54,7 @@ ${index + 1}. ${offer.title}
      .reverse()
      .map(x => x)
      .join(' ')}
+   => Status: ${offer.status}
    => Liked by ${offer.likedBy.map(person => person).join(', ')} (${offer.likedBy.length})
    => Commenters: ${offer.commenters
      .slice()
