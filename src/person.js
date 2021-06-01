@@ -36,6 +36,7 @@ module.exports = class Person {
 
 # ${logSymbols.info} ${this.name}'s Profile (${this.age})
 ${this.name} lives in ${this.location
+      .slice()
       .reverse()
       .map(x => x)
       .join(' ')}
