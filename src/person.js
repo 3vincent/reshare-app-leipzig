@@ -46,17 +46,18 @@ ${this.name} lives in ${this.location
 
 ${this.offers
   .map(
-    (offer, index) =>
-      `${index + 1}. ${offer.title} 
+    (offer, index) => `
+${index + 1}. ${offer.title}
    Category: ${offer.category}
-   Location: ${this.location
+   Location: ${offer.location
+     .slice()
      .reverse()
      .map(x => x)
      .join(' ')}
-   => Liked by ${offer.likedBy.map(person => person.name).join(', ')} \n`
+   => Liked by ${offer.likedBy.map(person => person).join(', ')}
+   Commenters: ${offer.commenters}`
   )
   .join('\n')}
-
         `
   }
 }
