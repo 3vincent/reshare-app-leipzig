@@ -22,7 +22,7 @@ module.exports = class Person {
   }
 
   likeOffer(offer) {
-    offer.likedBy.push(this)
+    offer.likedBy.push(this.name)
   }
 
   leaveComment(offer, comment) {
