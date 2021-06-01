@@ -15,8 +15,8 @@ module.exports = class Person {
     this.offers = []
   }
 
-  createOffer(title, location, category) {
-    const newOffer = new Offer(title, location, category)
+  createOffer(title, location, category, descripton) {
+    const newOffer = new Offer(title, location, category, descripton)
     this.offers.push(newOffer)
     return newOffer
   }

@@ -1,11 +1,11 @@
 const uuidv4 = require('./uuid-func')
 
 module.exports = class Offer {
-  constructor(title, location, category = 'none') {
+  constructor(title, location, category = 'none', descripton = '') {
     this.title = title
     this.location = location
     this.category = category
-    this.descripton = ''
+    this.descripton = descripton
     this.creationTime = Date.now()
     this.duration = 4 * 7 * 24 * 60 * 60
     this.offerUUID = uuidv4()
