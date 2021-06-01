@@ -27,6 +27,7 @@ module.exports = class Person {
 
   leaveComment(offer, comment) {
     const newComment = new Comment(offer, this, comment)
+    offer.comments.push(newComment)
     return newComment
   }
 
