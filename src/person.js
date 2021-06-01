@@ -38,7 +38,7 @@ module.exports = class Person {
 ${this.name} lives in ${this.location
       .slice()
       .reverse()
-      .map(x => x)
+      .map(area => area)
       .join(' ')}
 ## ${this.name} has ${this.offers.length} Offers 
 
