@@ -35,34 +35,35 @@ module.exports = class Person {
     return `
 
 # ${logSymbols.info} ${this.name}'s Profile (${this.age})
-${this.name} lives in ${this.location
+    ${this.name} lives in ${this.location
       .slice()
       .reverse()
       .map(area => area)
       .join(' ')}
 
-## ${this.name} has ${this.offers.length} Offers
+### ${this.name} has 
+    ${this.offers.length} Offers
 
-## Offers (${this.offers.length})
-${this.offers
-  .map(
-    (offer, index) => `
-${index + 1}. ${offer.title}
-   Category: ${offer.category}
-   Location: ${offer.location
-     .slice()
-     .reverse()
-     .map(x => x)
-     .join(' ')}
-   => Status: ${offer.status}
-   => Liked by ${offer.likedBy.map(person => person).join(', ')} (${offer.likedBy.length})
-   => Commenters: ${offer.commenters
-     .slice()
-     .sort()
-     .filter((commenter, index2, array) => array.indexOf(commenter) === index2)
-     .join(', ')}
-   => Total Comments: ${offer.commenters.length}`
-  )
-  .join('\n')}`
+### Offers (${this.offers.length})
+    ${this.offers
+      .map(
+        (offer, index) => `
+    ${index + 1}. ${offer.title}
+        Category: ${offer.category}
+        Location: ${offer.location
+          .slice()
+          .reverse()
+          .map(x => x)
+          .join(' ')}
+        => Status: ${offer.status}
+        => Liked by ${offer.likedBy.map(person => person).join(', ')} (${offer.likedBy.length})
+        => Commenters: ${offer.commenters
+          .slice()
+          .sort()
+          .filter((commenter, index2, array) => array.indexOf(commenter) === index2)
+          .join(', ')}
+        => Total Comments: ${offer.commenters.length}`
+      )
+      .join('\n')}`
   }
 }
