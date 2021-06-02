@@ -48,7 +48,7 @@ module.exports = class Offer {
 
 ### Offer UUID:
     
-${this.offerUUID}
+    ${this.offerUUID}
     `
   }
 }
