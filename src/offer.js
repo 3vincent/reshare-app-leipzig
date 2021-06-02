@@ -28,19 +28,27 @@ module.exports = class Offer {
   get offerView() {
     return `
 # Offer: "${this.title}"
-## Location: ${this.location
+### Location:
+    ${this.location
       .slice()
       .reverse()
       .map(x => x)
       .join(' ')}
-## Offer created: ${this.creationTime}
-## Description:
-   ${this.descripton}
 
-## Comments:
-   ${this.comments.map(comment => `${comment.creationTime} '${comment.sender}' said: ${comment.comment}`).join('\n   ')}
+### Offer created:
+    ${this.creationTime}
 
-## Offer UUID: ${this.offerUUID}   
+### Description:
+    ${this.descripton}
+
+### Comments:
+    ${this.comments
+      .map(comment => `${comment.creationTime} '${comment.sender}' said: ${comment.comment}`)
+      .join('\n   \n    ')}
+
+### Offer UUID:
+    
+${this.offerUUID}
     `
   }
 }
