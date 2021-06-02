@@ -17,7 +17,7 @@ const bensOffer2 = ben.createOffer(
   'Wash dishes',
   ['Leipzig', '04277'],
   'Services',
-  "I'd come your place and do the dishes."
+  'I job is to do the dishes. I can help you clean if you need help'
 )
 armagan.likeOffer(bensOffer2)
 armagan.leaveComment(bensOffer2, 'Awesome')
