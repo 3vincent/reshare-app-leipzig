@@ -2,7 +2,7 @@
   "name": "example-project",
   "version": "0.1.0",
   "description": "A Coyotiv School Of Software Design example Project",
-  "main": "src/index.js",
+  "main": "src/models/index.js",
   "scripts": {
     "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
