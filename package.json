@@ -1,10 +1,10 @@
 {
   "name": "example-project",
   "version": "0.1.0",
-  "description": "A Coyotive School Of Software Design example Project",
+  "description": "A Coyotiv School Of Software Design example Project",
   "main": "src/index.js",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "lint-staged"
   },
@@ -47,6 +47,12 @@
     "pretty-quick": "^3.1.0"
   },
   "dependencies": {
-    "log-symbols": "^4.1.0"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "log-symbols": "^4.1.0",
+    "morgan": "~1.9.1",
+    "pug": "^3.0.2"
   }
 }

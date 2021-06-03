@@ -2,7 +2,7 @@ const logSymbols = require('log-symbols')
 
 const Offer = require('./offer')
 
-const Comment = require('./comments')
+const Comment = require('./comment')
 
 module.exports = class Person {
   constructor(name, emailAddress, age, profilePhoto, location) {

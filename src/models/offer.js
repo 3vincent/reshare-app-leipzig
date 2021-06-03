@@ -1,4 +1,4 @@
-const uuidv4 = require('./uuid-func')
+const uuidv4 = require('../lib/uuid-func')
 
 module.exports = class Offer {
   constructor(title, location, category = 'none', descripton = '') {
