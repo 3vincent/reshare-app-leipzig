@@ -1,5 +1,29 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+
+   .container
+      h1= title
+      p Welcome to #{title}    
+      .row
+        .col-sm-6
+          .card
+              h5 User View
+              .card-body
+                p My name is 
+                a(href="/users?name=armagan") #{ben}
+                a(href="/users?name=ben") #{armagan}
+                p 
+                p My offers are
+                button Profile
+
+        .col-sm-6
+          .card
+              h5 User View
+              .card-body
+                p My name is
+                a(href="/users?name=armagan") #{ben}
+                a(href="/users?name=ben") #{armagan}
+                p 
+                p My offers are                
+                button Profile
