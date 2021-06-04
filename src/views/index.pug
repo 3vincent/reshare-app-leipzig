@@ -1,29 +1,30 @@
 extends layout
 
 block content
-
-   .container
+  .page 
+    .container
+      nav
       h1= title
       p Welcome to #{title}    
       .row
         .col-sm-6
           .card
-              h5 User View
+              h5 List Items 0
               .card-body
-                p My name is 
+                p Offer Description 
                 a(href="/users?name=armagan") #{ben}
                 a(href="/users?name=ben") #{armagan}
                 p 
-                p My offers are
-                button Profile
+                p Location
+                button View Offer
 
         .col-sm-6
           .card
-              h5 User View
+              h5 List Items 1
               .card-body
-                p My name is
+                p Offer Description 
                 a(href="/users?name=armagan") #{ben}
                 a(href="/users?name=ben") #{armagan}
                 p 
-                p My offers are                
-                button Profile
+                p Location                
+                button View Offer
