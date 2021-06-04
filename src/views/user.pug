@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  .page 
+      .container 
+          .row 
+            .col-sm-12 
+                h4 #{user.name} (#{user.offers.length})
+                p Location: #{user.location.slice().reverse().join(' ')}
+                p Age: #{user.age}
+                p #{user.name} has #{user.offers.length} offers
+                p &nbsp;
+
+                each offer, index in user.offers
+                  h4 #{index + 1}. #{offer.title}
+                  if !offer.location || offer.location.length == 0
+                    p no location yet!
+                  else
+                    p Location: #{offer.location.slice().reverse().join(' ')}   
+
+                  if !offer.category || offer.category.length == 0
+                    p no category yet!
+                  else
+                    p Category: #{offer.category}   
+
+                  if !offer.description || offer.description.length == 0
+                    p 
+                      i no description yet!
+                  else
+                    h5 Description:
+                    p #{offer.description && offer.description}
+
+                  if !offer.status || offer.status.length == 0
+                    p no status yet!
+                  else
+                    p Status: #{offer.status}                              
+
+                  if !offer.likedBy || offer.likedBy.length == 0
+                    p no 'Liked By' yet!
+                  else
+                    p Liked By: #{offer.likedBy.map(person => person).join(', ')} (#{offer.likedBy.length})   
+
+                  if !offer.commenters || offer.commenters.length == 0
+                    p no Commenters yet!
+                  else
+                    p Commenters: #{offer.commenters.slice().sort().filter((commenter, index2, array) => array.indexOf(commenter) === index2).join(', ')}
+                    p Total comments: #{offer.commenters.length}
+                    <br>
+                    <br>
+                  //- if !offer.category || offer.category.length == 0
+                  //-   p no category yet!
+                  //- else
+                  //-   p Category: #{offer.category}   
