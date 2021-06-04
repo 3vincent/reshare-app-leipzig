@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
   if (req.query.name) {
     result = users.find(user => user.name === req.query.name)
   }
-  res.send(result)
+  return res.send(result)
 })
 
 router.get('/:userID', (req, res, next) => {
