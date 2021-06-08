@@ -8,6 +8,8 @@ const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const offersRouter = require('./routes/offers')
 
+require('./database-connection')
+
 const app = express()
 
 if (app.get('env') == 'development') {
