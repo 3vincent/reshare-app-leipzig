@@ -3,7 +3,7 @@ const express = require('express')
 
 const router = express.Router()
 
-const { offers } = require('../models/db')
+const { offers } = require('../db')
 
 /* GET home page. */
 

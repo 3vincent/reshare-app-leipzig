@@ -1,4 +1,4 @@
-const Person = require('./person')
+const Person = require('./models/person')
 
 const ben = new Person('ben', 'ben@someemail.com', 29, '', ['Leipzig', '04277'])
 const armagan = new Person('armagan', 'armagan@someemail.com', 29, '', ['Berlin', '11234'])
