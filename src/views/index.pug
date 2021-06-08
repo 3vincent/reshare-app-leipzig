@@ -5,26 +5,37 @@ block content
     .container
       nav
       h1= title
-      p Welcome to #{title}    
+      p Welcome to #{title}
+      p &nbsp;
+      //- p This #{offers.map(offer => offer.title).join(', ')}
+      //- p This #{offers.length}
+      p &nbsp;
       .row
         .col-sm-6
-          .card
-              h5 List Items 0
-              .card-body
+          //- each offer in offers
+          h5 #{offer}
+          ul.list-group
+              li.list-group-item
                 p Offer Description 
                 a(href="/users?name=armagan") #{ben}
                 a(href="/users?name=ben") #{armagan}
                 p 
                 p Location
-                button View Offer
+                button.btn.btn-primary View Offer
 
         .col-sm-6
-          .card
-              h5 List Items 1
-              .card-body
+          h5 List Items 1
+          ul.list-group
+              li.list-group-item
                 p Offer Description 
                 a(href="/users?name=armagan") #{ben}
                 a(href="/users?name=ben") #{armagan}
                 p 
                 p Location                
-                button View Offer
+                button.btn.btn-primary View Offer
+
+      .row   
+        .col-sm-6 
+        p &nbsp;
+        p link to users
+        
