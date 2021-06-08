@@ -12,16 +12,17 @@ block content
       p &nbsp;
       .row
         .col-sm-6
-          //- each offer in offers
-          h5 #{offer}
-          ul.list-group
-              li.list-group-item
-                p Offer Description 
-                a(href="/users?name=armagan") #{ben}
-                a(href="/users?name=ben") #{armagan}
-                p 
-                p Location
-                button.btn.btn-primary View Offer
+          each offer in index.offers 
+            p #{offer.title}
+            //- h5 #{offers.map(offer => offer.title).join(', ')}
+            ul.list-group
+                li.list-group-item
+                  p Offer Description 
+                  a(href="/users?name=armagan") #{ben}
+                  a(href="/users?name=ben") #{armagan}
+                  p 
+                  p Location
+                  button.btn.btn-primary View Offer
 
         .col-sm-6
           h5 List Items 1
