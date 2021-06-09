@@ -1,4 +1,3 @@
-const logSymbols = require('log-symbols')
 
 const Offer = require('./offer')
 
