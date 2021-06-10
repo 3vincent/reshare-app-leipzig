@@ -1,19 +1,27 @@
-const uuidv4 = require('../lib/uuid-func')
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
 
-module.exports = class Offer {
-  constructor(title, location, category = 'none', description = '') {
-    this.title = title
-    this.location = location
-    this.category = category
-    this.description = description
-    this.creationTime = Date.now()
-    this.duration = 4 * 7 * 24 * 60 * 60
-    this.offerUUID = uuidv4()
-    this.status = 'open'
-    this.likedBy = []
-    this.comments = []
-  }
+const offerSchema = new mongoose.Schema({
+  title: String,
+  location: [],
+  category: String,
+  description: String,
+  photos: [],
+  creationTime: Date, // Date.now()
+  duration: Number, //  4 * 7 * 24 * 60 * 60
+  offerUUID: String, // uuidv4(),
+  status: String,
+  likedBy: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Person',
+      autopopulate: true,
+    },
+  ],
+  comments: [],
+})
 
+class Offer {
   expire() {
     const age = Date.now() - this.creationTime
     if (age > this.duration) {
@@ -24,31 +32,9 @@ module.exports = class Offer {
   get commenters() {
     return this.comments.map(comment => comment.sender)
   }
-
-  get offerView() {
-    return `
-# Offer: "${this.title}"
-### Location:
-    ${this.location
-      .slice()
-      .reverse()
-      .map(x => x)
-      .join(' ')}
-
-### Offer created:
-    ${this.creationTime}
-
-### Description:
-    ${this.description}
-
-### Comments:
-    ${this.comments
-      .map(comment => `${comment.creationTime} '${comment.sender}' said: ${comment.comment}`)
-      .join('\n   \n    ')}
-
-### Offer UUID:
-    
-    ${this.offerUUID}
-    `
-  }
 }
+
+offerSchema.loadClass(Offer)
+offerSchema.plugin(autopopulate)
+
+module.exports = mongoose.model('Offer', offerSchema)
