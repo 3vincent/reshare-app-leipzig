@@ -34,9 +34,9 @@ const personSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
+      autpopulate: true,
     },
   ],
-
   offers: [
     {
       type: mongoose.Schema.Types.ObjectId,
