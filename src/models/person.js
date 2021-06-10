@@ -44,6 +44,13 @@ const personSchema = new mongoose.Schema({
       autopopulate: true,
     },
   ],
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment',
+      autopopulate: true,
+    },
+  ],
 })
 
 class Person {
@@ -61,11 +68,14 @@ class Person {
     await this.save()
   }
 
-  // async leaveComment(offer, comment) {
-  //   const newComment = new Comment(offer, this, comment)
-  //   offer.comments.push(newComment)
-  //   return newComment
-  // }
+  async leaveComment(offer, comment) {
+    offer.comments.push(comment)
+    this.comments.push(comment)
+
+    await this.save()
+    // await comment.save()
+    await offer.save()
+  }
 }
 
 personSchema.loadClass(Person)
