@@ -1,42 +1,45 @@
+const uuidv4 = require('./lib/uuid-func')
 const Person = require('./models/person')
+const Offer = require('./models/offer')
+const Comment = require('./models/comment')
 
-const ben = new Person('ben', 'ben@someemail.com', 29, '', ['Leipzig', '04277'])
-const armagan = new Person('armagan', 'armagan@someemail.com', 29, '', ['Berlin', '11234'])
+const persons = []
+const offers = []
 
-const bensOffer = ben.createOffer(
-  'My old pillbox hat',
-  ['Leipzig', '04277'],
-  'Clothing',
-  'Giving this old THing away for free'
-)
-armagan.likeOffer(bensOffer)
-ben.likeOffer(bensOffer)
-armagan.leaveComment(bensOffer, 'Does it run with battery too?')
+async function main() {
+  // await ben.likeOffer(bensOffer)
+  // const commentb11 = await Comment.create({ creationTime: Date.now, comment: 'Does it run with battery too?' })
+  // await armagan.leaveComment(commentb11)
+  // const bensOffer2 = await Offer.create({
+  //   title: 'Wash dishes',
+  //   offerUUID: uuidv4,
+  //   location: ['Leipzig', '04277'],
+  //   category: 'Services',
+  //   description: 'My job is to do the dishes. I can help you clean if you need help',
+  // })
+  // await armagan.likeOffer(bensOffer2)
+  // const commentb21 = await Comment.create({ creationTime: Date.now, comment: 'Awesome' })
+  // const commentb22 = await Comment.create({ creationTime: Date.now, comment: 'test test test' })
+  // await ben.leaveComment(commentb21)
+  // await armagan.leaveComment(commentb22)
+  // const armaganOffer = await Offer.create({
+  //   title: 'Dish Washer',
+  //   offerUUID: uuidv4,
+  //   location: ['Berlin', '11234'],
+  //   category: 'Electrical Devices',
+  //   description: 'It is like new. Give it as-is.',
+  // })
+  // await armagan.createOffer(armaganOffer)
+  // await ben.likeOffer(armaganOffer)
+  // const commenta11 = await Comment.create({ creationTime: Date.now, comment: 'This is a very good dish washer' })
+  // await ben.leaveComment(commenta11)
+  // const commenta12 = await Comment.create({ creationTime: Date.now, comment: 'Again and again' })
+  // await ben.leaveComment(commenta12)
+  // const commenta13 = await Comment.create({ creationTime: Date.now, comment: 'Bump' })
+  // await armagan.leaveComment(commenta13)
+}
 
-const bensOffer2 = ben.createOffer(
-  'Wash dishes',
-  ['Leipzig', '04277'],
-  'Services',
-  'My job is to do the dishes. I can help you clean if you need help'
-)
-armagan.likeOffer(bensOffer2)
-armagan.leaveComment(bensOffer2, 'Awesome')
-ben.leaveComment(bensOffer2, 'Thank you')
-armagan.leaveComment(bensOffer2, 'test test')
+main()
 
-const armaganOffer = armagan.createOffer(
-  'Dish Washer',
-  ['Berlin', '11234'],
-  'Electrical Devices',
-  'It is like new. Give it as-is.'
-)
-ben.likeOffer(armaganOffer)
-ben.leaveComment(armaganOffer, 'This is a very good dish washer')
-ben.leaveComment(armaganOffer, 'Again and again')
-armagan.leaveComment(armaganOffer, 'Bump')
-
-const users = [ben, armagan]
-const offers = [bensOffer, bensOffer2, armaganOffer]
-
-exports.users = users
+exports.persons = persons
 exports.offers = offers
