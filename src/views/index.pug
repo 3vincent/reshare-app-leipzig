@@ -51,9 +51,14 @@ block content
             p &nbsp;
 
       .row   
-        .col-sm-6 
-        p &nbsp;
-        span.fw-bold => link to users
-        //- a(href="/users?name=armagan") #{ben}
-        //- a(href="/users?name=ben") #{armagan}
+        .col-sm-12 
+          p &nbsp;
+          span.fw-bold => links to users&nbsp;
+          each person of persons
+            a(href="/users?name="+person.name)
+              button.btn.btn-secondary(type="button") #{person.name}
+            span &nbsp;
+
+
+          
         
