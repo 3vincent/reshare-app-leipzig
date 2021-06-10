@@ -33,7 +33,7 @@ You can also put the variables into .profile as Global Env variables, it is not 
 **Initialize with test-data**
 
 - run the above command including the database connection
-- when express is runnuing go to
+- when express is running go to
 
         http://localhost:3000/initialize
 
