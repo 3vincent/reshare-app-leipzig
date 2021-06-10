@@ -1,3 +1,4 @@
+// const { query } = require('express')
 const express = require('express')
 const uuidv4 = require('../lib/uuid-func')
 
@@ -55,9 +56,9 @@ router.get('/initialize', async (req, res) => {
   res.sendStatus(200)
 })
 
-router.get('/:userID', (req, res, next) => {
-  const user = users[req.params.userID]
-  if (user) res.render('user', { user })
+router.get('/:userID', async (req, res) => {
+  const person = await Person.findById(req.params.userID)
+  if (person) res.render('user', { person })
   else res.sendStatus(404)
 })
 
