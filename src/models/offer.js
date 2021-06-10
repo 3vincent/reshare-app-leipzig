@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 
+const uuidv4 = require('../lib/uuid-func')
+
 const offerSchema = new mongoose.Schema({
   title: String,
   location: [],
@@ -15,7 +17,10 @@ const offerSchema = new mongoose.Schema({
     type: Number,
     default: 4 * 7 * 24 * 60 * 60,
   },
-  offerUUID: String, // uuidv4(),
+  offerUUID: {
+    type: String,
+    default: uuidv4, // will be replaced with a mongoID soon
+  },
   status: String,
   likedBy: [
     {
