@@ -20,11 +20,21 @@ block content
                 h5.card-title Location:&nbsp; 
                   span #{offer.location.slice().reverse().map(loc => loc).join(' ')} 
                 .card-text
-                h5 Offer Description 
+                
                 ul.list-group
                     li.list-group-item
+                      h5 Offer Description: 
                       p #{offer.description}   
-                      //- p #{offer.offerUUID}
+                    li.list-group-item
+                      h5 Offer ID: 
+                      p #{offer.offerUUID}
+                    li.list-group-item 
+                      h5 Comment 
+                      ul 
+                        li 
+                          each comment of offer.comments
+                            p.fw-bold #{comment.creationTime}&nbsp;
+                            p #{comment.comment}
               button.btn.btn-primary View Offer
 
       .row   
