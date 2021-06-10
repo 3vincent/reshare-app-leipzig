@@ -1,4 +1,3 @@
-const { query } = require('express')
 const express = require('express')
 const uuidv4 = require('../lib/uuid-func')
 
@@ -10,11 +9,11 @@ const Offer = require('../models/offer')
 /* GET home page. */
 
 /* GET users listing. */
-router.get('/', (req, res, next) => {
-  let result = users
+router.get('/', async (req, res) => {
+  const query = {}
 
   if (req.query.name) {
-    result = users.filter(user => user.name === req.query.name)
+    query.name = req.query.name
   }
 
   if (req.query.age) {
@@ -54,7 +53,6 @@ router.get('/initialize', async (req, res) => {
 
   console.log()
   res.sendStatus(200)
-  return res.send(result)
 })
 
 router.get('/:userID', (req, res, next) => {
