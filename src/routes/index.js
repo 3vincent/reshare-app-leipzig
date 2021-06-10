@@ -2,14 +2,11 @@ const express = require('express')
 
 const router = express.Router()
 
-const { offers } = require('../db')
+const Offer = require('../models/offer')
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const offers = await Offer.find({})
   res.render('index', { title: 'Leipzig Share App', offers })
-  // return as object EXAMPLE:
-  //  res.send({
-  //   message: 'hello',
-  // })
 })
 
 module.exports = router
