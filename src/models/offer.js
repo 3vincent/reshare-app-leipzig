@@ -7,7 +7,10 @@ const offerSchema = new mongoose.Schema({
   category: String,
   description: String,
   photos: [],
-  creationTime: Date, // Date.now()
+  creationTime: {
+    type: Date,
+    default: Date.now,
+  },
   duration: Number, //  4 * 7 * 24 * 60 * 60
   offerUUID: String, // uuidv4(),
   status: String,
