@@ -17,24 +17,27 @@ block content
               img.card-img-top(src=offer.photos[0] alt=offer.title height='*')
               h3.card-header #{offer.title} 
               .card-body
-                h5.card-title Location:&nbsp; 
-                  span #{offer.location.slice().reverse().map(loc => loc).join(' ')} 
+                .card-title.small.text-end ID:&nbsp; 
+                  span.small #{offer.offerUUID}
                 .card-text
-                
-                ul.list-group
-                    li.list-group-item
-                      h5 Offer Description: 
-                      p #{offer.description}   
-                    li.list-group-item
-                      h5 Offer ID: 
-                      p #{offer.offerUUID}
-                    li.list-group-item 
-                      h5 Comment 
-                      ul 
-                        li 
-                          each comment of offer.comments
-                            p.fw-bold #{comment.creationTime}&nbsp;
-                            p #{comment.comment}
+                  ul.list-group
+                      li.list-group-item
+                        h5 Location: 
+                        p.small #{offer.location.slice().reverse().map(loc => loc).join(' ')}
+                      li.list-group-item
+                        h5 Created: 
+                        p.small #{offer.creationTime}
+                      li.list-group-item
+                        h5 Offer Description: 
+                        p #{offer.description}   
+                      li.list-group-item 
+                        h5 Comment\s: 
+                        ul 
+                          li 
+                            each comment of offer.comments
+                              p.fw-bold #{comment.creationTime}&nbsp;
+                              p #{comment.comment}
+                              p.fst-italic Whosemadethecommentthough?
               button.btn.btn-primary View Offer
 
       .row   
