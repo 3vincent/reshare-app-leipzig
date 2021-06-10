@@ -8,17 +8,17 @@ const Offer = require('../models/offer')
 /* GET home page. */
 
 /* GET users listing. */
-router.get('/', (req, res, next) => {
-  let result = offers
+router.get('/', (req, res) => {
+  let result = Offer
 
   if (req.query.name) {
-    result = offers.filter(offer => offer.name === req.query.name)
+    result = Offer.filter(offer => offer.name === req.query.name)
   }
   return res.send(result)
 })
 
-router.get('/:offerID', (req, res, next) => {
-  const offer = offers[req.params.offerID]
+router.get('/:offerID', (req, res) => {
+  const offer = Offer[req.params.offerID]
   if (offer) res.render('offer', { offer })
   else res.sendStatus(404)
 })
