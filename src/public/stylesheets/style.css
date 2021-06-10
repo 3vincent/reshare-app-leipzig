@@ -6,3 +6,8 @@ body {
 a {
   color: #00b7ff;
 }
+
+.card-img, .card-img-top {
+    max-width: 200px;
+    max-height: 200px;
+    margin:0 auto;
