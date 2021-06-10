@@ -5,13 +5,13 @@ block content
       .container 
           .row 
             .col-sm-12 
-                h4 #{user.name} (#{user.offers.length})
-                p Location: #{user.location.slice().reverse().join(' ')}
-                p Age: #{user.age}
-                p #{user.name} has #{user.offers.length} offers
+                h4 #{person.name} (#{person.offers.length})
+                p Location: #{person.location.slice().reverse().join(' ')}
+                p Age: #{person.age}
+                p #{person.name} has #{person.offers.length} offers
                 p &nbsp;
 
-                each offer, index in user.offers
+                each offer, index in person.offers
                   h4 #{index + 1}. #{offer.title}
                   if !offer.location || offer.location.length == 0
                     p no location yet!
@@ -23,12 +23,12 @@ block content
                   else
                     p Category: #{offer.category}   
 
+                  h5 Description:
                   if !offer.description || offer.description.length == 0
                     p 
                       i no description yet!
                   else
-                    h5 Description:
-                    p #{offer.description && offer.description}
+                    .card-body.border #{offer.description && offer.description}
 
                   if !offer.status || offer.status.length == 0
                     p no status yet!
@@ -38,7 +38,7 @@ block content
                   if !offer.likedBy || offer.likedBy.length == 0
                     p no 'Liked By' yet!
                   else
-                    p Liked By: #{offer.likedBy.map(person => person).join(', ')} (#{offer.likedBy.length})   
+                    p Liked By: #{offer.likedBy.map(person => person.name).join(', ')} (#{offer.likedBy.length})   
 
                   if !offer.commenters || offer.commenters.length == 0
                     p no Commenters yet!

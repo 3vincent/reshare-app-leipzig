@@ -6,37 +6,31 @@ block content
       nav
       h1= title
       p Welcome to #{title}
-      p &nbsp;
-      //- p This #{offers.map(offer => offer.title).join(', ')}
-      //- p This #{offers.length}
-      p &nbsp;
+      //- p
+      //-   span.font-italic My first offer test: #{offers.map(offer => offer.title)}
+      //- p &nbsp;
+      //- p &nbsp;
       .row
         .col-sm-6
-          each offer in offers 
-            p #{offer.title}
-            //- h5 #{offers.map(offer => offer.title).join(', ')}
-            ul.list-group
-                li.list-group-item
-                  p Offer Description 
-                  a(href="/users?name=armagan") #{ben}
-                  a(href="/users?name=ben") #{armagan}
-                  p 
-                  p Location
-                  button.btn.btn-primary View Offer
-
-        .col-sm-6
-          h5 List Items 1
-          ul.list-group
-              li.list-group-item
-                p Offer Description 
-                a(href="/users?name=armagan") #{ben}
-                a(href="/users?name=ben") #{armagan}
-                p 
-                p Location                
-                button.btn.btn-primary View Offer
+          each offer of offers
+            .card
+              img.card-img-top(src=offer.photos[0] alt=offer.title height='*')
+              h3.card-header #{offer.title} 
+              .card-body
+                h5.card-title Location:&nbsp; 
+                  span #{offer.location.slice().reverse().map(loc => loc).join(' ')} 
+                .card-text
+                h5 Offer Description 
+                ul.list-group
+                    li.list-group-item
+                      p #{offer.description}   
+                      //- p #{offer.offerUUID}
+              button.btn.btn-primary View Offer
 
       .row   
         .col-sm-6 
         p &nbsp;
-        p link to users
+        span.font-weight-bold => link to users
+        //- a(href="/users?name=armagan") #{ben}
+        //- a(href="/users?name=ben") #{armagan}
         
