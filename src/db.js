@@ -7,9 +7,6 @@ const persons = []
 const offers = []
 
 async function main() {
-  // await ben.likeOffer(bensOffer)
-  // const commentb11 = await Comment.create({ creationTime: Date.now, comment: 'Does it run with battery too?' })
-  // await armagan.leaveComment(commentb11)
   // const bensOffer2 = await Offer.create({
   //   title: 'Wash dishes',
   //   offerUUID: uuidv4,
