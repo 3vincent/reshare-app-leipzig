@@ -29,7 +29,13 @@ const offerSchema = new mongoose.Schema({
       autopopulate: true,
     },
   ],
-  comments: [],
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment',
+      autopopulate: true,
+    },
+  ],
 })
 
 class Offer {
