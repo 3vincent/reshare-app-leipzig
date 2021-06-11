@@ -1,19 +1,44 @@
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
+
 const uuidv4 = require('../lib/uuid-func')
 
-module.exports = class Offer {
-  constructor(title, location, category = 'none', description = '') {
-    this.title = title
-    this.location = location
-    this.category = category
-    this.description = description
-    this.creationTime = Date.now()
-    this.duration = 4 * 7 * 24 * 60 * 60
-    this.offerUUID = uuidv4()
-    this.status = 'open'
-    this.likedBy = []
-    this.comments = []
-  }
+const offerSchema = new mongoose.Schema({
+  title: String,
+  location: [],
+  category: String,
+  description: String,
+  photos: [],
+  creationTime: {
+    type: Date,
+    default: Date.now,
+  },
+  duration: {
+    type: Number,
+    default: 4 * 7 * 24 * 60 * 60,
+  },
+  offerUUID: {
+    type: String,
+    default: uuidv4, // will be replaced with a mongoID soon
+  },
+  status: String,
+  likedBy: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Person',
+      autopopulate: true,
+    },
+  ],
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment',
+      autopopulate: true,
+    },
+  ],
+})
 
+class Offer {
   expire() {
     const age = Date.now() - this.creationTime
     if (age > this.duration) {
@@ -24,31 +49,9 @@ module.exports = class Offer {
   get commenters() {
     return this.comments.map(comment => comment.sender)
   }
-
-  get offerView() {
-    return `
-# Offer: "${this.title}"
-### Location:
-    ${this.location
-      .slice()
-      .reverse()
-      .map(x => x)
-      .join(' ')}
-
-### Offer created:
-    ${this.creationTime}
-
-### Description:
-    ${this.description}
-
-### Comments:
-    ${this.comments
-      .map(comment => `${comment.creationTime} '${comment.sender}' said: ${comment.comment}`)
-      .join('\n   \n    ')}
-
-### Offer UUID:
-    
-    ${this.offerUUID}
-    `
-  }
 }
+
+offerSchema.loadClass(Offer)
+offerSchema.plugin(autopopulate)
+
+module.exports = mongoose.model('Offer', offerSchema)

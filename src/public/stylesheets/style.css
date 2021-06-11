@@ -6,3 +6,22 @@ body {
 a {
   color: #00b7ff;
 }
+
+.card-img,
+.card-img-top {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.list-group-item {
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+
+.comment-list-item {
+  background-color: lightgrey;
+  padding: 20px;
+  margin-bottom: 30px;
+  list-style-type: none;
+  border-radius: 10px;
+}

@@ -1,8 +1,13 @@
-module.exports = class Comment {
-  constructor(offer, sender, comment) {
-    this.offerUUID = offer.offerUUID
-    this.sender = sender.name
-    this.creationTime = Date.now()
-    this.comment = comment
-  }
-}
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
+
+const commentSchema = new mongoose.Schema({
+  creationTime: {
+    type: Date,
+    default: Date.now,
+  },
+  comment: String,
+})
+
+commentSchema.plugin(autopopulate)
+module.exports = mongoose.model('Comment', commentSchema)

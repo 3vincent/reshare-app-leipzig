@@ -5,26 +5,60 @@ block content
     .container
       nav
       h1= title
-      p Welcome to #{title}    
+      p Welcome to #{title}
+      //- p
+      //-   span.fst-italic My first offer test: #{offers.map(offer => offer.title)}
+      //- p &nbsp;
+      //- p &nbsp;
       .row
-        .col-sm-6
-          .card
-              h5 List Items 0
+        each offer of offers
+          .col-sm-5
+            .card
+              img.card-img-top(src=offer.photos[0] alt=offer.title height='*')
+              h3.card-header #{offer.title} 
               .card-body
-                p Offer Description 
-                a(href="/users?name=armagan") #{ben}
-                a(href="/users?name=ben") #{armagan}
-                p 
-                p Location
-                button View Offer
+                .card-title.small.text-end ID:&nbsp; 
+                  span.small #{offer.offerUUID}
+                .card-text
+                  ul.list-group
+                    li.list-group-item
+                      h5 Location: 
+                      p.small #{offer.location.slice().reverse().map(loc => loc).join(' ')}
+                    li.list-group-item
+                      h5 Created: 
+                      p.small #{offer.creationTime}
+                    li.list-group-item
+                      h5 Offer Description: 
+                      p #{offer.description}   
+                    li.list-group-item 
+                      if offer.comments.length == 1
+                        h5 Comment: 
+                      else
+                        h5 Comments: 
+                      each comment of offer.comments
+                        ul 
+                          li.comment-list-item
+                            p.fw-bold.fst-italic Whosemadethecommentthough? :
+                            p #{comment.comment}
+                            p.text-end.small.text-muted #{comment.creationTime}&nbsp;
+                            
+                    li.list-group-item
+                      h5 Liked By: 
+                      p #{offer.likedBy.map(person => person.name).join(', ')}&nbsp;
+                        span (#{offer.likedBy.length}) 
+              button.btn.btn-primary View Offer
+            p &nbsp;
+            p &nbsp;
 
-        .col-sm-6
-          .card
-              h5 List Items 1
-              .card-body
-                p Offer Description 
-                a(href="/users?name=armagan") #{ben}
-                a(href="/users?name=ben") #{armagan}
-                p 
-                p Location                
-                button View Offer
+      .row   
+        .col-sm-12 
+          p &nbsp;
+          span.fw-bold => links to users&nbsp;
+          each person of persons
+            a(href="/users?name="+person.name)
+              button.btn.btn-secondary(type="button") #{person.name}
+            span &nbsp;
+
+
+          
+        
