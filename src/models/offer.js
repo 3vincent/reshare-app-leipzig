@@ -4,6 +4,13 @@ const autopopulate = require('mongoose-autopopulate')
 const uuidv4 = require('../lib/uuid-func')
 
 const offerSchema = new mongoose.Schema({
+  owner: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Person',
+      autopopulate: true,
+    },
+  ],
   title: String,
   location: [],
   category: String,
