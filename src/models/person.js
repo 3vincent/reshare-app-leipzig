@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 
-const Offer = require('./offer')
+// const Offer = require('./offer')
 const Comment = require('./comment')
 
 const personSchema = new mongoose.Schema({
@@ -27,28 +27,36 @@ const personSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
-      autopopulate: true,
+      autopopulate: {
+        maxDepth: 1,
+      },
     },
   ],
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
-      autpopulate: true,
+      autopopulate: {
+        maxDepth: 1,
+      },
     },
   ],
   offers: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
-      autopopulate: true,
+      autopopulate: {
+        maxDepth: 1,
+      },
     },
   ],
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment',
-      autopopulate: true,
+      autopopulate: {
+        maxDepth: 1,
+      },
     },
   ],
 })
@@ -71,13 +79,13 @@ class Person {
   }
 
   async leaveComment(offer, comment) {
-    offer.comments.push(comment)
-    comment.sender.push(this)
-    this.comments.push(comment)
+    const newComment = await Comment.create({ comment, sender: this })
+    offer.comments.push(newComment)
+    this.comments.push(newComment)
 
-    await this.save()
-    await comment.save()
     await offer.save()
+    // await newComment.save()
+    await this.save()
   }
 }
 

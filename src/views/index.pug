@@ -38,7 +38,7 @@ block content
                       each comment of offer.comments
                         ul 
                           li.comment-list-item
-                            p.fw-bold.fst-italic #{comment.sender[0].name}
+                            p.fw-bold.fst-italic #{comment.sender.name}:
                             p #{comment.comment}
                             p.text-end.small.text-muted #{comment.creationTime}&nbsp;
                             
