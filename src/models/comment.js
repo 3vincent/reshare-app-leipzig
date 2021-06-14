@@ -2,13 +2,13 @@ const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 
 const commentSchema = new mongoose.Schema({
-  sender: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Person',
-      autopopulate: true,
+  sender: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Person',
+    autopopulate: {
+      maxDepth: 2,
     },
-  ],
+  },
   creationTime: {
     type: Date,
     default: Date.now,
