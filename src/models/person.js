@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 
-const Offer = require('./offer')
+// const Offer = require('./offer')
 const Comment = require('./comment')
 
 const personSchema = new mongoose.Schema({
@@ -79,13 +79,13 @@ class Person {
   }
 
   async leaveComment(offer, comment) {
-    offer.comments.push(comment)
-    comment.sender.push(this)
-    this.comments.push(comment)
+    const newComment = await Comment.create({ comment, sender: this })
+    offer.comments.push(newComment)
+    this.comments.push(newComment)
 
-    await this.save()
-    await comment.save()
     await offer.save()
+    // await newComment.save()
+    await this.save()
   }
 }
 

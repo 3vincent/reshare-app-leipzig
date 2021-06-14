@@ -54,8 +54,7 @@ router.get('/initialize', async (req, res) => {
   await ben.createOffer(bensOffer)
   await armagan.likeOffer(bensOffer)
   await ben.likeOffer(bensOffer)
-  const commentb11 = await Comment.create({ comment: 'These are great' })
-  await armagan.leaveComment(bensOffer, commentb11)
+  await armagan.leaveComment(bensOffer, 'These are great!!')
 
   const bensOffer2 = await Offer.create({
     title: 'Wash dishes',
@@ -69,12 +68,10 @@ router.get('/initialize', async (req, res) => {
   })
   await ben.createOffer(bensOffer2)
   await armagan.likeOffer(bensOffer2)
-  const commentb21 = await Comment.create({ comment: 'Awesome' })
-  await ben.leaveComment(bensOffer2, commentb21)
+  await ben.leaveComment(bensOffer2, 'Awesome!!! 🙂')
   setTimeout(async () => {
-    const commentb22 = await Comment.create({ comment: 'test test test' })
-    await armagan.leaveComment(bensOffer2, commentb22)
-  }, 2000)
+    await armagan.leaveComment(bensOffer2, 'very nice')
+  }, 5000)
 
   // console.log()
 
