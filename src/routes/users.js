@@ -73,8 +73,23 @@ router.get('/initialize', async (req, res) => {
     await armagan.leaveComment(bensOffer2, 'very nice')
   }, 5000)
 
-  // console.log()
+  const armaganOffer = await Offer.create({
+    title: 'Dish Washer',
+    location: ['Berlin', '11234'],
+    photos: [
+      'https://www.ikea.com/us/en/images/products/essentiell-built-in-dishwasher-black-stainless-steel__0854909_pe780738_s5.jpg',
+    ],
+    status: 'open',
+    category: 'Electrical Devices',
+    description: 'It is like new. Give it as-is.',
+  })
+  await armagan.createOffer(armaganOffer)
+  await ben.likeOffer(armaganOffer)
+  await ben.leaveComment(armaganOffer, 'This is a good dish washer')
+  await ben.leaveComment(armaganOffer, 'Stil there?')
+  await armagan.leaveComment(armaganOffer, 'bump')
 
+  // console.log()
   res.sendStatus(200)
 })
 
