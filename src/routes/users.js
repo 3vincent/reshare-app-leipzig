@@ -20,7 +20,6 @@ router.get('/', async (req, res) => {
   if (req.query.age) {
     query.age = req.query.age
   }
-
   res.send(await Person.find(query))
 })
 
@@ -68,6 +67,7 @@ router.get('/initialize', async (req, res) => {
     category: 'Services',
     description: 'My job is to do the dishes. I can help you clean if you need help 😉😉',
   })
+  await ben.createOffer(bensOffer2)
   await armagan.likeOffer(bensOffer2)
   const commentb21 = await Comment.create({ comment: 'Awesome' })
   await ben.leaveComment(bensOffer2, commentb21)

@@ -56,7 +56,9 @@ const personSchema = new mongoose.Schema({
 class Person {
   async createOffer(offer) {
     this.offers.push(offer)
+    offer.owner.push(this)
     await this.save()
+    await offer.save()
     return offer
   }
 
@@ -70,10 +72,11 @@ class Person {
 
   async leaveComment(offer, comment) {
     offer.comments.push(comment)
+    comment.sender.push(this)
     this.comments.push(comment)
 
     await this.save()
-    // await comment.save()
+    await comment.save()
     await offer.save()
   }
 }
