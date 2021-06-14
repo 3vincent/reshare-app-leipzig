@@ -55,7 +55,6 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "livereload": "^0.9.3",
-    "log-symbols": "^4.1.0",
     "mongoose": "^5.12.13",
     "mongoose-autopopulate": "^0.14.0",
     "morgan": "~1.9.1",
