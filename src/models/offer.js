@@ -8,7 +8,9 @@ const offerSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Person',
-      autopopulate: true,
+      autopopulate: {
+        maxDepth: 1,
+      },
     },
   ],
   title: String,
@@ -33,14 +35,18 @@ const offerSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Person',
-      autopopulate: true,
+      autopopulate: {
+        maxDepth: 1,
+      },
     },
   ],
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment',
-      autopopulate: true,
+      autopopulate: {
+        maxDepth: 2,
+      },
     },
   ],
 })
