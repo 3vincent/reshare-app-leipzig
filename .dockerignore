@@ -5,3 +5,4 @@ node_modules
 .prettierrc
 Dockerfile
 Dockerfile.production
+docker-compose.yml
