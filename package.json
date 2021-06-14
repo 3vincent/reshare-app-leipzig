@@ -2,9 +2,9 @@
   "name": "example-project",
   "version": "0.1.0",
   "description": "A Coyotiv School Of Software Design example Project",
-  "main": "bin/www",
+  "main": "./bin/www",
   "scripts": {
-    "start": "node bin/www",
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "lint-staged",
     "lint-only": "eslint .",
