@@ -108,3 +108,6 @@ dist
 
 # node_modules Directory
 node_modules/
+
+# Docker-Compose File
+docker-compose.yml

@@ -2,11 +2,13 @@
   "name": "example-project",
   "version": "0.1.0",
   "description": "A Coyotiv School Of Software Design example Project",
-  "main": "src/models/index.js",
+  "main": "./bin/www",
   "scripts": {
-    "start": "nodemon bin/www",
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "lint-staged"
+    "lint": "lint-staged",
+    "lint-only": "eslint .",
+    "lint-all": "pretty-quick && eslint"
   },
   "husky": {
     "hooks": {
@@ -53,7 +55,6 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "livereload": "^0.9.3",
-    "log-symbols": "^4.1.0",
     "mongoose": "^5.12.13",
     "mongoose-autopopulate": "^0.14.0",
     "morgan": "~1.9.1",
