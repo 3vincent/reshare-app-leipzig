@@ -38,7 +38,7 @@ block content
                       each comment of offer.comments
                         ul 
                           li.comment-list-item
-                            p.fw-bold.fst-italic Whosemadethecommentthough? :
+                            p.fw-bold.fst-italic #{comment.sender[0].name}
                             p #{comment.comment}
                             p.text-end.small.text-muted #{comment.creationTime}&nbsp;
                             
@@ -46,6 +46,9 @@ block content
                       h5 Liked By: 
                       p #{offer.likedBy.map(person => person.name).join(', ')}&nbsp;
                         span (#{offer.likedBy.length}) 
+                    li.list-group-item
+                      h5 Made by: 
+                      p #{offer.owner[0].name} &nbsp;                         
               button.btn.btn-primary View Offer
             p &nbsp;
             p &nbsp;
