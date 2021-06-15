@@ -48,7 +48,9 @@ block content
                         span (#{offer.likedBy.length}) 
                     li.list-group-item
                       h5 Made by: 
-                      p #{offer.owner[0].name} &nbsp;                         
+                      a(href="/users/" + offer.owner[0].name)
+                        span #{offer.owner[0].name}
+                      span &nbsp;                         
               button.btn.btn-primary View Offer
             p &nbsp;
             p &nbsp;
