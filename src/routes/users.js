@@ -20,7 +20,9 @@ router.get('/', async (req, res) => {
   if (req.query.age) {
     query.age = req.query.age
   }
-  res.send(await Person.find(query))
+  const personArray = await Person.find(query)
+  const [person] = personArray
+  res.render('user', { person })
 })
 
 router.get('/initialize', async (req, res) => {
