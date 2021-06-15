@@ -5,7 +5,8 @@
   "main": "./bin/www",
   "scripts": {
     "start": "node ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --testEnvironment=node --verbose --forceExit --watchAll --maxWorkers=1",
+    "test-coverage": " jest --collect-coverage --testEnvironment=node --forceExit --maxWorkers=1",
     "lint": "lint-staged",
     "lint-only": "eslint .",
     "lint-all": "pretty-quick && eslint"
