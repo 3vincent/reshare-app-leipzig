@@ -12,23 +12,41 @@ This is a sample Project for Coyotiv School of Software Engineering
 
 `$ git clone` the project to your local machine.
 
-Then in the directory **run**
+Per default the app now connects to the mongoDB server that is running inside the docker container.
+To Run the app with docker, you need to create the `docker-compose.yml` file
 
-    $ npm start
+Example content for `docker-compose.yml`
 
-**Express.js Debug Mode:**
+    version: '3'
+    services:
+    app:
+        image: example-project
+        build:
+        context: .
+        dockerfile: Dockerfile
+        environment:
+        # - MONGODB_USERNAME=<your db user name>
+        # - MONGODB_PASSWORD=<your db user password>
+        # - MONGODB_DATABASE=<your database name>
+        - MONGODB_CONNECTION_STRING=mongodb://mongo/example-project
+        ports:
+        - 3000:3000
+        - 35729:35729
+        volumes:
+        - ./src:/app/src
+        - ./__test__:/app/__test__
+    mongo:
+        image: mongo
+        ports:
+        - 27017:27017
 
-    $ DEBUG=example-project:* npm start
+**Run** it with `docker-compose`:
 
-**or with Database-Variables + Express.js Debug Mode:**
+    $ docker-compose up
 
-    $ MONGODB_USERNAME=${yourDBUserName} \
-    MONGODB_PASSWORD=${yourDBPassword} \
-    MONGODB_DATABASE=${yourDatabaseName} \
-    DEBUG=example-project:* npm start
+**Test Mode** run with
 
-Everthing in `${...}` you need to fill out yourself with the data of your actual db-server (i.e. mongodb.com).
-You can also put the variables into .profile as Global Env variables, it is not recommended though.
+    $ docker-compose run app npm test
 
 **Initialize with test-data**
 
@@ -38,3 +56,17 @@ You can also put the variables into .profile as Global Env variables, it is not 
         http://localhost:3000/initialize
 
   to fill the database with test content
+
+---
+
+### Manually run with
+
+**Database-Variables + Express.js Debug Mode:**
+
+    $ MONGODB_USERNAME=${yourDBUserName} \
+    MONGODB_PASSWORD=${yourDBPassword} \
+    MONGODB_DATABASE=${yourDatabaseName} \
+    DEBUG=example-project:* npm start
+
+Everthing in `${...}` you need to fill out yourself with the data of your actual db-server (i.e. mongodb.com).
+You can also put the variables into .profile as Global Env variables, it is not recommended though.
