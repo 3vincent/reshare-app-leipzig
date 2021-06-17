@@ -34,7 +34,7 @@ Example content for `docker-compose.yml`
         - 35729:35729
         volumes:
         - ./src:/app/src
-        - ./__test__:/app/__test__
+        - ./__tests__:/app/__tests__
     mongo:
         image: mongo
         ports:

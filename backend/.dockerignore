@@ -6,3 +6,4 @@ node_modules
 Dockerfile
 Dockerfile.production
 docker-compose.yml
+__tests__
