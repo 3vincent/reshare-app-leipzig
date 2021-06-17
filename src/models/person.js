@@ -46,7 +46,7 @@ const personSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
       autopopulate: {
-        maxDepth: 1,
+        maxDepth: 2,
       },
     },
   ],
@@ -55,7 +55,7 @@ const personSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment',
       autopopulate: {
-        maxDepth: 1,
+        maxDepth: 2,
       },
     },
   ],

@@ -43,6 +43,7 @@ block content
                   if !offer.commenters || offer.commenters.length == 0
                     p no Commenters yet!
                   else
+                    p #{offer.comments}
                     p Commenters: #{offer.commenters.slice().sort().filter((commenter, index2, array) => array.indexOf(commenter) === index2).join(', ')}
                     p Total comments: #{offer.commenters.length}
                     <br>
