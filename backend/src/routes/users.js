@@ -106,3 +106,8 @@ router.get('/:name', async (req, res) => {
 })
 
 module.exports = router
+
+router.get('/:userId/json', async (req, res) => {
+  const person = await Person.findById(req.params.userId)
+  res.send(person)
+})
