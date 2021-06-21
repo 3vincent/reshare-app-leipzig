@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js åpp" /> -->
+    <h1>LEIPZIG SHARE APP</h1>
     <div v-for="offer in offers" v-bind:key="offer">
       <Offer :offer="offer" v-if="offer"></Offer>
     </div>
@@ -39,3 +38,10 @@ export default {
   },
 }
 </script>
+
+<style scoped lang="scss">
+h1 {
+  font-size: 4rem;
+  text-align: left;
+}
+</style>
