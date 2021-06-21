@@ -5,7 +5,10 @@
     </div>
     <div class="offerHeadline">
       <h2>{{ offer.title }}</h2>
-      <span></span>
+      <span class="statusLight"></span>
+      <div>
+        <span class="tagCategory">#{{ offer.category }}</span>
+      </div>
     </div>
     <div class="content-1">
       <p><span class="bold">Status: </span>{{ offer.status }}</p>
@@ -109,7 +112,16 @@ div {
       margin-top: 1rem;
       display: inline-block;
     }
-    span {
+    span.tagCategory {
+      background-color: #ffffff;
+      color: #2c3e50;
+      font-weight: 600;
+      font-size: 0.7rem;
+      border: 1px solid #2c3e50;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    span.statusLight {
       // street lights
       // for status: open | reserved | taken
       position: absolute;
