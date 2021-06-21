@@ -148,10 +148,14 @@ div {
     border-bottom-left-radius: 0.9rem;
     border-bottom-right-radius: 0.9rem;
     height: 100%;
-    line-height: 100%;
     p {
+      line-height: 0.25fr;
       padding-left: 1rem;
     }
+  }
+  .content-1,
+  .content-2 {
+    padding: 10px;
   }
 }
 .box:hover {
