@@ -7,3 +7,4 @@ Dockerfile
 Dockerfile.production
 docker-compose.yml
 __tests__
+env_var_mongodb
