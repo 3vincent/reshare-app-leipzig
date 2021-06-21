@@ -126,7 +126,7 @@ div {
     }
   }
   background-color: white;
-  border: 1px solid green;
+  border: 1px solid rgb(179, 179, 179);
   border-radius: 1rem;
   text-align: left;
   .photobox {
