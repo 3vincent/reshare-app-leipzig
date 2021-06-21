@@ -33,20 +33,20 @@ router.get('/initialize', async (req, res) => {
   await Offer.deleteMany({})
   await Comment.deleteMany({})
 
-  const ben = await Person.create({
-    name: 'ben',
-    eMailAddress: 'ben@someemail.com',
-    age: 29,
+  const ginger = await Person.create({
+    name: 'Ginger Baker',
+    eMailAddress: 'ginger@baker.com',
+    age: 80,
     location: ['Leipzig', '04277'],
   })
   const armagan = await Person.create({
-    name: 'armagan',
+    name: 'Armagan',
     eMailAddress: 'armagan@someemail.com',
     age: 29,
     location: ['Berlin', '11234'],
   })
 
-  const bensOffer = await Offer.create({
+  const gingersOffer = await Offer.create({
     title: 'My Vue.JS socks',
     location: ['Leipzig', '04277'],
     photos: [
@@ -56,12 +56,12 @@ router.get('/initialize', async (req, res) => {
     category: 'Clothing',
     description: 'Like new, never worn.',
   })
-  await ben.createOffer(bensOffer)
-  await armagan.likeOffer(bensOffer)
-  await ben.likeOffer(bensOffer)
-  await armagan.leaveComment(bensOffer, 'These are great!!')
+  await ginger.createOffer(gingersOffer)
+  await armagan.likeOffer(gingersOffer)
+  await ginger.likeOffer(gingersOffer)
+  await armagan.leaveComment(gingersOffer, 'These are great!!')
 
-  const bensOffer2 = await Offer.create({
+  const gingersOffer2 = await Offer.create({
     title: 'Wash dishes',
     location: ['Leipzig', '04277'],
     photos: [
@@ -71,11 +71,11 @@ router.get('/initialize', async (req, res) => {
     category: 'Services',
     description: 'My job is to do the dishes. I can help you clean if you need help 😉😉',
   })
-  await ben.createOffer(bensOffer2)
-  await armagan.likeOffer(bensOffer2)
-  await ben.leaveComment(bensOffer2, 'Awesome!!! 🙂')
+  await ginger.createOffer(gingersOffer2)
+  await armagan.likeOffer(gingersOffer2)
+  await ginger.leaveComment(gingersOffer2, 'Awesome!!! 🙂')
   setTimeout(async () => {
-    await armagan.leaveComment(bensOffer2, 'very nice')
+    await armagan.leaveComment(gingersOffer2, 'very nice')
   }, 5000)
 
   const armaganOffer = await Offer.create({
@@ -89,9 +89,9 @@ router.get('/initialize', async (req, res) => {
     description: 'It is like new. Give it as-is.',
   })
   await armagan.createOffer(armaganOffer)
-  await ben.likeOffer(armaganOffer)
-  await ben.leaveComment(armaganOffer, 'This is a good dish washer')
-  await ben.leaveComment(armaganOffer, 'Stil there?')
+  await ginger.likeOffer(armaganOffer)
+  await ginger.leaveComment(armaganOffer, 'This is a good dish washer')
+  await ginger.leaveComment(armaganOffer, 'Stil there?')
   await armagan.leaveComment(armaganOffer, 'bump')
 
   // console.log()
