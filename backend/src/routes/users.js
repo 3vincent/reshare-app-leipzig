@@ -21,6 +21,10 @@ router.get('/', async (req, res) => {
     query.age = req.query.age
   }
 
+  if (req.query.location) {
+    query.location = req.query.location
+  }
+
   res.send(await Person.find(query))
 })
 
@@ -101,6 +105,7 @@ router.get('/initialize', async (req, res) => {
 // })
 
 router.get('/:name', async (req, res) => {
+  const person = await Person.findById(req.params.userId)
   if (person) res.send(await Person.find({ name: req.params.name }))
   else res.sendStatus(404)
 })
