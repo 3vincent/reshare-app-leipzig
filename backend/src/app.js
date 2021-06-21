@@ -35,10 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/', indexRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/offers', offersRouter)
-<<<<<<< HEAD:backend/src/app.js
 app.use('/api/comments', commentsRouter)
-=======
->>>>>>> be03039 (Move files to backend/ and install vue.js in frontend/):src/app.js
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
