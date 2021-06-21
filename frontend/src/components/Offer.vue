@@ -28,7 +28,7 @@
       <p>{{ offer.description }}</p>
     </div>
     <div class="viewFoo">
-      <p><span>Like</span> <span>|</span> <span>Save</span> <span>|</span></p>
+      <p><Button>Like</Button> <Button>Save</Button></p>
     </div>
   </div>
 </template>
