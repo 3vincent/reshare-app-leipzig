@@ -31,10 +31,10 @@ router.get('/', async (req, res) => {
   res.send(await Comment.find(query))
 })
 
-// router.get('/:commentID', (req, res) => {
-//   const comment = Comment[req.params.commentID]
-//   if (comment) res.render('comment', { comment })
-//   else res.sendStatus(404)
-// })
+router.get('/:commentId', async (req, res) => {
+  const comment = await Comment.findById(req.params.commentId)
+  if (comment) res.send(comment)
+  else res.sendStatus(404)
+})
 
 module.exports = router
