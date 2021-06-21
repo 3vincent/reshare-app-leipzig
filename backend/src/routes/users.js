@@ -20,9 +20,12 @@ router.get('/', async (req, res) => {
   if (req.query.age) {
     query.age = req.query.age
   }
-  const personArray = await Person.find(query)
-  const [person] = personArray
-  res.render('user', { person })
+
+  if (req.query.location) {
+    query.location = req.query.location
+  }
+
+  res.send(await Person.find(query))
 })
 
 router.get('/initialize', async (req, res) => {
@@ -102,10 +105,14 @@ router.get('/initialize', async (req, res) => {
 // })
 
 router.get('/:name', async (req, res) => {
-  const personArray = await Person.find({ name: req.params.name })
-  const [person] = personArray
-  if (person) res.render('user', { title: `${person.name}'s Profile`, person })
+  const person = await Person.findById(req.params.userId)
+  if (person) res.send(await Person.find({ name: req.params.name }))
   else res.sendStatus(404)
 })
 
 module.exports = router
+
+router.get('/:userId/json', async (req, res) => {
+  const person = await Person.findById(req.params.userId)
+  res.send(person)
+})

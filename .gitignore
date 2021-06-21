@@ -109,5 +109,5 @@ dist
 # node_modules Directory
 node_modules/
 
-# Docker-Compose File
-docker-compose.yml
+# env var file for mongoDB
+env-var-mongodb
