@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
     <ul>
-      <li><router-link to="/">Homepage</router-link></li>
-      <li><router-link to="/about">About</router-link></li>
+      <router-link to="/"><li>Homepage</li></router-link>
+      <router-link to="/about"><li>About</li></router-link>
       <li>Placeholder</li>
     </ul>
   </div>
