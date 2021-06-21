@@ -3,7 +3,7 @@
     <ul>
       <router-link to="/"><li>Homepage</li></router-link>
       <router-link to="/about"><li>About</li></router-link>
-      <li>Placeholder</li>
+      <a href="/api/users/initialize"><li>Init Test Data to DB</li></a>
     </ul>
   </div>
 </template>
