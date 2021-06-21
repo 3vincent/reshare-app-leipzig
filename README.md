@@ -13,36 +13,18 @@ This is a sample Project for Coyotiv School of Software Engineering
 `$ git clone` the project to your local machine.
 
 Per default the app now connects to the mongoDB server that is running inside the docker container.
-To Run the app with docker, you need to create the `docker-compose.yml` file
 
-Example content for `docker-compose.yml`
+Add this to your `/etc/hosts` file
 
-    version: '3'
-    services:
-    app:
-        image: example-project
-        build:
-        context: .
-        dockerfile: Dockerfile
-        environment:
-        # - MONGODB_USERNAME=<your db user name>
-        # - MONGODB_PASSWORD=<your db user password>
-        # - MONGODB_DATABASE=<your database name>
-        - MONGODB_CONNECTION_STRING=mongodb://mongo/example-project
-        ports:
-        - 3000:3000
-        - 35729:35729
-        volumes:
-        - ./src:/app/src
-        - ./__tests__:/app/__tests__
-    mongo:
-        image: mongo
-        ports:
-        - 27017:27017
+    127.0.0.1 leipzigsharing.localhost
 
 **Run** it with `docker-compose`:
 
     $ docker-compose up
+
+After that (maybe flush the dns cash) open your browser at
+
+    http://leipzigsharing.localhost
 
 **Test Mode** run with
 
