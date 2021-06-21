@@ -24,6 +24,9 @@ export default {}
     margin: 0;
     list-style-type: none;
     display: table;
+    a {
+      text-decoration: none;
+    }
     li {
       text-align: center;
       display: inline-table;
@@ -32,9 +35,6 @@ export default {}
       line-height: 50px;
       margin: 10px;
       background-color: rgb(52, 81, 114);
-      a {
-        text-decoration: none;
-      }
     }
     li:hover {
       background-color: rgb(107, 85, 37);
