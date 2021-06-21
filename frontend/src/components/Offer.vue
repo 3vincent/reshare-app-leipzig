@@ -110,14 +110,19 @@ div {
       display: inline-block;
     }
     span {
+      // street lights
+      // for status: open | reserved | taken
       position: absolute;
-      right: 0px;
+      right: 0.4rem;
+      top: 0.2rem;
       width: 20px;
       height: 20px;
       display: inline-block;
-      background-image: url('../assets/logo.png');
-      background-size: 50px 50px;
-      background-repeat: no-repeat;
+      // background-image: url('../assets/logo.png');
+      // background-size: 50px 50px;
+      // background-repeat: no-repeat;
+      background-color: green;
+      border-radius: 50%;
     }
   }
   background-color: white;
