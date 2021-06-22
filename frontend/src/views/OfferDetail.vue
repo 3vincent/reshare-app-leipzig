@@ -17,7 +17,7 @@ export default {
   components: { Offer },
   data() {
     return {
-      offer: {},
+      offer: null,
     }
   },
   async created() {
