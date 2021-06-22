@@ -34,7 +34,12 @@
       >
     </div>
     <div class="viewFoo">
-      <p><Button>Like</Button> <Button>Save</Button></p>
+      <p>
+        <Button>Like</Button>&nbsp; <Button>Save</Button>&nbsp;
+        <Button
+          ><router-link :to="'/offers/' + offer._id">{{ offer.title }}</router-link></Button
+        >
+      </p>
     </div>
   </div>
 </template>
