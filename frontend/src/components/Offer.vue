@@ -1,7 +1,7 @@
 <template>
   <div class="box container">
     <div class="photobox contentBox image">
-      <img :src="offer.photos" />
+      <img :src="offer.photos[0]" />
     </div>
     <div class="offerHeadline">
       <h2>{{ offer.title }}</h2>
