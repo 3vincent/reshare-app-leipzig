@@ -6,16 +6,15 @@
       <Offer :offer="offer" v-if="offer"></Offer>
     </div>
 
-    <div v-for="user in users" :key="user.name">{{ user.name }}, {{ user.age }}</div>
-    <div v-for="user in users" :key="user.location">
+    <!-- <div v-for="user in users" :key="user.name">{{ user.name }}, {{ user.age }}</div> -->
+    <!-- <div v-for="user in users" :key="user.location">
       {{ user.name }} lives in {{ user.location[1] }} {{ user.location[0] }}
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 import Offer from '@/components/Offer.vue'
 import NavBar from '@/components/NavBar.vue'
 import axios from 'axios'
@@ -23,7 +22,6 @@ import axios from 'axios'
 export default {
   name: 'Home',
   components: {
-    // HelloWorld,
     Offer,
     NavBar,
   },
