@@ -32,9 +32,9 @@ router.get('/', async (req, res) => {
   res.send(await Offer.find(query))
 })
 
-router.get('/:offerID', (req, res) => {
-  const offer = Offer[req.params.offerID]
-  if (offer) res.render('offer', { offer })
+router.get('/:offerID', async (req, res) => {
+  const offer = await Offer.findById(req.params.offerID)
+  if (offer) res.send(offer)
   else res.sendStatus(404)
 })
 

@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1>LEIPZIG SHARE APP</h1>
+    <NavBar></NavBar>
     <div v-for="offer in offers" v-bind:key="offer">
       <Offer :offer="offer" v-if="offer"></Offer>
     </div>
@@ -16,6 +17,7 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import Offer from '@/components/Offer.vue'
+import NavBar from '@/components/NavBar.vue'
 import axios from 'axios'
 
 export default {
@@ -23,6 +25,7 @@ export default {
   components: {
     // HelloWorld,
     Offer,
+    NavBar,
   },
   data() {
     return {
