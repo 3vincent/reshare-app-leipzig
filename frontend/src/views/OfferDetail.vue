@@ -14,7 +14,7 @@ import axios from 'axios'
 import Offer from '@/components/Offer.vue'
 
 export default {
-  name: 'Offer Detail',
+  name: 'OfferDetail',
   components: { Offer },
   data() {
     return {
