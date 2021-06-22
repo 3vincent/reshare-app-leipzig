@@ -45,4 +45,7 @@ h1 {
   font-size: 4rem;
   text-align: left;
 }
+.bold {
+  font-weight: 600;
+}
 </style>
