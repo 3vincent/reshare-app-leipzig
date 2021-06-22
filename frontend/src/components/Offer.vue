@@ -7,7 +7,7 @@
       <h2>{{ offer.title }}</h2>
       <span class="statusLight"></span>
       <div>
-        <span class="tagCategory">#{{ offer.category }}</span>
+        <span class="tag bold"># {{ offer.category }}</span>
       </div>
     </div>
     <div class="content-1">
@@ -29,6 +29,9 @@
     <div class="content-2">
       <p class="bold">Description:</p>
       <p>{{ offer.description }}</p>
+      <span class="tag"
+        ><small>UUID: {{ offer.offerUUID }}</small></span
+      >
     </div>
     <div class="viewFoo">
       <p><Button>Like</Button> <Button>Save</Button></p>
@@ -112,15 +115,6 @@ div {
       margin-top: 1rem;
       display: inline-block;
     }
-    span.tagCategory {
-      background-color: #ffffff;
-      color: #2c3e50;
-      font-weight: 600;
-      font-size: 0.7rem;
-      border: 1px solid #2c3e50;
-      padding: 2px 4px;
-      border-radius: 3px;
-    }
     span.statusLight {
       // street lights
       // for status: open | reserved | taken
@@ -170,10 +164,18 @@ div {
     padding: 10px;
   }
 }
+span.tag {
+  background-color: #ffffff;
+  color: #2c3e50;
+  font-size: 0.7rem;
+  border: 1px solid #2c3e50;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
 .box:hover {
   border: 1px solid transparent;
-  background-color: #c4c4c4; // #e4b20d;
-  color: white;
+  background-color: #dddddd; // yello #e4b20d; and grey #465058; well together
+  color: rgb(100, 100, 100);
   .viewFoo {
     background-color: #465058;
   }
