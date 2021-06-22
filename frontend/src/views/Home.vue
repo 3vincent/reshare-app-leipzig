@@ -5,7 +5,7 @@
     <div v-for="offer in offers" v-bind:key="offer">
       <Offer :offer="offer" v-if="offer"></Offer>
       <router-link :to="'/offers/' + offer._id">
-        <Button> <span class="bold">Open Offer2:</span> {{ offer.title }} </Button>
+        <Button v-if="offer"> <span class="bold">Open Offer2:</span> {{ offer.title }} </Button>
       </router-link>
     </div>
 
