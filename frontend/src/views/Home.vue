@@ -2,7 +2,7 @@
   <div class="home">
     <h1>LEIPZIG SHARE APP</h1>
     <NavBar></NavBar>
-    <div v-for="offer in offers" v-bind:key="offer">
+    <div v-for="offer in offers" v-bind:key="offer._id">
       <Offer :offer="offer" v-if="offer"></Offer>
       <router-link :to="'/offers/' + offer._id">
         <Button v-if="offer"> <span class="bold">Open Offer2:</span> {{ offer.title }} </Button>
