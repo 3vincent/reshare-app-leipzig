@@ -1,10 +1,11 @@
 <template>
   <div>
     <div>
-      <h1>{{ offer.title }}</h1>
+      <h1 v-if="offer">{{ offer.title }}</h1>
+      <h1 v-else>Loading...</h1>
       <router-link to="/"> <span class="bold back">&#9747; </span> </router-link>
     </div>
-    <Offer :offer="offer"></Offer>
+    <Offer :offer="offer" :if="offer"></Offer>
   </div>
 </template>
 
