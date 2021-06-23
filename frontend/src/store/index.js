@@ -4,10 +4,23 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
+const mutations = {
+  INCREMENT_COUNT: 'increment count',
+}
+
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    count: 0,
+  },
+  mutations: {
+    [mutations.INCREMENT_COUNT](state) {
+      state.count++
+    },
+  },
   actions: {
+    incrementCount({ commit }) {
+      commit(mutations.INCREMENT_COUNT)
+    },
     async fetchOffer(store, id) {
       const offerRequest = await axios.get(`/api/offers/${id}`)
       return offerRequest.data
