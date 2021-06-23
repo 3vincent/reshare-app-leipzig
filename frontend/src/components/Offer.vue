@@ -61,10 +61,10 @@ export default {
     }
   },
   async created() {
-    this.offers = await this.fetchOffers()
+    this.offer = await this.fetchOffer(this.$route.params.id)
   },
   methods: {
-    ...mapActions(['fetchOffers']),
+    ...mapActions(['fetchOffer']),
   },
 }
 </script>
