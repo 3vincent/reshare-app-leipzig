@@ -6,16 +6,21 @@
       <router-link to="/"> <span class="bold back">&#9747; </span> </router-link>
     </div>
     <Offer :offer="offer" :if="offer"></Offer>
+    <Counter></Counter>
   </div>
 </template>
 
 <script>
 import Offer from '@/components/Offer.vue'
+import Counter from '@/components/Counter.vue'
 import { mapActions } from 'vuex'
 
 export default {
   name: 'OfferDetail',
-  components: { Offer },
+  components: {
+    Offer,
+    Counter,
+  },
   data() {
     return {
       offer: null,
