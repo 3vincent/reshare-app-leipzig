@@ -20,7 +20,6 @@
 // @ is an alias to /src
 import Offer from '@/components/Offer.vue'
 import NavBar from '@/components/NavBar.vue'
-import axios from 'axios'
 import { mapActions } from 'vuex'
 
 export default {
@@ -36,12 +35,11 @@ export default {
     }
   },
   async created() {
-    const usersRequest = await axios.get('/api/users')
-    this.users = usersRequest.data
     this.offers = await this.fetchOffers()
+    this.users = await this.fetchUsers()
   },
   methods: {
-    ...mapActions(['fetchOffers']),
+    ...mapActions(['fetchOffers', 'fetchUsers']),
   },
 }
 </script>
