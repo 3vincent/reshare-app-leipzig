@@ -32,8 +32,8 @@ router.get('/', async (req, res) => {
   res.send(await Offer.find(query))
 })
 
-router.get('/:offerID', async (req, res) => {
-  const offer = await Offer.findById(req.params.offerID)
+router.get('/:offerId', async (req, res) => {
+  const offer = await Offer.findById(req.params.offerId)
   if (offer) res.send(offer)
   else res.sendStatus(404)
 })
