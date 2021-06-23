@@ -4,16 +4,17 @@
     <NavBar></NavBar>
 
     <!-- User List Preview -->
-    <!-- <div v-for="user in users" :key="user.name">{{ user.name }}, {{ user.age }}</div>
-    <div v-for="user in users" :key="user.location">
+    <!-- <div v-for="user in users" :key="user.name + '-label'">{{ user.name }}, {{ user.age }}</div>
+    <div v-for="user in users" :key="user.location + '-label'">
       {{ user.name }} lives in {{ user.location[1] }} {{ user.location[0] }}
     </div> -->
 
-    <div v-for="offer in offers" v-bind:key="offer._id">
+    <div v-for="offer in offers" v-bind:key="offer._id + '-label'">
+      <p>DIE ID: {{ offer._id }}</p>
       <Offer :offer="offer" v-if="offer"></Offer>
-      <!-- <router-link :to="`/offers/${offer._id}`">
+      <router-link :to="`/offers/${offer._id}`">
         <Button v-if="offer"> <span class="bold">Open Offer2:</span> {{ offer.title }} </Button>
-      </router-link> -->
+      </router-link>
     </div>
     <Counter></Counter>
   </div>
@@ -35,16 +36,17 @@ export default {
   },
   data() {
     return {
-      users: [],
       offers: [],
+      users: [],
     }
   },
   async created() {
+    // this.users = await this.fetchUsers()
     this.offers = await this.fetchOffers()
-    this.users = await this.fetchUsers()
   },
   methods: {
-    ...mapActions(['fetchOffers', 'fetchUsers']),
+    // ...mapActions(['fetchOffers', 'fetchUsers']),
+    ...mapActions(['fetchOffers']),
   },
 }
 </script>
