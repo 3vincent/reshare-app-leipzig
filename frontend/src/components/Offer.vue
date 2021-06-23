@@ -70,9 +70,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-div {
-  // border: 1px solid red;
-}
 .container {
   margin: 12px;
   display: grid;
