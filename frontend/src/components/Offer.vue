@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Offer',
@@ -56,8 +56,10 @@ export default {
     }
   },
   async created() {
-    const offersRequest = await axios.get('/api/offers')
-    this.offers = offersRequest.data
+    this.offers = await this.fetchOffers()
+  },
+  methods: {
+    ...mapActions(['fetchOffers']),
   },
 }
 </script>
