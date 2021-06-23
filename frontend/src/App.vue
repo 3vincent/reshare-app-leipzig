@@ -11,7 +11,6 @@
 import Footer from '@/components/Footer.vue'
 
 export default {
-  // name: 'Home',
   components: {
     Footer,
   },
