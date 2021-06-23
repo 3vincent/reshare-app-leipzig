@@ -24,7 +24,12 @@
       </p>
       <p><span class="bold">Category: </span>{{ offer.category }}</p>
       <p><span class="bold">Creation Time: </span>{{ offer.creationTime }}</p>
-      <p><span class="bold">Owner: </span>{{ offer.owner[0].name }}</p>
+      <p>
+        <span class="bold">Owner: </span>
+        <Button
+          ><router-link :to="`/users/${offer.owner[0]._id}`">{{ offer.owner[0].name }}</router-link></Button
+        >
+      </p>
     </div>
     <div class="content-2">
       <p class="bold">Description:</p>
@@ -37,7 +42,7 @@
       <p>
         <Button>Like</Button>&nbsp; <Button>Save</Button>&nbsp;
         <Button
-          ><router-link :to="'/offers/' + offer._id">{{ offer.title }}</router-link></Button
+          ><router-link :to="`/offers/${offer._id}`">{{ offer.title }}</router-link></Button
         >
       </p>
     </div>
