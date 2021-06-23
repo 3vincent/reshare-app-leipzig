@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import axios from 'axios'
 import Offer from '@/components/Offer.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'OfferDetail',
@@ -22,8 +22,10 @@ export default {
     }
   },
   async created() {
-    const offerRequest = await axios.get(`/api/offers/${this.$route.params.id}`)
-    this.offer = offerRequest.data
+    this.offer = await this.fetchOffer(this.$route.params.id)
+  },
+  methods: {
+    ...mapActions(['fetchOffer']),
   },
 }
 </script>
