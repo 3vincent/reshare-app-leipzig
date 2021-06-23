@@ -15,6 +15,7 @@
         <Button v-if="offer"> <span class="bold">Open Offer2:</span> {{ offer.title }} </Button>
       </router-link>
     </div>
+    <Counter></Counter>
   </div>
 </template>
 
@@ -22,6 +23,7 @@
 // @ is an alias to /src
 import Offer from '@/components/Offer.vue'
 import NavBar from '@/components/NavBar.vue'
+import Counter from '@/components/Counter.vue'
 import { mapActions } from 'vuex'
 
 export default {
@@ -29,6 +31,7 @@ export default {
   components: {
     Offer,
     NavBar,
+    Counter,
   },
   data() {
     return {
