@@ -29,6 +29,10 @@ export default new Vuex.Store({
       const offersRequest = await axios.get('/api/offers')
       return offersRequest.data
     },
+    async fetchUser(store, id) {
+      const userRequest = await axios.get(`/api/users/${id}`)
+      return userRequest.data
+    },
     async fetchUsers() {
       const usersRequest = await axios.get('/api/users')
       return usersRequest.data
