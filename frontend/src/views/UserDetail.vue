@@ -2,7 +2,7 @@
   <div>
     <div>
       <h1 v-if="user">{{ user.name }}</h1>
-      <h1 v-else>Loading...</h1>
+      <h1 v-else>Loading Profile Page...</h1>
       <router-link to="/"> <span class="bold back">&#9747; </span> </router-link>
     </div>
     <User :user="user" :if="user"></User>
