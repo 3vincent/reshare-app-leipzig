@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import User from '@/components/User.vue'
 import Counter from '@/components/Counter.vue'
 import { mapActions } from 'vuex'
 
