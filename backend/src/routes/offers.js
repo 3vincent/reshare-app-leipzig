@@ -33,9 +33,14 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:offerId', async (req, res) => {
-  const offer = await Offer.findById(req.params.offerId)
-  if (offer) res.send(offer)
-  else res.sendStatus(404)
+  try {
+    const offer = await Offer.findById(req.params.offerId)
+    if (offer) res.send(offer)
+    else res.sendStatus(404)
+  } catch (err) {
+    console.log(err)
+    res.sendStatus(500)
+  }
 })
 
 module.exports = router
