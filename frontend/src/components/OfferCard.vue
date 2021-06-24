@@ -50,21 +50,13 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
-  name: 'Offer',
+  name: 'OfferCard',
   props: ['offer'],
   data() {
     return {
       default: 'not defined',
     }
-  },
-  async created() {
-    this.offer = await this.fetchOffer(this.$route.params.id)
-  },
-  methods: {
-    ...mapActions(['fetchOffer']),
   },
 }
 </script>

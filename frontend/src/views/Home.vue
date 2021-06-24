@@ -11,7 +11,7 @@
 
     <div v-for="offer in offers" v-bind:key="offer._id + '-label'">
       <p>DIE ID: {{ offer._id }}</p>
-      <Offer :offer="offer" v-if="offer"></Offer>
+      <OfferCard :offer="offer" v-if="offer"></OfferCard>
       <router-link :to="`/offers/${offer._id}`">
         <Button v-if="offer"> <span class="bold">Open Offer2:</span> {{ offer.title }} </Button>
       </router-link>
@@ -22,7 +22,7 @@
 
 <script>
 // @ is an alias to /src
-import Offer from '@/components/Offer.vue'
+import OfferCard from '@/components/OfferCard.vue'
 import NavBar from '@/components/NavBar.vue'
 import Counter from '@/components/Counter.vue'
 import { mapActions } from 'vuex'
@@ -30,7 +30,7 @@ import { mapActions } from 'vuex'
 export default {
   name: 'Home',
   components: {
-    Offer,
+    OfferCard,
     NavBar,
     Counter,
   },
