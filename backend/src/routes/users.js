@@ -94,7 +94,6 @@ router.get('/initialize', async (req, res) => {
   await ginger.leaveComment(armaganOffer, 'Stil there?')
   await armagan.leaveComment(armaganOffer, 'bump')
 
-  // console.log()
   res.sendStatus(200)
 })
 
@@ -104,15 +103,24 @@ router.get('/initialize', async (req, res) => {
 //   else res.sendStatus(404)
 // })
 
-router.get('/:name', async (req, res) => {
-  const person = await Person.findById(req.params.userId)
-  if (person) res.send(await Person.find({ name: req.params.name }))
-  else res.sendStatus(404)
-})
-
-module.exports = router
-
-router.get('/:userId/json', async (req, res) => {
+router.get('/:userId', async (req, res) => {
   const person = await Person.findById(req.params.userId)
   res.send(person)
 })
+
+// router.get('/:userId/json', async (req, res) => {
+//   const person = await Person.findById(req.params.userId)
+//   res.send(person)
+// })
+
+// This could be used to show users like website.com/users/ben
+// but it interferes with website.com/users/<someMongoID>
+// so I comment it out
+//
+// router.get('/:name', async (req, res) => {
+//   const person = await Person.findById(req.params.userId)
+//   if (person) res.send(await Person.find({ name: req.params.name }))
+//   else res.sendStatus(404)
+// })
+
+module.exports = router

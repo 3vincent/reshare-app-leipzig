@@ -1,13 +1,13 @@
 <template>
   <div class="box container">
     <div class="photobox contentBox image">
-      <img :src="offer.photos" />
+      <img :src="offer.photos[0]" />
     </div>
     <div class="offerHeadline">
       <h2>{{ offer.title }}</h2>
       <span class="statusLight"></span>
       <div>
-        <span class="tagCategory">#{{ offer.category }}</span>
+        <span class="tag bold"># {{ offer.category }}</span>
       </div>
     </div>
     <div class="content-1">
@@ -24,40 +24,44 @@
       </p>
       <p><span class="bold">Category: </span>{{ offer.category }}</p>
       <p><span class="bold">Creation Time: </span>{{ offer.creationTime }}</p>
-      <p><span class="bold">Owner: </span>{{ offer.owner[0].name }}</p>
+      <p>
+        <span class="bold">Owner: </span>
+        <Button
+          ><router-link :to="`/users/${offer.owner[0]._id}`">{{ offer.owner[0].name }}</router-link></Button
+        >
+      </p>
     </div>
     <div class="content-2">
       <p class="bold">Description:</p>
       <p>{{ offer.description }}</p>
+      <span class="tag"
+        ><small>UUID: {{ offer.offerUUID }}</small></span
+      >
     </div>
     <div class="viewFoo">
-      <p><Button>Like</Button> <Button>Save</Button></p>
+      <p>
+        <Button>Like</Button>&nbsp; <Button>Save</Button>&nbsp;
+        <Button
+          ><router-link :to="`/offers/${offer._id}`">{{ offer.title }}</router-link></Button
+        >
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
-  name: 'Offer',
+  name: 'OfferCard',
   props: ['offer'],
   data() {
     return {
       default: 'not defined',
     }
   },
-  async created() {
-    const offersRequest = await axios.get('/api/offers')
-    this.offers = offersRequest.data
-  },
 }
 </script>
 
 <style scoped lang="scss">
-div {
-  // border: 1px solid red;
-}
 .container {
   margin: 12px;
   display: grid;
@@ -112,15 +116,6 @@ div {
       margin-top: 1rem;
       display: inline-block;
     }
-    span.tagCategory {
-      background-color: #ffffff;
-      color: #2c3e50;
-      font-weight: 600;
-      font-size: 0.7rem;
-      border: 1px solid #2c3e50;
-      padding: 2px 4px;
-      border-radius: 3px;
-    }
     span.statusLight {
       // street lights
       // for status: open | reserved | taken
@@ -170,10 +165,18 @@ div {
     padding: 10px;
   }
 }
+span.tag {
+  background-color: #ffffff;
+  color: #2c3e50;
+  font-size: 0.7rem;
+  border: 1px solid #2c3e50;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
 .box:hover {
   border: 1px solid transparent;
-  background-color: #c4c4c4; // #e4b20d;
-  color: white;
+  background-color: #dddddd; // yello #e4b20d; and grey #465058; well together
+  color: rgb(100, 100, 100);
   .viewFoo {
     background-color: #465058;
   }
