@@ -4,10 +4,10 @@
     <NavBar></NavBar>
 
     <!-- User List Preview -->
-    <!-- <div v-for="user in users" :key="user.name + '-label'">{{ user.name }}, {{ user.age }}</div>
+    <div v-for="user in users" :key="user.name + '-label'">{{ user.name }}, {{ user.age }}</div>
     <div v-for="user in users" :key="user.location + '-label'">
       {{ user.name }} lives in {{ user.location[1] }} {{ user.location[0] }}
-    </div> -->
+    </div>
 
     <div v-for="offer in offers" v-bind:key="offer._id + '-label'">
       <p>DIE ID: {{ offer._id }}</p>
