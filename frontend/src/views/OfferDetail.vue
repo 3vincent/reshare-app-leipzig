@@ -6,12 +6,17 @@
       <router-link to="/"> <span class="bold back">&#9747; </span> </router-link>
     </div>
     <OfferCard :offer="offer" :if="offer"></OfferCard>
+    <h2>Comments</h2>
+    <div v-for="comment in offer.comments" v-bind:key="comment._id + '-label'">
+      <CommentCard :commentId="comment._id" v-if="comment"></CommentCard>
+    </div>
     <Counter></Counter>
   </div>
 </template>
 
 <script>
 import OfferCard from '@/components/OfferCard.vue'
+import CommentCard from '@/components/CommentCard.vue'
 import Counter from '@/components/Counter.vue'
 import { mapActions } from 'vuex'
 
@@ -19,6 +24,7 @@ export default {
   name: 'OfferDetail',
   components: {
     OfferCard,
+    CommentCard,
     Counter,
   },
   data() {
