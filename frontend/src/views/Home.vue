@@ -41,12 +41,11 @@ export default {
     }
   },
   async created() {
-    // this.users = await this.fetchUsers()
+    this.users = await this.fetchUsers()
     this.offers = await this.fetchOffers()
   },
   methods: {
-    // ...mapActions(['fetchOffers', 'fetchUsers']),
-    ...mapActions(['fetchOffers']),
+    ...mapActions(['fetchOffers', 'fetchUsers']),
   },
 }
 </script>
