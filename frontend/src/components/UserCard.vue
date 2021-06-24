@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <h2>fw {{ user.name }}</h2>
-      <h1>This is the user:5</h1>
+      <h1 v-if="user">{{ user.name }}</h1>
+      <h1 v-else>Loading Profile Page...</h1>
     </div>
     <div>
       <p>
