@@ -37,6 +37,10 @@ export default new Vuex.Store({
       const usersRequest = await axios.get('/api/users')
       return usersRequest.data
     },
+    async fetchComment(store, id) {
+      const commentRequest = await axios.get(`/api/comments/${id}`)
+      return commentRequest.data
+    },
   },
   modules: {},
 })
