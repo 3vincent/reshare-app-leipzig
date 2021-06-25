@@ -51,6 +51,15 @@ router.get('/initialize', async (req, res) => {
   await armagan.setPassword('test')
   await armagan.save()
 
+  const zach = new Person({
+    name: 'Zach Hill',
+    email: 'zach@hill.com',
+    age: 41,
+    location: ['Berlin', '11234'],
+  })
+  await zach.setPassword('test')
+  await zach.save()
+
   const gingersOffer = await Offer.create({
     title: 'My Vue.JS socks',
     location: ['Leipzig', '04277'],
