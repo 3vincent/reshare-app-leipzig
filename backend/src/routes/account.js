@@ -19,4 +19,9 @@ router.post('/', async (req, res, next) => {
     next(e)
   }
 })
+
+router.post('/session', passport.authenticate('local', { failWithError: true }), async (req, res) => {
+  res.send(req.user)
+})
+
 module.exports = router
