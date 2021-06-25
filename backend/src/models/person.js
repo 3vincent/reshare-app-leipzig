@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 const passportLocalMongoose = require('passport-local-mongoose')
 
-// const Offer = require('./offer')
 const Comment = require('./comment')
 
 const personSchema = new mongoose.Schema({
