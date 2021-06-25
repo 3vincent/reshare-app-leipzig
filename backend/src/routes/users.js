@@ -34,28 +34,34 @@ router.get('/initialize', async (req, res) => {
   await Comment.deleteMany({})
 
   const ginger = new Person({
-    name: 'Ginger Baker',
+    name: 'ginger39',
+    givenName: 'Ginger Baker',
     email: 'ginger@baker.com',
     age: 80,
-    location: ['Leipzig', '04277'],
+    location: ['Leipzig', '04229'],
+    profilePhoto: '',
   })
   await ginger.setPassword('test')
   await ginger.save()
 
   const armagan = new Person({
     name: 'Armagan',
+    givenName: 'Armagan',
     email: 'armagan@someemail.com',
     age: 29,
     location: ['Berlin', '11234'],
+    profilePhoto: '',
   })
   await armagan.setPassword('test')
   await armagan.save()
 
   const zach = new Person({
-    name: 'Zach Hill',
+    name: 'zach-is-online',
+    givenName: 'Zach Hill',
     email: 'zach@hill.com',
     age: 41,
-    location: ['Berlin', '11234'],
+    location: ['Leipzig', '04177'],
+    profilePhoto: '',
   })
   await zach.setPassword('test')
   await zach.save()
