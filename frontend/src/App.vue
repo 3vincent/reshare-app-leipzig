@@ -9,10 +9,15 @@
 // @ is an alias to /src
 
 import Footer from '@/components/Footer.vue'
+import axios from 'axios'
 
 export default {
+  name: 'App',
   components: {
     Footer,
+  },
+  async created() {
+    console.log('here[[[[[[[[[++++++++++++++: ', (await axios.get('/api/account/session')).data)
   },
 }
 </script>
