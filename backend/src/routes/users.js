@@ -35,13 +35,13 @@ router.get('/initialize', async (req, res) => {
 
   const ginger = await Person.create({
     name: 'Ginger Baker',
-    eMailAddress: 'ginger@baker.com',
+    email: 'ginger@baker.com',
     age: 80,
     location: ['Leipzig', '04277'],
   })
   const armagan = await Person.create({
     name: 'Armagan',
-    eMailAddress: 'armagan@someemail.com',
+    email: 'armagan@someemail.com',
     age: 29,
     location: ['Berlin', '11234'],
   })
