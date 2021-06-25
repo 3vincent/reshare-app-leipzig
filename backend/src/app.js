@@ -6,12 +6,12 @@ const logger = require('morgan')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 
+const mongooseConnection = require('./database-connection')
+
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const offersRouter = require('./routes/offers')
 const commentsRouter = require('./routes/comments')
-
-require('./database-connection')
 
 const app = express()
 
