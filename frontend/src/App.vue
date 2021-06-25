@@ -9,7 +9,6 @@
 // @ is an alias to /src
 
 import Footer from '@/components/Footer.vue'
-import axios from 'axios'
 
 export default {
   name: 'App',
