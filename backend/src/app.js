@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
+const passport = require('passport')
 
 const mongooseConnection = require('./database-connection')
 
