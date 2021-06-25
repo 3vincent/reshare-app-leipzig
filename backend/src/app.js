@@ -51,6 +51,12 @@ app.use(
 
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use('/api', (req, res, next) => {
+  req.session.viewCount = req.session.viewCount || 0
+  req.session.viewCount++
+  next()
+}) // saves number of times user visited api in cookie as number :)
+
 app.use('/api/', indexRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/offers', offersRouter)
