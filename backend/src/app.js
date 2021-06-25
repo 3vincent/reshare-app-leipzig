@@ -32,6 +32,23 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+app.use(
+  session({
+    secret: [
+      'thisisasupersecuresecretsecretsecretssecretki',
+      'superextrasecretsecretsuperextrasecretsecretsuperextrasecretsecret',
+    ],
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: mongooseConnection._connectionString, stringify: false }),
+    cookie: {
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+      path: '/api',
+    },
+  })
+)
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api/', indexRouter)
