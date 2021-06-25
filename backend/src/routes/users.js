@@ -33,18 +33,23 @@ router.get('/initialize', async (req, res) => {
   await Offer.deleteMany({})
   await Comment.deleteMany({})
 
-  const ginger = await Person.create({
+  const ginger = new Person({
     name: 'Ginger Baker',
     email: 'ginger@baker.com',
     age: 80,
     location: ['Leipzig', '04277'],
   })
-  const armagan = await Person.create({
+  await ginger.setPassword('test')
+  await ginger.save()
+
+  const armagan = new Person({
     name: 'Armagan',
     email: 'armagan@someemail.com',
     age: 29,
     location: ['Berlin', '11234'],
   })
+  await armagan.setPassword('test')
+  await armagan.save()
 
   const gingersOffer = await Offer.create({
     title: 'My Vue.JS socks',
