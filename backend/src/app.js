@@ -6,6 +6,7 @@ const logger = require('morgan')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const passport = require('passport')
+const Person = require('./models/person')
 
 const mongooseConnection = require('./database-connection')
 
@@ -54,6 +55,14 @@ app.use(
 // Configure passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+// Configure passport-local to use account model for authentication
+
+passport.use(Person.createStrategy())
+
+passport.serializeUser(Person.serializeUser())
+passport.deserializeUser(Person.deserializeUser())
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api', (req, res, next) => {
