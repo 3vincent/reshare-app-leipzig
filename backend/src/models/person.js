@@ -10,14 +10,19 @@ const personSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
+  givenName: {
+    type: String,
+  },
   age: {
     type: Number,
-    required: true,
   },
   profilePhoto: {
     type: String,
   },
-  location: [],
+  location: {
+    type: Array,
+    required: true,
+  },
   savedOffers: [
     {
       type: mongoose.Schema.Types.ObjectId,
