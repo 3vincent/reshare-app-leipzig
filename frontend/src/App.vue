@@ -16,9 +16,6 @@ export default {
   components: {
     Footer,
   },
-  async created() {
-    console.log('here[[[[[[[[[++++++++++++++: ', (await axios.get('/api/account/session')).data)
-  },
 }
 </script>
 
