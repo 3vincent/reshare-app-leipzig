@@ -8,8 +8,14 @@ import './assets/css/style.css'
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+async function main() {
+  let storeInstance = await store()
+
+  new Vue({
+    router: router(storeInstance),
+    store: storeInstance,
+    render: h => h(App),
+  }).$mount('#app')
+}
+
+main()
