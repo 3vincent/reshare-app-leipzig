@@ -104,8 +104,14 @@ router.get('/initialize', async (req, res) => {
 // })
 
 router.get('/:userId', async (req, res) => {
-  const person = await Person.findById(req.params.userId)
-  res.send(person)
+  try {
+    const person = await Person.findById(req.params.userId)
+    if (person) res.send(person)
+    else res.sendStatus(404)
+  } catch (err) {
+    console.log(err)
+    res.sendStatus(500)
+  }
 })
 
 // router.get('/:userId/json', async (req, res) => {
