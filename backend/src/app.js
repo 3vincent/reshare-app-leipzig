@@ -12,6 +12,7 @@ const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const offersRouter = require('./routes/offers')
 const commentsRouter = require('./routes/comments')
+const accountRouter = require('./routes/account')
 
 const app = express()
 
@@ -58,6 +59,7 @@ app.use('/api', (req, res, next) => {
 }) // saves number of times user visited api in cookie as number :)
 
 app.use('/api/', indexRouter)
+app.use('/api/account', accountRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/offers', offersRouter)
 app.use('/api/comments', commentsRouter)
