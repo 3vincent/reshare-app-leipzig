@@ -30,6 +30,10 @@
           ><router-link :to="`/users/${offer.owner[0]._id}`">{{ offer.owner[0].name }}</router-link></Button
         >
       </p>
+      <p>
+        <span class="bold">Liked by: </span>{{ offer.likedBy.length }}
+        <span v-if="offer.likedBy.length > 1">People</span><span v-else>Person</span>
+      </p>
     </div>
     <div class="content-2">
       <p class="bold">Description:</p>
