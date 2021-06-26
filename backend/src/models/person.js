@@ -18,6 +18,7 @@ const personSchema = new mongoose.Schema({
   },
   profilePhoto: {
     type: String,
+    default: '/img/avatar/default_user_avatar.png',
   },
   location: {
     type: Array,
