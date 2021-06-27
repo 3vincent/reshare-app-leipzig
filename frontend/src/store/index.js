@@ -51,12 +51,12 @@ const store = new Vuex.Store({
       commit(mutations.SET_USER, user.data || null)
     },
     async login({ commit }, credentials) {
-      //   try {
-      const user = await axios.post('/api/account/session', credentials)
-      commit(mutations.SET_USER, user.data)
-      // } catch (e) {
-      //  throw e
-      // }
+      try {
+        const user = await axios.post('/api/account/session', credentials)
+        commit(mutations.SET_USER, user.data)
+      } catch (e) {
+        throw e
+      }
     },
     async register(store, user) {
       return axios.post('/api/account', user)
