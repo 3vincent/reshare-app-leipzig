@@ -18,6 +18,9 @@ const store = new Vuex.Store({
     [mutations.INCREMENT_COUNT](state) {
       state.count++
     },
+    [mutations.SET_USER](state, user) {
+      state.user = user
+    },
   },
   actions: {
     incrementCount({ commit }) {
