@@ -5,9 +5,6 @@ const router = express.Router()
 
 const Offer = require('../models/offer')
 
-/* GET home page. */
-
-/* GET users listing. */
 router.get('/', async (req, res) => {
   const query = {}
 

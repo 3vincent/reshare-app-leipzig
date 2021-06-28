@@ -7,9 +7,6 @@ const Person = require('../models/person')
 const Offer = require('../models/offer')
 const Comment = require('../models/comment')
 
-/* GET home page. */
-
-/* GET users listing. */
 router.get('/', async (req, res) => {
   const query = {}
 
