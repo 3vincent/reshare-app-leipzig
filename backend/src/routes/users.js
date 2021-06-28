@@ -122,14 +122,24 @@ router.get('/:userId', async (req, res) => {
 // But for now, I'll comment this part out
 //
 // router.get('/:userId/json', async (req, res) => {
-//   const person = await Person.findById(req.params.userId)
-//   res.send(person)
+//   try {
+//     const person = await Person.findById(req.params.userId)
+//     res.send(person)
+//   } catch (err) {
+//     console.log(err)
+//     res.sendStatus(500)
+//   }
 // })
-//
+
 // router.get('/:name', async (req, res) => {
-//   const person = await Person.find({ name: req.params.name })
-//   if (person) res.send(person)
-//   else res.sendStatus(404)
+//   try {
+//     const person = await Person.find({ name: req.params.name })
+//     if (person) res.send(person)
+//     else res.sendStatus(404)
+//   } catch (err) {
+//     console.log(err)
+//     res.sendStatus(500)
+//   }
 // })
 
 module.exports = router
