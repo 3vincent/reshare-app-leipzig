@@ -61,47 +61,49 @@ router.get('/initialize', async (req, res) => {
   await zach.setPassword('test')
   await zach.save()
 
-  const gingersOffer = await Offer.create({
+  const gingersOffer = {
     title: 'My Vue.JS socks',
     location: ['Leipzig', '04277'],
     photos: ['/img/offer-images/socks.jpg'],
     status: 'open',
     category: 'Clothing',
     description: 'Like new, never worn.',
-  })
-  await ginger.createOffer(gingersOffer)
-  await armagan.likeOffer(gingersOffer)
-  await ginger.likeOffer(gingersOffer)
-  await armagan.leaveComment(gingersOffer, 'These are great!!')
+  }
 
-  const gingersOffer2 = await Offer.create({
-    title: 'Wash dishes',
-    location: ['Leipzig', '04277'],
-    photos: ['/img/offer-images/wash-dishes.jpg'],
-    status: 'open',
-    category: 'Services',
-    description: 'My job is to do the dishes. I can help you clean if you need help 😉😉',
-  })
-  await ginger.createOffer(gingersOffer2)
-  await armagan.likeOffer(gingersOffer2)
-  await ginger.leaveComment(gingersOffer2, 'Awesome!!! 🙂')
-  setTimeout(async () => {
-    await armagan.leaveComment(gingersOffer2, 'very nice')
-  }, 5000)
+  const gingersOfferId = await ginger.createOffer(gingersOffer)
+  await armagan.leaveComment(gingersOfferId, 'These are great!!')
 
-  const armaganOffer = await Offer.create({
-    title: 'Dish Washer',
-    location: ['Berlin', '11234'],
-    photos: ['/img/offer-images/dish-washer.jpg'],
-    status: 'open',
-    category: 'Electrical Devices',
-    description: 'It is like new. Give it as-is.',
-  })
-  await armagan.createOffer(armaganOffer)
-  await ginger.likeOffer(armaganOffer)
-  await ginger.leaveComment(armaganOffer, 'This is a good dish washer')
-  await ginger.leaveComment(armaganOffer, 'Stil there?')
-  await armagan.leaveComment(armaganOffer, 'bump')
+  // await ginger.likeOffer(gingersOffer)
+  // await armagan.likeOffer(gingersOffer)
+
+  // const gingersOffer2 = await Offer.create({
+  //   title: 'Wash dishes',
+  //   location: ['Leipzig', '04277'],
+  //   photos: ['/img/offer-images/wash-dishes.jpg'],
+  //   status: 'open',
+  //   category: 'Services',
+  //   description: 'My job is to do the dishes. I can help you clean if you need help 😉😉',
+  // })
+  // await ginger.createOffer(gingersOffer2)
+  // await armagan.likeOffer(gingersOffer2)
+  // await ginger.leaveComment(gingersOffer2, 'Awesome!!! 🙂')
+  // setTimeout(async () => {
+  //   await armagan.leaveComment(gingersOffer2, 'very nice')
+  // }, 5000)
+
+  // const armaganOffer = await Offer.create({
+  //   title: 'Dish Washer',
+  //   location: ['Berlin', '11234'],
+  //   photos: ['/img/offer-images/dish-washer.jpg'],
+  //   status: 'open',
+  //   category: 'Electrical Devices',
+  //   description: 'It is like new. Give it as-is.',
+  // })
+  // await armagan.createOffer(armaganOffer)
+  // await ginger.likeOffer(armaganOffer)
+  // await ginger.leaveComment(armaganOffer, 'This is a good dish washer')
+  // await ginger.leaveComment(armaganOffer, 'Stil there?')
+  // await armagan.leaveComment(armaganOffer, 'bump')
 
   res.sendStatus(200)
 })
