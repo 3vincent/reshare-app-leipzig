@@ -2,13 +2,12 @@
   <div>
     <div class="container">
       <div class="comment speech-bubble">
-        <!-- attention {{ comment.sender.name }} only works because of autopopulate -->
         <p>{{ comment.comment }}</p>
         <p class="dateFormat">{{ comment.creationTime }}</p>
       </div>
       <div class="senderName">
-        <span class="userAvatar" :style="{ backgroundImage: 'url(' + comment.sender.profilePhoto + ')' }"></span>
-        <span class="bold">{{ comment.sender.name }}</span>
+        <span class="userAvatar" :style="{ backgroundImage: 'url(' + user.profilePhoto + ')' }"></span>
+        <span class="bold">{{ user.name }}</span>
       </div>
     </div>
   </div>
@@ -25,13 +24,16 @@ export default {
   data() {
     return {
       comment: null,
+      user: null,
     }
   },
   async created() {
     this.comment = await this.fetchComment(this.commentId)
+    this.user = await this.fetchUser(this.comment.sender)
   },
   methods: {
     ...mapActions(['fetchComment']),
+    ...mapActions(['fetchUser']),
   },
 }
 </script>
