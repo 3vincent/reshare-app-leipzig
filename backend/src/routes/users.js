@@ -106,12 +106,6 @@ router.get('/initialize', async (req, res) => {
   res.sendStatus(200)
 })
 
-// router.get('/:userID', async (req, res) => {
-//   const person = await Person.findById(req.params.userID)
-//   if (person) res.render('user', { person })
-//   else res.sendStatus(404)
-// })
-
 router.get('/:userId', async (req, res) => {
   try {
     const person = await Person.findById(req.params.userId)
@@ -123,18 +117,18 @@ router.get('/:userId', async (req, res) => {
   }
 })
 
+// This could be used to show users like website.com/users/ben
+// Together with the above route handler /:userID it could work with both, /users/ben and /users/someId34-092-3e3/json
+// But for now, I'll comment this part out
+//
 // router.get('/:userId/json', async (req, res) => {
 //   const person = await Person.findById(req.params.userId)
 //   res.send(person)
 // })
-
-// This could be used to show users like website.com/users/ben
-// but it interferes with website.com/users/<someMongoID>
-// so I comment it out
 //
 // router.get('/:name', async (req, res) => {
-//   const person = await Person.findById(req.params.userId)
-//   if (person) res.send(await Person.find({ name: req.params.name }))
+//   const person = await Person.find({ name: req.params.name })
+//   if (person) res.send(person)
 //   else res.sendStatus(404)
 // })
 
