@@ -80,7 +80,7 @@ class Person {
   }
 
   async leaveComment(offer, comment) {
-    const newComment = await Comment.create({ comment, sender: this })
+    const newComment = await Comment.create({ offer, comment, sender: this })
     offer.comments.push(newComment)
     this.comments.push(newComment)
 
