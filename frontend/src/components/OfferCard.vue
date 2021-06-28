@@ -70,7 +70,7 @@ export default {
   margin: 12px;
   display: grid;
   grid-template-columns: calc(120px + 2rem) 1.3fr 1.3fr;
-  grid-template-rows: 0.25fr 0.5fr 0.25fr;
+  grid-template-rows: 0.25fr 0.5fr 60px;
   gap: 0rem 0rem;
   grid-auto-flow: row;
   grid-template-areas:
@@ -129,9 +129,6 @@ export default {
       width: 20px;
       height: 20px;
       display: inline-block;
-      // background-image: url('../assets/logo.png');
-      // background-size: 50px 50px;
-      // background-repeat: no-repeat;
       background-color: green;
       border-radius: 50%;
     }
@@ -158,9 +155,10 @@ export default {
     background-color: #7f909e;
     border-bottom-left-radius: 0.9rem;
     border-bottom-right-radius: 0.9rem;
-    height: 100%;
+    margin: 0;
     p {
-      line-height: 0.25fr;
+      line-height: 60px;
+      margin: 0;
       padding-left: 1rem;
     }
   }
