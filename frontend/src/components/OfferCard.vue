@@ -34,6 +34,7 @@
         <span class="bold">Liked by: </span>{{ offer.likedBy.length }}
         <span v-if="offer.likedBy.length > 1">People</span><span v-else>Person</span>
       </p>
+      <p><span class="bold">Number of comments: </span>{{ offer.comments.length }}</p>
     </div>
     <div class="content-2">
       <p class="bold">Description:</p>
