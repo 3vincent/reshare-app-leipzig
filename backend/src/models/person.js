@@ -28,18 +28,12 @@ const personSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
-      autopopulate: {
-        maxDepth: 1,
-      },
     },
   ],
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
-      autopopulate: {
-        maxDepth: 1,
-      },
     },
   ],
   offers: [
@@ -47,7 +41,7 @@ const personSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
       autopopulate: {
-        maxDepth: 2,
+        maxDepth: 1,
       },
     },
   ],
@@ -55,9 +49,6 @@ const personSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment',
-      autopopulate: {
-        maxDepth: 2,
-      },
     },
   ],
 })
