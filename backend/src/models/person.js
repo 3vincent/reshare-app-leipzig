@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 const passportLocalMongoose = require('passport-local-mongoose')
 
+const Offer = require('./offer')
 const Comment = require('./comment')
 
 const personSchema = new mongoose.Schema({
@@ -55,11 +56,11 @@ const personSchema = new mongoose.Schema({
 
 class Person {
   async createOffer(offer) {
-    this.offers.push(offer)
-    offer.owner.push(this)
+    const newOffer = await Offer.create({ owner: this, ...offer })
+    this.offers.push(newOffer)
     await this.save()
-    await offer.save()
-    return offer
+    await newOffer.save()
+    return newOffer._id
   }
 
   async likeOffer(offer) {
@@ -72,12 +73,13 @@ class Person {
 
   async leaveComment(offer, comment) {
     const newComment = await Comment.create({ offer, comment, sender: this })
-    offer.comments.push(newComment)
     this.comments.push(newComment)
 
-    await offer.save()
-    // await newComment.save()
+    offer.comments.push(newComment)
+
+    await newComment.save()
     await this.save()
+    return newComment
   }
 }
 
