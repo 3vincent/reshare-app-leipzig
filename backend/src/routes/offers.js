@@ -5,7 +5,8 @@ const router = express.Router()
 const axios = require('axios')
 
 const Offer = require('../models/offer')
-const Person = require('../models/person')
+
+const APITokenMonkey = process.env.MONKEYLEARNAPITOKEN
 
 router.get('/', async (req, res) => {
   const query = {}
@@ -35,7 +36,7 @@ async function checkCommentLanguage(text) {
   // API from here https://app.monkeylearn.com/
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: 'Token 08c3d1ae08d87d14119da42cfc97916a736f0c9e',
+    Authorization: APITokenMonkey,
   }
   const data = {
     data: [text],

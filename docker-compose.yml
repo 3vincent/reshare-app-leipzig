@@ -25,6 +25,7 @@ services:
       - MONGODB_PASSWORD
       - MONGODB_DATABASE
       - MONGODB_CONNECTION_STRING=mongodb://mongo/example-project
+      - MONKEYLEARNAPITOKEN
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.backend.rule=(Host(`leipzigsharing.localhost`) && PathPrefix(`/api`))"
