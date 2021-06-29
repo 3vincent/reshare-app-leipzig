@@ -40,6 +40,24 @@ router.post('/:offerId/comment', async (req, res) => {
   res.send(comment)
 })
 
+router.post('/:offerId/like', async (req, res) => {
+  const sender = req.user
+  const offer = await Offer.findById(req.params.offerId)
+
+  const like = await sender.likeOffer(offer)
+
+  res.send(like)
+})
+
+router.post('/:offerId/save', async (req, res) => {
+  const sender = req.user
+  const offer = await Offer.findById(req.params.offerId)
+
+  const save = await sender.saveOffer(offer)
+
+  res.send(save)
+})
+
 router.get('/:offerId', async (req, res) => {
   try {
     const offer = await Offer.findById(req.params.offerId)
