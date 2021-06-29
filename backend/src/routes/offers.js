@@ -4,6 +4,7 @@ const express = require('express')
 const router = express.Router()
 
 const Offer = require('../models/offer')
+const Person = require('../models/person')
 
 router.get('/', async (req, res) => {
   const query = {}
@@ -27,6 +28,16 @@ router.get('/', async (req, res) => {
   }
 
   res.send(await Offer.find(query))
+})
+
+router.post('/:offerId/comment', async (req, res) => {
+  const sender = req.user
+  const offer = await Offer.findById(req.params.offerId)
+  const commentText = req.body.comment
+
+  const comment = await sender.leaveComment(offer, commentText)
+
+  res.send(comment)
 })
 
 router.get('/:offerId', async (req, res) => {
