@@ -14,15 +14,17 @@ This is a sample Project for Coyotiv School of Software Engineering
 
 Per default the app now connects to the mongoDB server that is running inside the docker container.
 
-Add this to your `/etc/hosts` file
+Add this to your `/etc/hosts` file:
 
     127.0.0.1 leipzigsharing.localhost
 
-**Run** it with `docker-compose`:
+After that maybe flush the dns cash..
 
-    $ docker-compose up
+**Build and Run** with `docker-compose`:
 
-After that (maybe flush the dns cash) open your browser at
+    $ docker-compose up --build
+
+Open your browser at
 
     http://leipzigsharing.localhost
 
@@ -35,7 +37,7 @@ After that (maybe flush the dns cash) open your browser at
 - run the above command including the database connection
 - when express is running go to
 
-        http://localhost:3000/initialize
+        http://leipzigsharing.localhost/api/users/initialize
 
   to fill the database with test content
 
