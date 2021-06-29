@@ -59,12 +59,6 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'OfferCard',
-  // props: ['offer'],
-  // data() {
-  //     return {
-  //       default: 'not defined',
-  //     }
-  //   },
   props: {
     offerId: String,
   },
