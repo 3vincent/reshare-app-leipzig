@@ -75,8 +75,8 @@ class Person {
     await this.save()
   }
 
-  async leaveComment(offer, comment) {
-    const newComment = await Comment.create({ offer, comment, sender: this })
+  async leaveComment(offer, comment, classification) {
+    const newComment = await Comment.create({ offer, classification, comment, sender: this })
     this.comments.push(newComment)
     offer.comments.push(newComment)
 
