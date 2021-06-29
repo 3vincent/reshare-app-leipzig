@@ -25,7 +25,7 @@ const personSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  savedOffers: [
+  saved: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
@@ -59,7 +59,6 @@ class Person {
     const newOffer = await Offer.create({ owner: this, ...offer })
     this.offers.push(newOffer)
     await this.save()
-    await newOffer.save()
     return newOffer._id
   }
 
@@ -71,14 +70,19 @@ class Person {
     await this.save()
   }
 
+  async saveOffer(offer) {
+    this.saved.push(offer)
+    await this.save()
+  }
+
   async leaveComment(offer, comment) {
     const newComment = await Comment.create({ offer, comment, sender: this })
     this.comments.push(newComment)
-
     offer.comments.push(newComment)
 
-    await newComment.save()
+    await offer.save()
     await this.save()
+
     return newComment
   }
 }
