@@ -45,9 +45,10 @@
     </div>
     <div class="viewFoo">
       <p>
-        <Button>Like</Button>&nbsp; <Button>Save</Button>&nbsp;
-        <Button
-          ><router-link :to="`/offers/${offer._id}`">{{ offer.title }}</router-link></Button
+        <Button @click="userLikeOffer">Like</Button>
+        <Button>Save</Button>
+        <router-link :to="`/offers/${offer._id}`"
+          ><Button>{{ offer.title }}</Button></router-link
         >
       </p>
     </div>
@@ -72,6 +73,15 @@ export default {
   },
   methods: {
     ...mapActions(['fetchOffer']),
+    ...mapActions(['likeOffer']),
+    async userLikeOffer(e) {
+      e.preventDefault()
+      try {
+        await this.likeOffer(this.offerId)
+      } catch (e) {
+        this.backendError = e.response.data.message
+      }
+    },
   },
 }
 </script>

@@ -34,6 +34,15 @@ const store = new Vuex.Store({
       const offersRequest = await axios.get('/api/offers')
       return offersRequest.data
     },
+    async likeOffer(store, id) {
+      try {
+        await axios.post(`/api/offers/${id}/like`)
+        // const user = await axios.post(`/api/offers/${id}/like`)
+        // commit(mutations.SET_USER, user.data)
+      } catch (e) {
+        throw e
+      }
+    },
     async fetchUser(store, id) {
       const userRequest = await axios.get(`/api/users/${id}`)
       return userRequest.data
