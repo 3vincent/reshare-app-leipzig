@@ -4,10 +4,8 @@ const express = require('express')
 const router = express.Router()
 
 const Offer = require('../models/offer')
+const Person = require('../models/person')
 
-/* GET home page. */
-
-/* GET users listing. */
 router.get('/', async (req, res) => {
   const query = {}
 
@@ -30,6 +28,34 @@ router.get('/', async (req, res) => {
   }
 
   res.send(await Offer.find(query))
+})
+
+router.post('/:offerId/comment', async (req, res) => {
+  const sender = req.user
+  const offer = await Offer.findById(req.params.offerId)
+  const commentText = req.body.comment
+
+  const comment = await sender.leaveComment(offer, commentText)
+
+  res.send(comment)
+})
+
+router.post('/:offerId/like', async (req, res) => {
+  const sender = req.user
+  const offer = await Offer.findById(req.params.offerId)
+
+  const like = await sender.likeOffer(offer)
+
+  res.send(like)
+})
+
+router.post('/:offerId/save', async (req, res) => {
+  const sender = req.user
+  const offer = await Offer.findById(req.params.offerId)
+
+  const save = await sender.saveOffer(offer)
+
+  res.send(save)
 })
 
 router.get('/:offerId', async (req, res) => {

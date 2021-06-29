@@ -5,9 +5,6 @@ const router = express.Router()
 
 const Comment = require('../models/comment')
 
-/* GET home page. */
-
-/* GET users listing. */
 router.get('/', async (req, res) => {
   const query = {}
 

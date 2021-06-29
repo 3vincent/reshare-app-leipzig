@@ -27,9 +27,14 @@
       <p>
         <span class="bold">Owner: </span>
         <Button
-          ><router-link :to="`/users/${offer.owner[0]._id}`">{{ offer.owner[0].name }}</router-link></Button
+          ><router-link :to="`/users/${offer.owner._id}`">{{ offer.owner.name }}</router-link></Button
         >
       </p>
+      <p>
+        <span class="bold">Liked by: </span>{{ offer.likedBy.length }}
+        <span v-if="offer.likedBy.length > 1">People</span><span v-else>Person</span>
+      </p>
+      <p><span class="bold">Number of comments: </span>{{ offer.comments.length }}</p>
     </div>
     <div class="content-2">
       <p class="bold">Description:</p>
@@ -40,9 +45,10 @@
     </div>
     <div class="viewFoo">
       <p>
-        <Button>Like</Button>&nbsp; <Button>Save</Button>&nbsp;
-        <Button
-          ><router-link :to="`/offers/${offer._id}`">{{ offer.title }}</router-link></Button
+        <Button @click="userLikeOffer">Like</Button>
+        <Button>Save</Button>
+        <router-link :to="`/offers/${offer._id}`"
+          ><Button>{{ offer.title }}</Button></router-link
         >
       </p>
     </div>
@@ -50,13 +56,32 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'OfferCard',
-  props: ['offer'],
+  props: {
+    offerId: String,
+  },
   data() {
     return {
-      default: 'not defined',
+      offer: null,
     }
+  },
+  async created() {
+    this.offer = await this.fetchOffer(this.offerId)
+  },
+  methods: {
+    ...mapActions(['fetchOffer']),
+    ...mapActions(['likeOffer']),
+    async userLikeOffer(e) {
+      e.preventDefault()
+      try {
+        await this.likeOffer(this.offerId)
+      } catch (e) {
+        this.backendError = e.response.data.message
+      }
+    },
   },
 }
 </script>
@@ -66,7 +91,7 @@ export default {
   margin: 12px;
   display: grid;
   grid-template-columns: calc(120px + 2rem) 1.3fr 1.3fr;
-  grid-template-rows: 0.25fr 0.5fr 0.25fr;
+  grid-template-rows: 0.25fr 0.5fr 60px;
   gap: 0rem 0rem;
   grid-auto-flow: row;
   grid-template-areas:
@@ -125,9 +150,6 @@ export default {
       width: 20px;
       height: 20px;
       display: inline-block;
-      // background-image: url('../assets/logo.png');
-      // background-size: 50px 50px;
-      // background-repeat: no-repeat;
       background-color: green;
       border-radius: 50%;
     }
@@ -154,9 +176,10 @@ export default {
     background-color: #7f909e;
     border-bottom-left-radius: 0.9rem;
     border-bottom-right-radius: 0.9rem;
-    height: 100%;
+    margin: 0;
     p {
-      line-height: 0.25fr;
+      line-height: 60px;
+      margin: 0;
       padding-left: 1rem;
     }
   }

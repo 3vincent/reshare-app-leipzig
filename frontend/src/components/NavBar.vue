@@ -2,14 +2,28 @@
   <div id="nav">
     <ul>
       <router-link to="/"><li>Homepage</li></router-link>
+      <router-link to="/profile"><li>Profile</li></router-link>
+      <router-link to="/login"><li>Login</li></router-link>
+      <router-link to="/register"><li>Register</li></router-link>
       <router-link to="/about"><li>About</li></router-link>
+      <a @click="doLogout" href="#"><li>Logout</li></a>
       <a href="/api/users/initialize"><li>Init Test Data to DB</li></a>
     </ul>
   </div>
 </template>
 
 <script>
-export default {}
+import { mapActions } from 'vuex'
+
+export default {
+  methods: {
+    ...mapActions(['logout']),
+    async doLogout() {
+      await this.logout()
+      this.$router.push('/login')
+    },
+  },
+}
 </script>
 
 <style scoped lang="scss">
@@ -26,13 +40,18 @@ export default {}
     display: table;
     a {
       text-decoration: none;
+      font-weight: bold;
+      color: rgb(226, 188, 139);
+      &.router-link-exact-active {
+        color: #42b983;
+      }
     }
     li {
       text-align: center;
       display: inline-table;
-      min-width: 200px;
-      height: 50px;
-      line-height: 50px;
+      padding: 0 20px;
+      height: 40px;
+      line-height: 40px;
       margin: 10px;
       background-color: rgb(52, 81, 114);
     }
@@ -50,6 +69,7 @@ export default {}
         display: table;
         margin: 10px;
         width: calc(100% - 10px - 10px);
+        padding: 0;
       }
     }
   }

@@ -4,13 +4,13 @@
     <NavBar></NavBar>
 
     <!-- User List Preview -->
-    <div v-for="user in users" :key="user.name + '-label'">{{ user.name }}, {{ user.age }}</div>
-    <div v-for="user in users" :key="user.location + '-label'">
-      {{ user.name }} lives in {{ user.location[1] }} {{ user.location[0] }}
+    <div v-for="user in users" :key="user.name + '-label'">
+      User: <router-link :to="`/users/${user._id}`">{{ user.name }}</router-link
+      >, {{ user.age }} years old. {{ user.givenName }} lives in {{ user.location[1] }} {{ user.location[0] }}
     </div>
 
     <div v-for="offer in offers" v-bind:key="offer._id + '-label'">
-      <OfferCard :offer="offer" v-if="offer"></OfferCard>
+      <OfferCard :offerId="offer._id" v-if="offer"></OfferCard>
       <router-link :to="`/offers/${offer._id}`">
         <Button v-if="offer"> <span class="bold">Open Offer2:</span> {{ offer.title }} </Button>
       </router-link>

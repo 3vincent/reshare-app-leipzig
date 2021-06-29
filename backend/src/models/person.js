@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
+const passportLocalMongoose = require('passport-local-mongoose')
 
-// const Offer = require('./offer')
+const Offer = require('./offer')
 const Comment = require('./comment')
 
 const personSchema = new mongoose.Schema({
@@ -10,35 +11,30 @@ const personSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  eMailAddress: {
+  givenName: {
     type: String,
-    unique: true,
-    required: true,
   },
   age: {
     type: Number,
-    required: true,
   },
   profilePhoto: {
     type: String,
+    default: '/img/avatar/default_user_avatar.png',
   },
-  location: [],
-  savedOffers: [
+  location: {
+    type: Array,
+    required: true,
+  },
+  saved: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
-      autopopulate: {
-        maxDepth: 1,
-      },
     },
   ],
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
-      autopopulate: {
-        maxDepth: 1,
-      },
     },
   ],
   offers: [
@@ -46,7 +42,7 @@ const personSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Offer',
       autopopulate: {
-        maxDepth: 2,
+        maxDepth: 1,
       },
     },
   ],
@@ -54,20 +50,16 @@ const personSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment',
-      autopopulate: {
-        maxDepth: 2,
-      },
     },
   ],
 })
 
 class Person {
   async createOffer(offer) {
-    this.offers.push(offer)
-    offer.owner.push(this)
+    const newOffer = await Offer.create({ owner: this, ...offer })
+    this.offers.push(newOffer)
     await this.save()
-    await offer.save()
-    return offer
+    return newOffer._id
   }
 
   async likeOffer(offer) {
@@ -78,18 +70,27 @@ class Person {
     await this.save()
   }
 
+  async saveOffer(offer) {
+    this.saved.push(offer)
+    await this.save()
+  }
+
   async leaveComment(offer, comment) {
-    const newComment = await Comment.create({ comment, sender: this })
-    offer.comments.push(newComment)
+    const newComment = await Comment.create({ offer, comment, sender: this })
     this.comments.push(newComment)
+    offer.comments.push(newComment)
 
     await offer.save()
-    // await newComment.save()
     await this.save()
+
+    return newComment
   }
 }
 
 personSchema.loadClass(Person)
 personSchema.plugin(autopopulate)
+personSchema.plugin(passportLocalMongoose, {
+  usernameField: 'email',
+})
 
 module.exports = mongoose.model('Person', personSchema)

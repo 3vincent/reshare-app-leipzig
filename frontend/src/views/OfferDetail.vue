@@ -5,10 +5,15 @@
       <h1 v-else>Loading Offer Page...</h1>
       <router-link to="/"> <span class="bold back">&#9747; </span> </router-link>
     </div>
-    <OfferCard :offer="offer" :if="offer"></OfferCard>
-    <h2>Comments</h2>
-    <div v-for="comment in offer.comments" v-bind:key="comment._id + '-label'">
-      <CommentCard :commentId="comment._id" v-if="comment"></CommentCard>
+    <OfferCard :offerId="offer._id" :if="offer"></OfferCard>
+    <div v-if="offer.comments">
+      <h2>Comments</h2>
+      <div v-for="comment in offer.comments" v-bind:key="comment + '-label'">
+        <CommentCard :commentId="comment" v-if="comment"></CommentCard>
+      </div>
+    </div>
+    <div v-else>
+      <span>Loading Comments...</span>
     </div>
     <Counter></Counter>
   </div>
