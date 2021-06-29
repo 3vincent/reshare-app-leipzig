@@ -7,6 +7,9 @@ const offerSchema = new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Person',
+    autopopulate: {
+      maxDepth: 1,
+    },
   },
   title: String,
   location: [],
