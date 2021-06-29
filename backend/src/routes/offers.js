@@ -1,7 +1,8 @@
 const { query } = require('express')
 const express = require('express')
-
 const router = express.Router()
+
+const axios = require('axios')
 
 const Offer = require('../models/offer')
 const Person = require('../models/person')
@@ -30,12 +31,40 @@ router.get('/', async (req, res) => {
   res.send(await Offer.find(query))
 })
 
+async function checkCommentLanguage(text) {
+  // API from here https://app.monkeylearn.com/
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Token 08c3d1ae08d87d14119da42cfc97916a736f0c9e',
+  }
+  const data = {
+    data: [text],
+  }
+
+  return await axios({
+    method: 'post',
+    headers: headers,
+    url: 'https://api.monkeylearn.com/v3/classifiers/cl_pi3C7JiL/classify/',
+    data,
+  }).then(
+    response => {
+      console.log(response)
+      return response.data[0].classifications
+    },
+    error => {
+      console.log(error)
+    }
+  )
+}
+
 router.post('/:offerId/comment', async (req, res) => {
   const sender = req.user
   const offer = await Offer.findById(req.params.offerId)
   const commentText = req.body.comment
 
-  const comment = await sender.leaveComment(offer, commentText)
+  const classifyCommentLanguage = await checkCommentLanguage(commentText)
+
+  const comment = await sender.leaveComment(offer, commentText, classifyCommentLanguage)
 
   res.send(comment)
 })
