@@ -15,6 +15,9 @@ const commentSchema = new mongoose.Schema({
     default: Date.now,
   },
   comment: String,
+  classification: {
+    type: Object,
+  },
 })
 
 commentSchema.plugin(autopopulate)
