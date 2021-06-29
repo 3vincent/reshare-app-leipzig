@@ -1,15 +1,23 @@
-<template lang="pug">
-  .login
-      form(@submit="submitLogin")
-        h1 Log in to your account
-        label(for="email") Email:&nbsp;
-          input(v-model="email" id="email" type="email" placeholder="Your email" required)
-        label(for="password") Password:&nbsp;
-          input(v-model="password" id="password" type="password" placeholder="Your password" required)
-        input(type="submit" value="Log in")
-      div(v-if="backendError") {{ backendError }}
-      div Don't have an account yet? <router-link to="/register">Register</router-link>
-  </template>
+<template>
+  <div class="login">
+    <form @submit="submitLogin">
+      <h1>Log in to your account</h1>
+      <label for="email"
+        >Email:&nbsp;
+        <input v-model="email" id="email" type="email" placeholder="Your email" required="required" />
+      </label>
+      <label for="password"
+        >Password:&nbsp;
+        <input v-model="password" id="password" type="password" placeholder="Your password" required="required" />
+      </label>
+      <input type="submit" value="Log in" />
+    </form>
+    <div v-if="backendError">
+      <span>{{ backendError }}</span>
+    </div>
+    <div><span>Don't have an account yet?</span> <router-link to="/register">Register</router-link></div>
+  </div>
+</template>
 
 <script>
 import { mapActions } from 'vuex'

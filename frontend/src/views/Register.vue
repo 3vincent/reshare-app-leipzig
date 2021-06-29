@@ -1,18 +1,28 @@
-<template lang="pug">
-.register
-    form( @submit="submitLogin")
-      h1 Create a new account
-      label(for="name") Name:&nbsp;
-        input(v-model="name" id="name" type="text" placeholder="Your name" required)
-      label(for="age") Age:&nbsp;
-        input(v-model="age" id="age" type="number" placeholder="Your age" required)
-      label(for="email") Email:&nbsp;
-        input(v-model="email" id="email" type="email" placeholder="Your email" required)
-      label(for="password") Password:&nbsp;
-        input(v-model="password" id="password" type="password" placeholder="Your password" required)
-      input(type="submit" value="Register")
-    div(v-if="backendError") {{ backendError }}
-    div Already have an account? <router-link to="/login">Log in</router-link>
+<template>
+  <div class="register">
+    <form @submit="submitLogin">
+      <h1>Create a new account</h1>
+      <label for="name"
+        >Name:&nbsp;
+        <input v-model="name" id="name" type="text" placeholder="Your name" required="required" />
+      </label>
+      <label for="age"
+        >Age:&nbsp;
+        <input v-model="age" id="age" type="number" placeholder="Your age" required="required" />
+      </label>
+      <label for="email"
+        >Email:&nbsp;
+        <input v-model="email" id="email" type="email" placeholder="Your email" required="required" />
+      </label>
+      <label for="password"
+        >Password:&nbsp;
+        <input v-model="password" id="password" type="password" placeholder="Your password" required="required" />
+      </label>
+      <input type="submit" value="Register" />
+    </form>
+    <div v-if="backendError">{{ backendError }}</div>
+    <div>Already have an account? <router-link to="/login">Log in</router-link></div>
+  </div>
 </template>
 
 <script>
