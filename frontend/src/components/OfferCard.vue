@@ -27,7 +27,7 @@
       <p>
         <span class="bold">Owner: </span>
         <Button
-          ><router-link :to="`/users/${offer.owner[0]._id}`">{{ offer.owner[0].name }}</router-link></Button
+          ><router-link :to="`/users/${offer.owner._id}`">{{ offer.owner.name }}</router-link></Button
         >
       </p>
       <p>
@@ -55,13 +55,29 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'OfferCard',
-  props: ['offer'],
+  // props: ['offer'],
+  // data() {
+  //     return {
+  //       default: 'not defined',
+  //     }
+  //   },
+  props: {
+    offerId: String,
+  },
   data() {
     return {
-      default: 'not defined',
+      offer: null,
     }
+  },
+  async created() {
+    this.offer = await this.fetchOffer(this.offerId)
+  },
+  methods: {
+    ...mapActions(['fetchOffer']),
   },
 }
 </script>

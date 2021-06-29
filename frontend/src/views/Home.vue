@@ -10,7 +10,7 @@
     </div>
 
     <div v-for="offer in offers" v-bind:key="offer._id + '-label'">
-      <OfferCard :offer="offer" v-if="offer"></OfferCard>
+      <OfferCard :offerId="offer._id" v-if="offer"></OfferCard>
       <router-link :to="`/offers/${offer._id}`">
         <Button v-if="offer"> <span class="bold">Open Offer2:</span> {{ offer.title }} </Button>
       </router-link>
