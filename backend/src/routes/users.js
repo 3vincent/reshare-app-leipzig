@@ -70,8 +70,8 @@ router.get('/initialize', async (req, res) => {
     description: 'Like new, never worn.',
   }
 
-  const gingersOfferId = await ginger.createOffer(gingersOffer)
-  await armagan.leaveComment(gingersOfferId, 'These are great!!')
+  await ginger.createOffer(gingersOffer)
+  // await armagan.leaveComment(gingersOfferId, 'These are great!!')
 
   // await ginger.likeOffer(gingersOffer)
   // await armagan.likeOffer(gingersOffer)
