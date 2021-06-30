@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import io from 'socket.io-client'
 
 Vue.use(Vuex)
+
+const socket = io()
 
 const mutations = {
   INCREMENT_COUNT: 'increment count',
