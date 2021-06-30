@@ -109,5 +109,6 @@ dist
 # node_modules Directory
 node_modules/
 
-# env var file for mongoDB
+# env var file for mongoDB, monkeylearn API,
 env-var-mongodb
+env-var-monkeylearn

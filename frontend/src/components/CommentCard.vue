@@ -3,7 +3,10 @@
     <div class="container">
       <div class="comment speech-bubble">
         <p>{{ comment.comment }}</p>
-        <p class="dateFormat">{{ comment.creationTime }}</p>
+        <p class="small">
+          <span class="bold">The Language in this comment is: </span> {{ comment.classification[0].tag_name }}
+        </p>
+        <p class="small bold">{{ comment.creationTime }}</p>
       </div>
       <div class="senderName">
         <span class="userAvatar" :style="{ backgroundImage: 'url(' + user.profilePhoto + ')' }"></span>
@@ -74,9 +77,8 @@ export default {
 .container {
   margin-bottom: 2rem;
 }
-.dateFormat {
+.small {
   font-family: Helvetica, Arial, sans-serif;
-  font-weight: 600;
   font-size: 0.8rem;
   margin-top: 2rem;
   margin-bottom: 0;
