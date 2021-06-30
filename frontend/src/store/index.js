@@ -11,6 +11,10 @@ socket.on('hello world!', () => {
   console.log('we received message from the websocket server!')
 })
 
+setInterval(() => {
+  socket.emit('new message!')
+}, 3000)
+
 const mutations = {
   INCREMENT_COUNT: 'increment count',
   SET_USER: 'set user',
