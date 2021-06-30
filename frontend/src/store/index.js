@@ -7,6 +7,10 @@ Vue.use(Vuex)
 
 const socket = io()
 
+socket.on('hello world!', () => {
+  console.log('we received message from the websocket server!')
+})
+
 const mutations = {
   INCREMENT_COUNT: 'increment count',
   SET_USER: 'set user',
