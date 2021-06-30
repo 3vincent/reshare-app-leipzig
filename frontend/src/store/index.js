@@ -12,7 +12,9 @@ socket.on('hello world!', () => {
 })
 
 setInterval(() => {
-  socket.emit('new message!')
+  socket.emit('new message!', res => {
+    console.log('this is a response', res)
+  })
 }, 3000)
 
 const mutations = {

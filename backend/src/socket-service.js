@@ -6,6 +6,11 @@ io.on('connect', socket => {
   setInterval(() => {
     socket.emit('hello world!')
   }, 2000)
+
+  socket.on('new message!', cb => {
+    console.log('a new message was received!')
+    cb('this is a response!')
+  })
 })
 
 module.exports = io
