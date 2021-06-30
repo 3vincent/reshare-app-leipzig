@@ -28,7 +28,7 @@ services:
       - MONKEYLEARNAPITOKEN
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=(Host(`leipzigsharing.localhost`) && PathPrefix(`/api`))"
+      - "traefik.http.routers.backend.rule=(Host(`leipzigsharing.localhost`) && (PathPrefix(`/api`) || PathPrefix(`/socket`)))"
       - "traefik.http.routers.backend.entrypoints=web"
     ports:
       - 3000
