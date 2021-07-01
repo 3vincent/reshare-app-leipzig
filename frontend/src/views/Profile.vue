@@ -1,10 +1,11 @@
 <script>
+import NavBar from '@/components/NavBar.vue'
 import Counter from '@/components/Counter.vue'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Profile',
-  components: { Counter },
+  components: { Counter, NavBar },
   data() {
     return {
       users: [],
@@ -33,6 +34,7 @@ export default {
 
 <template>
   <div class="home">
+    <NavBar></NavBar>
     <h1>{{ user.name }}</h1>
     <h2>Leipzig Sharing ::: My User Profile</h2>
     <h2>Users</h2>
