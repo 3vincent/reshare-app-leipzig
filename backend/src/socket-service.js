@@ -11,6 +11,21 @@ io.on('connect', socket => {
   //   console.log('a new message was received!')
   //   cb('this is a response!')
   // })
+
+  socket.on('new message', (streamId, message) => {
+    socket.to(streamId).emit('new live stream message', message)
+  })
+
+  socket.on('join stream', streamId => {
+    socket.join(streamId)
+  })
+
+  socket.on('go live', (userId, cb) => {
+    console.log(`${userId} is going live`)
+
+    socket.broadcast.emit('new live stream', userId)
+    socket.join(userId)
+    cb(true)
   })
 })
 
