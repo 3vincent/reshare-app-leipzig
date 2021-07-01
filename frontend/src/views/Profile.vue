@@ -17,17 +17,15 @@ export default {
     this.users = await this.fetchUsers()
   },
   methods: {
-    ...mapActions(['fetchUsers']),
-    // ...mapActions(['fetchUsers', 'goLive', 'sendMessageToLiveStream', 'joinStream']),
-    // sendMessage(e) {
-    //   e.preventDefault()
-    //   this.sendMessageToLiveStream(this.message)
-    //   this.message = ''
-    // }
+    ...mapActions(['fetchUsers', 'goLive', 'sendMessageToLiveStream', 'joinStream']),
+    sendMessage(e) {
+      e.preventDefault()
+      this.sendMessageToLiveStream(this.message)
+      this.message = ''
+    },
   },
   computed: {
-    // ...mapState(['currentLiveStream', 'liveStreams', 'user', 'liveStreamMessages']),
-    ...mapState(['user']),
+    ...mapState(['currentLiveStream', 'liveStreams', 'user', 'liveStreamMessages']),
   },
 }
 </script>
@@ -41,7 +39,7 @@ export default {
     <div v-for="user in users" v-bind:key="user">
       <router-link :to="`/users/${user._id}`">{{ user.name }}</router-link>
     </div>
-    <!-- <div v-if="liveStreams.length">
+    <div v-if="liveStreams.length">
       <h2>Live streams</h2>
       <div v-for="stream in liveStreams" v-bind:key="stream">
         <p>{{ stream }}</p>
@@ -61,6 +59,6 @@ export default {
       <form @submit="sendMessage">
         <input type="text" v-model="message" /><input type="submit" value="Send message" />
       </form>
-    </div> -->
+    </div>
   </div>
 </template>
