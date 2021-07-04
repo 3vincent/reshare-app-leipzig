@@ -3,9 +3,12 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import io from 'socket.io-client'
 
+axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
+axios.defaults.withCredentials = true
+
 Vue.use(Vuex)
 
-const socket = io()
+const socket = io(process.env.VUE_APP_BASE_URL)
 
 // socket.on('hello world!', () => {
 //   console.log('we received message from the websocket server!')
@@ -16,6 +19,7 @@ const socket = io()
 //     console.log('this is a response', res)
 //   })
 // }, 3000)
+// const socket = io(process.env.VUE_APP_BASE_URL)
 
 const mutations = {
   INCREMENT_COUNT: 'increment count',
