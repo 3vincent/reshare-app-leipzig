@@ -7,6 +7,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const passport = require('passport')
 const Person = require('./models/person')
+const cors = require('cors')
 
 const mongooseConnection = require('./database-connection')
 
@@ -17,6 +18,13 @@ const commentsRouter = require('./routes/comments')
 const accountRouter = require('./routes/account')
 
 const app = express()
+
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+)
 
 if (app.get('env') == 'development') {
   /* eslint-disable-next-line */
@@ -48,6 +56,8 @@ app.use(
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000,
       path: '/api',
+      sameSite: process.env.NODE_EV == 'production' ? 'none' : 'strict',
+      secure: process.env.NODE_EV == 'production',
     },
   })
 )
