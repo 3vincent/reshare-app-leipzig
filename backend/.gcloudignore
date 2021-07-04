@@ -1,0 +1,12 @@
+node_modules
+.history
+.eslintrc.json
+.prettierignore
+.prettierrc
+dev.Dockerfile
+docker-compose.yml
+__tests__
+env_var_mongodb
+env-var-monkeylearn
+jest.config.js
+jest.setup.js
