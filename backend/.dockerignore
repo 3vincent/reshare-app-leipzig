@@ -5,6 +5,9 @@ node_modules
 .prettierrc
 Dockerfile
 Dockerfile.production
+dev.Dockerfile
 docker-compose.yml
 __tests__
 env_var_mongodb
+jest.config.js
+jest.setup.js
