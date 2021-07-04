@@ -19,6 +19,7 @@ const socket = io(process.env.VUE_APP_BASE_URL)
 //     console.log('this is a response', res)
 //   })
 // }, 3000)
+// const socket = io(process.env.VUE_APP_BASE_URL)
 
 const mutations = {
   INCREMENT_COUNT: 'increment count',
