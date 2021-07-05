@@ -123,6 +123,7 @@ export default {
 @media (max-width: 600px) {
   .container {
     grid-template-columns: calc(120px + 2rem) 1fr;
+    grid-template-rows: 0.25fr 0.5fr 1fr 60px;
     grid-template-areas:
       'image offerHeadline '
       'content-1 content-1'
