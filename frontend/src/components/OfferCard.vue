@@ -5,7 +5,7 @@
     </div>
     <div class="offerHeadline">
       <h2>{{ offer.title }}</h2>
-      <span class="statusLight"></span>
+      <span class="statusLight" :style="cssProps"></span>
       <div>
         <span class="tag bold"># {{ offer.category }}</span>
       </div>
@@ -22,7 +22,6 @@
             .join(' ')
         }}
       </p>
-      <p><span class="bold">Category: </span>{{ offer.category }}</p>
       <p><span class="bold">Creation Time: </span>{{ offer.creationTime }}</p>
       <p>
         <span class="bold">Owner: </span>
@@ -66,6 +65,9 @@ export default {
   data() {
     return {
       offer: null,
+      offerAvailableColor: 'green',
+      offerReservedColor: 'orange',
+      offerExpiredColor: 'red',
     }
   },
   async created() {
@@ -80,6 +82,23 @@ export default {
         await this.likeOffer(this.offerId)
       } catch (e) {
         this.backendError = e.response.data.message
+      }
+    },
+  },
+  computed: {
+    cssProps() {
+      if (this.offer.status == 'open')
+        return {
+          '--availability-status-color': this.offerAvailableColor,
+        }
+      else if (this.offer.status == 'reserved') {
+        return {
+          '--availability-status-color': this.offerReservedColor,
+        }
+      } else {
+        return {
+          '--availability-status-color': this.offerExpiredColor,
+        }
       }
     },
   },
@@ -150,7 +169,8 @@ export default {
       width: 20px;
       height: 20px;
       display: inline-block;
-      background-color: green;
+      // background-color: green;
+      background-color: var(--availability-status-color);
       border-radius: 50%;
     }
   }
