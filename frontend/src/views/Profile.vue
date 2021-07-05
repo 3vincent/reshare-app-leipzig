@@ -1,11 +1,14 @@
 <script>
 import NavBar from '@/components/NavBar.vue'
-import Counter from '@/components/Counter.vue'
+// import Counter from '@/components/Counter.vue'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Profile',
-  components: { Counter, NavBar },
+  components: {
+    // Counter,
+    NavBar,
+  },
   data() {
     return {
       users: [],
