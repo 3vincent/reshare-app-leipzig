@@ -62,6 +62,7 @@ export default {
 }
 @media (max-width: 660px) {
   #nav {
+    position: relative;
     ul {
       display: block;
       margin: 0 auto;
