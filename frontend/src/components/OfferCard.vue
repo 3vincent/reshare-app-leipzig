@@ -1,55 +1,57 @@
 <template>
-  <div class="box container">
-    <div class="photobox contentBox image">
-      <img :src="offer.photos[0]" />
-    </div>
-    <div class="offerHeadline">
-      <h2>{{ offer.title }}</h2>
-      <span class="statusLight" :style="cssProps"></span>
-      <div>
+  <div v-if="!offer">Loading Offer...</div>
+  <div v-else>
+    <div class="box container">
+      <div class="photobox image">
+        <img :src="offer.photos[0]" />
+      </div>
+      <div class="offerHeadline">
+        <h2>{{ offer.title }}</h2>
+        <span class="statusLight" :style="cssProps"></span>
+      </div>
+      <div class="tagLine">
         <span class="tag bold"># {{ offer.category }}</span>
       </div>
-    </div>
-    <div class="content-1">
-      <p><span class="bold">Status: </span>{{ offer.status }}</p>
-      <p>
-        <span class="bold">Location: </span
-        >{{
-          offer.location
-            .map(point => point)
-            .slice()
-            .reverse()
-            .join(' ')
-        }}
-      </p>
-      <p><span class="bold">Creation Time: </span>{{ offer.creationTime }}</p>
-      <p>
-        <span class="bold">Owner: </span>
-        <Button
-          ><router-link :to="`/users/${offer.owner._id}`">{{ offer.owner.name }}</router-link></Button
+      <div class="content-1">
+        <p>
+          <span class="bold">Location: </span
+          >{{
+            offer.location
+              .map(point => point)
+              .slice()
+              .reverse()
+              .join(' ')
+          }}
+        </p>
+        <p><span class="bold">Creation Time: </span>{{ offer.creationTime }}</p>
+        <p>
+          <span class="bold">Owner: </span>
+          <Button
+            ><router-link :to="`/users/${offer.owner._id}`">{{ offer.owner.name }}</router-link></Button
+          >
+        </p>
+        <p>
+          <span class="bold">Liked by: </span>{{ offer.likedBy.length }}
+          <span v-if="offer.likedBy.length > 1">People</span><span v-else>Person</span>
+        </p>
+        <p><span class="bold">Number of comments: </span>{{ offer.comments.length }}</p>
+      </div>
+      <div class="content-2">
+        <p><span class="bold">Description:</span></p>
+        <p>{{ offer.description }}</p>
+        <span class="tag"
+          ><small>UUID: {{ offer.offerUUID }}</small></span
         >
-      </p>
-      <p>
-        <span class="bold">Liked by: </span>{{ offer.likedBy.length }}
-        <span v-if="offer.likedBy.length > 1">People</span><span v-else>Person</span>
-      </p>
-      <p><span class="bold">Number of comments: </span>{{ offer.comments.length }}</p>
-    </div>
-    <div class="content-2">
-      <p class="bold">Description:</p>
-      <p>{{ offer.description }}</p>
-      <span class="tag"
-        ><small>UUID: {{ offer.offerUUID }}</small></span
-      >
-    </div>
-    <div class="viewFoo">
-      <p>
-        <Button @click="userLikeOffer">Like</Button>
-        <Button>Save</Button>
-        <router-link :to="`/offers/${offer._id}`"
-          ><Button>{{ offer.title }}</Button></router-link
-        >
-      </p>
+      </div>
+      <div class="viewFooter">
+        <p>
+          <Button @click="userLikeOffer">Like</Button>
+          <Button>Save</Button>
+          <router-link :to="`/offers/${offer._id}`"
+            ><Button>{{ offer.title }}</Button></router-link
+          >
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -65,8 +67,8 @@ export default {
   data() {
     return {
       offer: null,
-      offerAvailableColor: 'green',
-      offerReservedColor: 'orange',
+      offerAvailableColor: '#337B24',
+      offerReservedColor: '#F99D41',
       offerExpiredColor: 'red',
     }
   },
@@ -110,25 +112,27 @@ export default {
   margin: 12px;
   display: grid;
   grid-template-columns: calc(120px + 2rem) 1.3fr 1.3fr;
-  grid-template-rows: 0.25fr 0.5fr 60px;
+  grid-template-rows: 0.25fr 0.25fr 0.5fr 60px;
   gap: 0rem 0rem;
   grid-auto-flow: row;
   grid-template-areas:
     'image offerHeadline offerHeadline'
+    'image tagLine tagLine'
     'image content-1 content-2'
-    'viewFoo viewFoo viewFoo';
+    'viewFooter viewFooter viewFooter';
   margin-bottom: 1rem;
 }
 
 @media (max-width: 600px) {
   .container {
     grid-template-columns: calc(120px + 2rem) 1fr;
-    grid-template-rows: 0.25fr 0.5fr 1fr 60px;
+    grid-template-rows: 0.25fr 0.25fr 0.5fr 1fr 60px;
     grid-template-areas:
-      'image offerHeadline '
+      'offerHeadline offerHeadline'
+      'image tagLine'
       'content-1 content-1'
       'content-2 content-2'
-      'viewFoo viewFoo';
+      'viewFooter viewFooter';
   }
 }
 
@@ -140,6 +144,10 @@ export default {
   grid-area: offerHeadline;
 }
 
+.tagLine {
+  grid-area: tagLine;
+}
+
 .content-1 {
   grid-area: content-1;
 }
@@ -147,8 +155,8 @@ export default {
   grid-area: content-2;
 }
 
-.viewFoo {
-  grid-area: viewFoo;
+.viewFooter {
+  grid-area: viewFooter;
 }
 
 .bold {
@@ -165,14 +173,13 @@ export default {
       // street lights
       // for status: open | reserved | taken
       position: absolute;
-      right: 0.4rem;
-      top: 0.2rem;
-      width: 20px;
-      height: 20px;
-      display: inline-block;
-      // background-color: green;
-      background-color: var(--availability-status-color);
       border-radius: 50%;
+      right: 0.3rem;
+      top: 0.2rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: inline-block;
+      background-color: var(--availability-status-color);
     }
   }
   background-color: white;
@@ -193,7 +200,7 @@ export default {
       max-width: 100px;
     }
   }
-  .viewFoo {
+  .viewFooter {
     background-color: #7f909e;
     border-bottom-left-radius: 0.9rem;
     border-bottom-right-radius: 0.9rem;
@@ -205,7 +212,9 @@ export default {
     }
   }
   .content-1,
-  .content-2 {
+  .content-2,
+  .tagLine,
+  .offerHeadline {
     padding: 10px;
   }
 }
@@ -221,7 +230,7 @@ span.tag {
   border: 1px solid transparent;
   background-color: #dddddd; // yello #e4b20d; and grey #465058; well together
   color: rgb(100, 100, 100);
-  .viewFoo {
+  .viewFooter {
     background-color: #465058;
   }
 }
