@@ -10,6 +10,7 @@
       <div v-for="comment in offer.comments" v-bind:key="comment + '-label'">
         <CommentCard v-if="comment" :commentId="comment"></CommentCard>
       </div>
+      <CommentPost></CommentPost>
     </div>
     <Counter></Counter>
   </div>
@@ -18,6 +19,7 @@
 <script>
 import OfferCard from '@/components/OfferCard.vue'
 import CommentCard from '@/components/CommentCard.vue'
+import CommentPost from '@/components/CommentPost.vue'
 import Counter from '@/components/Counter.vue'
 import { mapActions } from 'vuex'
 
@@ -26,6 +28,7 @@ export default {
   components: {
     OfferCard,
     CommentCard,
+    CommentPost,
     Counter,
   },
   data() {

@@ -87,6 +87,14 @@ const store = new Vuex.Store({
       const commentRequest = await axios.get(`/api/comments/${id}`)
       return commentRequest.data
     },
+    async postComment(store, payload) {
+      const { id, commentText } = payload
+      try {
+        await axios.post(`/api/offers/${id}/comment`, { comment: commentText })
+      } catch (e) {
+        throw e
+      }
+    },
     async fetchSession({ commit }) {
       const user = await axios.get('/api/account/session')
       commit(mutations.SET_USER, user.data || null)
