@@ -26,7 +26,7 @@ const offerSchema = new mongoose.Schema({
   },
   offerUUID: {
     type: String,
-    default: uuidv4, // will be replaced with a mongoID soon
+    default: uuidv4, // will be replaced with a singleton soon
   },
   status: String,
   likedBy: [
