@@ -207,6 +207,9 @@ export default {
       margin: 0;
       padding-left: 1rem;
     }
+    button {
+      margin-right: 0.75rem;
+    }
   }
   .content-1,
   .content-2,
@@ -224,9 +227,7 @@ span.tag {
   border-radius: 3px;
 }
 .box:hover {
-  border: 1px solid transparent;
-  background-color: #dddddd; // yello #e4b20d; and grey #465058; well together
-  color: rgb(100, 100, 100);
+  border: 1px solid #e4b20d;
   .viewFooter {
     background-color: #465058;
   }
