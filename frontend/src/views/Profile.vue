@@ -1,46 +1,10 @@
-<script>
-import NavBar from '@/components/NavBar.vue'
-// import Counter from '@/components/Counter.vue'
-import { mapActions, mapState } from 'vuex'
-
-export default {
-  name: 'Profile',
-  components: {
-    // Counter,
-    NavBar,
-  },
-  data() {
-    return {
-      users: [],
-      time: new Date(),
-      message: '',
-    }
-  },
-  async created() {
-    this.users = await this.fetchUsers()
-  },
-  methods: {
-    ...mapActions(['fetchUsers']),
-    // ...mapActions(['fetchUsers', 'goLive', 'sendMessageToLiveStream', 'joinStream']),
-    // sendMessage(e) {
-    //   e.preventDefault()
-    //   this.sendMessageToLiveStream(this.message)
-    //   this.message = ''
-    // }
-  },
-  computed: {
-    // ...mapState(['currentLiveStream', 'liveStreams', 'user', 'liveStreamMessages']),
-    ...mapState(['user']),
-  },
-}
-</script>
-
 <template>
   <div class="home">
     <NavBar></NavBar>
-    <h1>{{ user.name }}</h1>
-    <h2>Leipzig Sharing ::: My User Profile</h2>
-    <h2>Users</h2>
+    <h1>Leipzig Sharing - Hello {{ user.givenName }}</h1>
+    <h3>This is your user Profile:</h3>
+    <UserCard :user="user" :if="user"></UserCard>
+    <h3>Users on our Platform</h3>
     <div v-for="user in users" v-bind:key="user">
       <router-link :to="`/users/${user._id}`">{{ user.name }}</router-link>
     </div>
@@ -67,3 +31,42 @@ export default {
     </div> -->
   </div>
 </template>
+
+<script>
+import NavBar from '@/components/NavBar.vue'
+import UserCard from '@/components/UserCard.vue'
+// import Counter from '@/components/Counter.vue'
+import { mapActions, mapState } from 'vuex'
+
+export default {
+  name: 'Profile',
+  components: {
+    // Counter,
+    NavBar,
+    UserCard,
+  },
+  data() {
+    return {
+      users: [],
+      time: new Date(),
+      message: '',
+    }
+  },
+  async created() {
+    this.users = await this.fetchUsers()
+  },
+  methods: {
+    ...mapActions(['fetchUsers']),
+    // ...mapActions(['fetchUsers', 'goLive', 'sendMessageToLiveStream', 'joinStream']),
+    // sendMessage(e) {
+    //   e.preventDefault()
+    //   this.sendMessageToLiveStream(this.message)
+    //   this.message = ''
+    // }
+  },
+  computed: {
+    // ...mapState(['currentLiveStream', 'liveStreams', 'user', 'liveStreamMessages']),
+    ...mapState(['user']),
+  },
+}
+</script>
