@@ -46,9 +46,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bold {
-  font-weight: 600;
-}
 .back {
   position: absolute;
   left: 1rem;

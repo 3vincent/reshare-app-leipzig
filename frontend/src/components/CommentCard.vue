@@ -71,9 +71,6 @@ export default {
 }
 
 // layout
-.bold {
-  font-weight: 600;
-}
 .container {
   margin-bottom: 2rem;
 }
