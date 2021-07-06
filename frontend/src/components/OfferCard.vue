@@ -159,9 +159,6 @@ export default {
   grid-area: viewFooter;
 }
 
-.bold {
-  font-weight: 600;
-}
 .box {
   .offerHeadline {
     position: relative;

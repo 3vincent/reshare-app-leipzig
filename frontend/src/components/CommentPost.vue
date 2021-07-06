@@ -58,9 +58,6 @@ textarea {
   max-width: calc(100% - 3.4rem);
   height: 150px;
 }
-.bold {
-  font-weight: 600;
-}
 input {
   padding: 0.5rem;
   background-color: #82c8dd;

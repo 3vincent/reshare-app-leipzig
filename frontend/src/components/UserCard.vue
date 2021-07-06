@@ -43,9 +43,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.bold {
-  font-weight: 600;
-}
 .userAvatar {
   margin: 0 auto;
   background-position: center;
