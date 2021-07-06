@@ -26,8 +26,8 @@
         <p><span class="bold">Creation Time: </span>{{ offer.creationTime }}</p>
         <p>
           <span class="bold">Owner: </span>
-          <Button
-            ><router-link :to="`/users/${offer.owner._id}`">{{ offer.owner.name }}</router-link></Button
+          <router-link :to="`/users/${offer.owner._id}`"
+            ><Button>{{ offer.owner.name }}</Button></router-link
           >
         </p>
         <p>
@@ -231,5 +231,8 @@ span.tag {
   .viewFooter {
     background-color: #465058;
   }
+}
+button:hover {
+  cursor: pointer;
 }
 </style>
