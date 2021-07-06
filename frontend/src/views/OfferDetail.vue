@@ -1,19 +1,15 @@
 <template>
   <div>
     <div>
-      <h1 v-if="offer">{{ offer.title }}</h1>
-      <h1 v-else>Loading Offer Page...</h1>
+      <h1>Offer</h1>
       <router-link to="/"> <span class="bold back">&#9747; </span> </router-link>
     </div>
-    <OfferCard :offerId="offer._id" :if="offer"></OfferCard>
-    <div v-if="offer.comments">
+    <div>
+      <OfferCard :offerId="offer._id" :if="offer"></OfferCard>
       <h2>Comments</h2>
       <div v-for="comment in offer.comments" v-bind:key="comment + '-label'">
-        <CommentCard :commentId="comment" v-if="comment"></CommentCard>
+        <CommentCard v-if="comment" :commentId="comment"></CommentCard>
       </div>
-    </div>
-    <div v-else>
-      <span>Loading Comments...</span>
     </div>
     <Counter></Counter>
   </div>
