@@ -36,7 +36,6 @@ router.get('/initialize', async (req, res) => {
     email: 'ginger@baker.com',
     age: 80,
     location: ['Leipzig', '04229'],
-    profilePhoto: '/img/avatar/user_avatar_ginger39.jpg',
   })
   await ginger.setPassword('test')
   await ginger.save()
