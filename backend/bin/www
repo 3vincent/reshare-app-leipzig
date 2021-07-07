@@ -23,7 +23,11 @@ app.set('port', port)
 
 var server = http.createServer(app)
 
+<<<<<<< HEAD
 // app.get('io').attach(server)
+=======
+app.get('io').attach(server)
+>>>>>>> 049a400 (Attach Websocket to backend server)
 
 /**
  * Listen on provided port, on all network interfaces.
