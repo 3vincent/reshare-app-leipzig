@@ -63,8 +63,13 @@ class Person {
   }
 
   async likeOffer(offer) {
-    this.likes.push(offer)
-    offer.likedBy.push(this)
+    if (this.likes.includes(offer._id) && offer.likedBy.includes(this._id)) {
+      this.likes = this.likes.filter(item => item.toString() !== offer._id.toString())
+      offer.likedBy = offer.likedBy.filter(item => item.toString() !== this._id.toString())
+    } else {
+      this.likes.push(offer)
+      offer.likedBy.push(this)
+    }
 
     await offer.save()
     await this.save()

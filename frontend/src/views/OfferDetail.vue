@@ -1,19 +1,16 @@
 <template>
   <div>
     <div>
-      <h1 v-if="offer">{{ offer.title }}</h1>
-      <h1 v-else>Loading Offer Page...</h1>
+      <h1>Offer</h1>
       <router-link to="/"> <span class="bold back">&#9747; </span> </router-link>
     </div>
-    <OfferCard :offerId="offer._id" :if="offer"></OfferCard>
-    <div v-if="offer.comments">
+    <div>
+      <OfferCard :offerId="offer._id" :if="offer"></OfferCard>
       <h2>Comments</h2>
       <div v-for="comment in offer.comments" v-bind:key="comment + '-label'">
-        <CommentCard :commentId="comment" v-if="comment"></CommentCard>
+        <CommentCard v-if="comment" :commentId="comment"></CommentCard>
       </div>
-    </div>
-    <div v-else>
-      <span>Loading Comments...</span>
+      <CommentPost></CommentPost>
     </div>
     <Counter></Counter>
   </div>
@@ -22,6 +19,7 @@
 <script>
 import OfferCard from '@/components/OfferCard.vue'
 import CommentCard from '@/components/CommentCard.vue'
+import CommentPost from '@/components/CommentPost.vue'
 import Counter from '@/components/Counter.vue'
 import { mapActions } from 'vuex'
 
@@ -30,6 +28,7 @@ export default {
   components: {
     OfferCard,
     CommentCard,
+    CommentPost,
     Counter,
   },
   data() {
@@ -47,9 +46,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bold {
-  font-weight: 600;
-}
 .back {
   position: absolute;
   left: 1rem;

@@ -71,9 +71,6 @@ export default {
 }
 
 // layout
-.bold {
-  font-weight: 600;
-}
 .container {
   margin-bottom: 2rem;
 }
@@ -99,6 +96,7 @@ export default {
   position: relative;
   background: rgb(212, 215, 228);
   border-radius: 1rem;
+  padding: 10px;
 }
 
 .speech-bubble:after {
