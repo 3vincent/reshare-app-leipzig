@@ -1,6 +1,5 @@
 <template>
   <div class="postComment">
-    <!-- <form id="contact_form" v-on:submit.prevent="submitComment" action=""> -->
     <form @submit="submitComment">
       <h3>Post Comment</h3>
       <label for="commentText">
@@ -36,6 +35,7 @@ export default {
           commentText: this.commentText,
         }
         await this.postComment(payload)
+        this.commentText = ''
         // this.$router.push('/login')
       } catch (e) {
         this.backendError = e.response.data.message
