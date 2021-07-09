@@ -65,18 +65,20 @@ router.post('/:offerId/comment', async (req, res) => {
 
   const classifyCommentLanguage = await checkCommentLanguage(commentText)
 
-  const comment = await sender.leaveComment(offer, commentText, classifyCommentLanguage)
+  await sender.leaveComment(offer, commentText, classifyCommentLanguage)
+  res.sendStatus(200)
 
-  res.send(comment)
+  // This was the Wrong concept, leaving it here to think about it
+  // const comment = await sender.leaveComment(offer, commentText, classifyCommentLanguage)
+  // res.send(comment)
 })
 
 router.post('/:offerId/like', async (req, res) => {
   const sender = req.user
   const offer = await Offer.findById(req.params.offerId)
 
-  const like = await sender.likeOffer(offer)
-
-  res.send(like)
+  await sender.likeOffer(offer)
+  res.sendStatus(200)
 })
 
 router.post('/:offerId/save', async (req, res) => {
