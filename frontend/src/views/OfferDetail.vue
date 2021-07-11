@@ -7,10 +7,10 @@
     <div>
       <OfferCard :offerId="offer._id" :if="offer"></OfferCard>
       <h2>Comments</h2>
-      <div v-for="comment in offer.comments" v-bind:key="comment + '-label'">
+      <CommentPost></CommentPost>
+      <div v-for="comment in offer.comments.slice().reverse()" v-bind:key="comment + '-label'">
         <CommentCard v-if="comment" :commentId="comment"></CommentCard>
       </div>
-      <CommentPost></CommentPost>
     </div>
     <Counter></Counter>
   </div>
