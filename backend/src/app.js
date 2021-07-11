@@ -7,6 +7,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const passport = require('passport')
 
+const helmet = require('helmet')
 const cors = require('cors')
 const Person = require('./models/person')
 
@@ -20,6 +21,8 @@ const commentsRouter = require('./routes/comments')
 const accountRouter = require('./routes/account')
 
 const app = express()
+
+app.use(helmet())
 
 app.use(
   cors({

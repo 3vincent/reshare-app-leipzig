@@ -60,6 +60,7 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
     "http-errors": "~1.6.3",
     "livereload": "^0.9.3",
     "mongoose": "^5.12.13",
