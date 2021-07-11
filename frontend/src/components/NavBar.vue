@@ -6,10 +6,9 @@
       <router-link v-if="!user" to="/login"><li>Login</li></router-link>
       <router-link v-if="!user" to="/register"><li>Register</li></router-link>
       <router-link to="/about"><li>About</li></router-link>
-      <a @click="doLogout" href="#"><li>Logout</li></a>
+      <a v-if="user" @click="doLogout" href="#"><li>Logout</li></a>
       <a :href="`${backendPath}/api/users/initialize`"><li>Init Test Data to DB</li></a>
     </ul>
-    <p>{{ backendPath }}</p>
   </div>
 </template>
 
