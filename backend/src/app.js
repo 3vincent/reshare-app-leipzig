@@ -9,6 +9,7 @@ const passport = require('passport')
 
 const helmet = require('helmet')
 const mongoSanitize = require('express-mongo-sanitize')
+const { errors } = require('celebrate')
 const cors = require('cors')
 const Person = require('./models/person')
 
@@ -96,6 +97,8 @@ app.use('/api/account', accountRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/offers', offersRouter)
 app.use('/api/comments', commentsRouter)
+
+app.use(errors())
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

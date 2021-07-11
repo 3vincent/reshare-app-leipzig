@@ -3,27 +3,39 @@ const express = require('express')
 
 const router = express.Router()
 
+const { celebrate, Joi, errors, Segments } = require('celebrate')
+
 const Person = require('../models/person')
 const Offer = require('../models/offer')
 const Comment = require('../models/comment')
 
-router.get('/', async (req, res) => {
-  const query = {}
+router.get(
+  '/',
+  celebrate({
+    [Segments.QUERY]: {
+      name: Joi.string(),
+      age: Joi.number(),
+      location: Joi.array().items(Joi.string()),
+    },
+  }),
+  async (req, res) => {
+    const query = {}
 
-  if (req.query.name) {
-    query.name = req.query.name
+    if (req.query.name) {
+      query.name = req.query.name
+    }
+
+    if (req.query.age) {
+      query.age = req.query.age
+    }
+
+    if (req.query.location) {
+      query.location = req.query.location
+    }
+
+    res.send(await Person.find(query))
   }
-
-  if (req.query.age) {
-    query.age = req.query.age
-  }
-
-  if (req.query.location) {
-    query.location = req.query.location
-  }
-
-  res.send(await Person.find(query))
-})
+)
 
 router.get('/initialize', async (req, res) => {
   await Person.deleteMany({})
