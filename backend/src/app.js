@@ -7,6 +7,9 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const passport = require('passport')
 
+const helmet = require('helmet')
+const mongoSanitize = require('express-mongo-sanitize')
+const { errors } = require('celebrate')
 const cors = require('cors')
 const Person = require('./models/person')
 
@@ -20,6 +23,8 @@ const commentsRouter = require('./routes/comments')
 const accountRouter = require('./routes/account')
 
 const app = express()
+
+app.use(helmet())
 
 app.use(
   cors({
@@ -49,6 +54,7 @@ app.set('io', socketService)
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(mongoSanitize({ replaceWith: '_' }))
 app.use(cookieParser())
 
 app.use(
@@ -91,6 +97,8 @@ app.use('/api/account', accountRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/offers', offersRouter)
 app.use('/api/comments', commentsRouter)
+
+app.use(errors())
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

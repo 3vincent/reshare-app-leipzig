@@ -3,25 +3,35 @@
     <ul>
       <router-link to="/"><li>Homepage</li></router-link>
       <router-link to="/profile"><li>Profile</li></router-link>
-      <router-link to="/login"><li>Login</li></router-link>
-      <router-link to="/register"><li>Register</li></router-link>
+      <router-link v-if="!user" to="/login"><li>Login</li></router-link>
+      <router-link v-if="!user" to="/register"><li>Register</li></router-link>
       <router-link to="/about"><li>About</li></router-link>
-      <a @click="doLogout" href="#"><li>Logout</li></a>
-      <a href="/api/users/initialize"><li>Init Test Data to DB</li></a>
+      <a v-if="user" @click="doLogout" href="#"><li>Logout</li></a>
+      <a :href="`${backendPath}/api/users/initialize`"><li>Init Test Data to DB</li></a>
     </ul>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
+  name: 'NavBar',
+  props: {},
+  data() {
+    return {
+      backendPath: process.env.VUE_APP_BASE_URL ? process.env.VUE_APP_BASE_URL : '',
+    }
+  },
   methods: {
     ...mapActions(['logout']),
     async doLogout() {
       await this.logout()
       this.$router.push('/login')
     },
+  },
+  computed: {
+    ...mapState(['user']),
   },
 }
 </script>

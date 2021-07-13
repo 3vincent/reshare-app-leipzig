@@ -8,6 +8,7 @@ Dockerfile.production
 dev.Dockerfile
 docker-compose.yml
 __tests__
-env_var_mongodb
+env-var-mongodb
+env-var-monkeylearn
 jest.config.js
 jest.setup.js

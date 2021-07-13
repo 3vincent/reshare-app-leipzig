@@ -4,6 +4,8 @@ const router = express.Router()
 
 const axios = require('axios')
 
+const { celebrate, Joi, errors, Segments } = require('celebrate')
+
 const Offer = require('../models/offer')
 
 const APITokenMonkey = process.env.MONKEYLEARNAPITOKEN
@@ -58,37 +60,66 @@ async function checkCommentLanguage(text) {
   )
 }
 
-router.post('/:offerId/comment', async (req, res) => {
-  const sender = req.user
-  const offer = await Offer.findById(req.params.offerId)
-  const commentText = req.body.comment
+router.post(
+  '/:offerId/comment',
+  celebrate({
+    [Segments.PARAMS]: {
+      offerId: Joi.string().required(),
+    },
+    [Segments.BODY]: {
+      comment: Joi.string().required(),
+    },
+  }),
+  async (req, res) => {
+    const sender = req.user
+    const offer = await Offer.findById(req.params.offerId)
+    const commentText = req.body.comment
+    let classifyCommentLanguage = 'false'
 
-  const classifyCommentLanguage = await checkCommentLanguage(commentText)
+    if (APITokenMonkey) {
+      classifyCommentLanguage = await checkCommentLanguage(commentText)
+    }
 
-  await sender.leaveComment(offer, commentText, classifyCommentLanguage)
-  res.sendStatus(200)
+    await sender.leaveComment(offer, commentText, classifyCommentLanguage)
+    res.sendStatus(200)
 
-  // This was the Wrong concept, leaving it here to think about it
-  // const comment = await sender.leaveComment(offer, commentText, classifyCommentLanguage)
-  // res.send(comment)
-})
+    // This was the Wrong concept, leaving it here to think about it
+    // const comment = await sender.leaveComment(offer, commentText, classifyCommentLanguage)
+    // res.send(comment)
+  }
+)
 
-router.post('/:offerId/like', async (req, res) => {
-  const sender = req.user
-  const offer = await Offer.findById(req.params.offerId)
+router.post(
+  '/:offerId/like',
+  celebrate({
+    [Segments.PARAMS]: {
+      offerId: Joi.string().required(),
+    },
+  }),
+  async (req, res) => {
+    const sender = req.user
+    const offer = await Offer.findById(req.params.offerId)
 
-  await sender.likeOffer(offer)
-  res.sendStatus(200)
-})
+    await sender.likeOffer(offer)
+    res.sendStatus(200)
+  }
+)
 
-router.post('/:offerId/save', async (req, res) => {
-  const sender = req.user
-  const offer = await Offer.findById(req.params.offerId)
+router.post(
+  '/:offerId/save',
+  celebrate({
+    [Segments.PARAMS]: {
+      offerId: Joi.string().required(),
+    },
+  }),
+  async (req, res) => {
+    const sender = req.user
+    const offer = await Offer.findById(req.params.offerId)
 
-  const save = await sender.saveOffer(offer)
-
-  res.send(save)
-})
+    await sender.saveOffer(offer)
+    res.sendStatus(200)
+  }
+)
 
 router.get('/:offerId', async (req, res) => {
   try {
