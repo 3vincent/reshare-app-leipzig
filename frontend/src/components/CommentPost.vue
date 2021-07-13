@@ -2,8 +2,8 @@
   <div class="postComment">
     <form @submit="submitComment">
       <h3>Post Comment</h3>
-      <label for="commentText">
-        <textarea v-model="commentText" id="commentText" type="text" placeholder="Your Comment" required="required" />
+      <label for="comment">
+        <textarea v-model="comment" id="comment" type="text" placeholder="Your Comment" required="required" />
       </label>
       <input type="submit" value="Send Comment" />
       <p>
@@ -21,7 +21,7 @@ export default {
   name: 'CommentPost',
   data() {
     return {
-      commentText: '',
+      comment: '',
       backendError: null,
     }
   },
@@ -36,7 +36,7 @@ export default {
           comment: this.comment,
         }
         await this.postComment(payload)
-        this.commentText = ''
+        this.comment = ''
         // this.$router.push('/login')
       } catch (e) {
         this.backendError = e.response.data.message
