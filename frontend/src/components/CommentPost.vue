@@ -31,8 +31,9 @@ export default {
       e.preventDefault()
       try {
         const payload = {
-          id: this.$route.params.id,
-          commentText: this.commentText,
+          sender: this.user,
+          offer: this.$route.params.id,
+          comment: this.comment,
         }
         await this.postComment(payload)
         this.commentText = ''
