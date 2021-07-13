@@ -80,16 +80,17 @@ class Person {
     await this.save()
   }
 
-  async leaveComment(offer, comment, classification) {
-    const newComment = await Comment.create({ offer, classification, comment, sender: this })
-    this.comments.push(newComment)
-    offer.comments.push(newComment)
+  // now in route handler directly
+  // async leaveComment(offer, comment, classification) {
+  //   const newComment = await Comment.create({ offer, classification, comment, sender: this })
+  //   this.comments.push(newComment)
+  //   offer.comments.push(newComment)
 
-    await offer.save()
-    await this.save()
+  //   await offer.save()
+  //   await this.save()
 
-    return newComment
-  }
+  //   return newComment
+  // }
 }
 
 personSchema.loadClass(Person)
