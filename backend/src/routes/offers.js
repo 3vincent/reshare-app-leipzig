@@ -75,6 +75,7 @@ router.post(
     // },
   }),
   async (req, res) => {
+    if (req.body.offer !== req.params.offerId) throw new Error('This comment does not belong to this offer!')
     const offer = await Offer.findById(req.body.offer)
     const comment = req.body.comment
     let classification = {
