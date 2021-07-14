@@ -89,11 +89,9 @@ router.post(
     }
 
     const newComment = await Comment.create({ offer, classification, comment, sender })
-    sender.comments.push(newComment)
     offer.comments.push(newComment)
 
     await offer.save()
-    await sender.save()
 
     // to user class-method, do:
     // await sender.leaveComment(offer, comment, classification)
