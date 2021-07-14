@@ -76,6 +76,7 @@ router.post(
   }),
   async (req, res) => {
     if (req.body.offer !== req.params.offerId) throw new Error('This comment does not belong to this offer!')
+
     const offer = await Offer.findById(req.body.offer)
     const comment = req.body.comment
     let classification = {
@@ -86,7 +87,12 @@ router.post(
     const sender = await Person.findById(req.body.sender)
 
     if (APITokenMonkey) {
-      classification = await checkCommentLanguage(comment)
+      fetchClassification = await checkCommentLanguage(comment)
+      classification = {
+        tag_name: fetchClassification.tag_name,
+        tag_id: fetchClassification.tag_id,
+        confidence: fetchClassification.confidence,
+      }
     }
 
     const newComment = await Comment.create({ offer, classification, comment, sender })
