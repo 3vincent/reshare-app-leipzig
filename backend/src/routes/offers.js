@@ -7,6 +7,8 @@ const axios = require('axios')
 const { celebrate, Joi, errors, Segments } = require('celebrate')
 
 const Offer = require('../models/offer')
+const Person = require('../models/person')
+const Comment = require('../models/comment')
 
 const APITokenMonkey = process.env.MONKEYLEARNAPITOKEN
 
@@ -52,7 +54,7 @@ async function checkCommentLanguage(text) {
   }).then(
     response => {
       console.log(response)
-      return response.data[0].classifications
+      return response.data[0].classifications[0]
     },
     error => {
       console.log(error)
@@ -66,26 +68,41 @@ router.post(
     [Segments.PARAMS]: {
       offerId: Joi.string().required(),
     },
-    [Segments.BODY]: {
-      comment: Joi.string().required(),
-    },
+    // [Segments.BODY]: {
+    //   comment: Joi.string().required(),
+    //   offer: Joi.string().required(),
+    //   sender: Joi.string().required(),
+    // },
   }),
   async (req, res) => {
-    const sender = req.user
-    const offer = await Offer.findById(req.params.offerId)
-    const commentText = req.body.comment
-    let classifyCommentLanguage = 'false'
+    if (req.body.offer !== req.params.offerId) throw new Error('This comment does not belong to this offer!')
+
+    const offer = await Offer.findById(req.body.offer)
+    const comment = req.body.comment
+    let classification = {
+      tag_name: 'neutral',
+      tag_id: 0,
+      confidence: 0,
+    }
+    const sender = await Person.findById(req.body.sender)
 
     if (APITokenMonkey) {
-      classifyCommentLanguage = await checkCommentLanguage(commentText)
+      fetchClassification = await checkCommentLanguage(comment)
+      classification = {
+        tag_name: fetchClassification.tag_name,
+        tag_id: fetchClassification.tag_id,
+        confidence: fetchClassification.confidence,
+      }
     }
 
-    await sender.leaveComment(offer, commentText, classifyCommentLanguage)
-    res.sendStatus(200)
+    const newComment = await Comment.create({ offer, classification, comment, sender })
+    offer.comments.push(newComment)
 
-    // This was the Wrong concept, leaving it here to think about it
-    // const comment = await sender.leaveComment(offer, commentText, classifyCommentLanguage)
-    // res.send(comment)
+    await offer.save()
+
+    // to user class-method, do:
+    // await sender.leaveComment(offer, comment, classification)
+    res.sendStatus(200)
   }
 )
 

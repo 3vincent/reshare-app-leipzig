@@ -4,7 +4,7 @@
       <div class="comment speech-bubble">
         <p>{{ comment.comment }}</p>
         <p class="small">
-          <span class="bold">The Language in this comment is: </span> {{ comment.classification[0].tag_name }}
+          <span class="bold">The Language in this comment is: </span> {{ comment.classification.tag_name }}
         </p>
         <p class="small bold">{{ comment.creationTime }}</p>
       </div>

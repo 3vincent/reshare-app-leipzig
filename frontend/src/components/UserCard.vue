@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>
-      <div class="userAvatar" :style="{ backgroundImage: 'url(' + user.profilePhoto + ')' }"></div>
+      <div class="userAvatarContainer">
+        <div class="userAvatar" :style="{ backgroundImage: 'url(' + user.profilePhoto + ')' }"></div>
+      </div>
       <h1>{{ user.givenName }}</h1>
       <p><span class="bold">Username: </span>{{ user.name }}</p>
       <p><span class="bold">Age: </span>{{ user.age }}</p>
@@ -44,13 +46,22 @@ export default {
 
 <style scoped lang="scss">
 .userAvatar {
-  margin: 0 auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 50%;
   width: 100px;
   height: 100px;
+  border-radius: 50%;
   box-shadow: 4px 2px 30px 3px rgb(150, 150, 150);
+}
+.userAvatarContainer {
+  margin: 0 auto;
+  border-radius: 50%;
+  padding: 7px;
+  // User Updates Marker-ig
+  // padding: 3px;
+  // border: 4px solid blue;
+  width: 100px;
+  height: 100px;
 }
 </style>

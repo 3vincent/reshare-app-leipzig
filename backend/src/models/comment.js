@@ -14,7 +14,9 @@ const commentSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  comment: String,
+  comment: {
+    type: String,
+  },
   classification: {
     type: Object,
   },
