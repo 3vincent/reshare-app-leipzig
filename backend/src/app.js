@@ -25,10 +25,12 @@ const accountRouter = require('./routes/account')
 const app = express()
 
 app.use(helmet())
+app.use(helmet.contentSecurityPolicy())
 
 app.use(
   cors({
-    origin: true,
+    // origin: true,
+    origin: 'https://frontend-eu5nphth4a-ew.a.run.app/',
     credentials: true,
   })
 )
