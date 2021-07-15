@@ -29,8 +29,7 @@ app.use(helmet.contentSecurityPolicy())
 
 app.use(
   cors({
-    // origin: true,
-    origin: '*', // wildcard for testing
+    origin: true,
     credentials: true,
   })
 )
