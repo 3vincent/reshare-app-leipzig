@@ -26,10 +26,19 @@ const app = express()
 
 app.use(helmet())
 app.use(helmet.contentSecurityPolicy())
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      'script-src': ["'self'", 'frontend-eu5nphth4a-ew.a.run.app'],
+      'style-src': null,
+    },
+  })
+)
 
 app.use(
   cors({
-    origin: true,
+    origin: app.get('env') == 'development' ? true : 'https://frontend-eu5nphth4a-ew.a.run.app',
     credentials: true,
   })
 )
