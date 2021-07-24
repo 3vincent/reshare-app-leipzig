@@ -3,11 +3,13 @@
     <ul>
       <router-link to="/"><li>Homepage</li></router-link>
       <router-link to="/profile"><li>Profile</li></router-link>
-      <router-link v-if="!user" to="/login"><li>Login</li></router-link>
-      <router-link v-if="!user" to="/register"><li>Register</li></router-link>
       <router-link to="/about"><li>About</li></router-link>
-      <a v-if="user" @click="doLogout" href="#"><li>Logout</li></a>
-      <a :href="`${backendPath}/api/users/initialize`"><li>Init Test Data to DB</li></a>
+      <a :href="`${backendPath}/api/users/initialize`"><li>👾 Init Test Data to DB👾</li></a>
+      <router-link v-if="!user" to="/register" class="loginLogoutRegisterButton registerButton"
+        ><li>Register</li></router-link
+      >
+      <router-link v-if="!user" to="/login" class="loginLogoutRegisterButton loginButton"><li>Login</li></router-link>
+      <a v-if="user" @click="doLogout" href="#" class="loginLogoutRegisterButton logoutButton"><li>Logout</li></a>
     </ul>
   </div>
 </template>
@@ -42,31 +44,55 @@ export default {
   position: sticky;
   top: 0;
   padding: 0;
+  margin-bottom: 2rem;
   z-index: 1000;
   ul {
-    padding: 14px 0;
+    padding: 0;
     margin: 0;
     list-style-type: none;
     display: table;
     a {
       text-decoration: none;
       font-weight: bold;
-      color: rgb(226, 188, 139);
-      &.router-link-exact-active {
-        color: #42b983;
+      color: #66727c;
+      &.router-link-exact-active > li {
+        border-bottom: 2px solid rgb(228, 148, 0);
       }
     }
-    li {
-      text-align: center;
-      display: inline-table;
+    .loginLogoutRegisterButton > li {
       padding: 0 20px;
       height: 40px;
+      background-color: transparent;
+      border: 1px solid rgb(52, 81, 114);
+      color: rgb(52, 81, 114);
+    }
+    .loginButton:hover > li {
+      background-color: rgba(13, 155, 20, 0.5);
+      color: #fff;
+      border: 1px solid transparent;
+    }
+    .registerButton:hover > li {
+      background-color: rgba(8, 25, 177, 0.5);
+      color: #fff;
+      border: 1px solid transparent;
+    }
+    .logoutButton:hover > li {
+      background-color: rgba(255, 0, 0, 0.5);
+      color: #fff;
+      border: 1px solid transparent;
+    }
+    li {
+      border: 1px solid transparent;
+      text-align: center;
+      display: inline-block;
+      box-sizing: border-box;
+      padding: 10px 15px;
+      height: 60px;
       line-height: 40px;
-      margin: 10px;
-      background-color: rgb(52, 81, 114);
+      margin: 0 10px;
     }
     li:hover {
-      background-color: rgb(107, 85, 37);
+      border-bottom: 2px solid orange;
     }
   }
 }

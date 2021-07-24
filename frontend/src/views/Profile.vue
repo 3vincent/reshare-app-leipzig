@@ -4,6 +4,9 @@
     <h1>Leipzig Sharing - Hello {{ user.givenName }}</h1>
     <h3>This is your user Profile:</h3>
     <UserCard :user="user" :if="user"></UserCard>
+    <div v-for="liked in user.likes" v-bind:key="liked + '-label'">
+      {{ liked }}
+    </div>
     <h3>Users on our Platform</h3>
     <div v-for="user in users" v-bind:key="user">
       <router-link :to="`/users/${user._id}`">{{ user.name }}</router-link>
