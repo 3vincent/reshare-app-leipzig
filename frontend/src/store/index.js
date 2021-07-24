@@ -87,9 +87,9 @@ const store = new Vuex.Store({
       return commentRequest.data
     },
     async postComment(store, payload) {
-      const { sender, offer, comment } = payload
+      const { offer, comment } = payload
       try {
-        await axios.post(`/api/offers/${offer}/comment`, { sender, offer, comment })
+        await axios.post(`/api/offers/${offer}/comment`, { offer, comment })
       } catch (e) {
         throw e
       }

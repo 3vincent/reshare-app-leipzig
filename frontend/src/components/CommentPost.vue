@@ -31,7 +31,6 @@ export default {
       e.preventDefault()
       try {
         const payload = {
-          sender: this.user,
           offer: this.$route.params.id,
           comment: this.comment,
         }

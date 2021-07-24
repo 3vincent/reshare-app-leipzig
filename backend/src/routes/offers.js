@@ -84,7 +84,7 @@ router.post(
       tag_id: 0,
       confidence: 0,
     }
-    const sender = await Person.findById(req.body.sender)
+    const sender = req.user
 
     if (APITokenMonkey) {
       fetchClassification = await checkCommentLanguage(comment)
