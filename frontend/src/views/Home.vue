@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <h1>LEIPZIG SHARE APP</h1>
+    <header>
+      <h1>RESHARE APP LEIPZIG</h1>
+    </header>
     <NavBar></NavBar>
     <div v-for="offer in offers" v-bind:key="offer._id + '-label'">
       <OfferCard :offerId="offer._id" v-if="offer"></OfferCard>
@@ -40,8 +42,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h1 {
-  font-size: 4rem;
-  text-align: left;
+header {
+  background-image: url('/img/backgrounds/header_hero.jpg');
+  background-size: cover;
+  padding: 4rem;
+
+  h1 {
+    display: block;
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+    padding: 0;
+  }
 }
 </style>
