@@ -17,7 +17,7 @@
             .join(' ')
         }}
       </p>
-      <div>
+      <div v-if="user.offers.length">
         <h2 class="bold">{{ user.givenName }}'s Offers</h2>
         <div v-for="offer in user.offers" v-bind:key="offer._id + '-label'">
           <OfferCard :offerId="offer._id" v-if="offer"></OfferCard>
