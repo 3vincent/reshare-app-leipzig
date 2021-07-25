@@ -1,4 +1,4 @@
-# example-project
+# reshare-app-leipzig
 
 This is a sample Project for Coyotiv School of Software Engineering
 
@@ -50,7 +50,7 @@ Open your browser at
     $ MONGODB_USERNAME=${yourDBUserName} \
     MONGODB_PASSWORD=${yourDBPassword} \
     MONGODB_DATABASE=${yourDatabaseName} \
-    DEBUG=example-project:* npm start
+    DEBUG=reshare-app-leipzig:* npm start
 
 Everthing in `${...}` you need to fill out yourself with the data of your actual db-server (i.e. mongodb.com).
 You can also put the variables into .profile as Global Env variables, it is not recommended though.

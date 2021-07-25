@@ -1,5 +1,5 @@
 {
-  "name": "example-project",
+  "name": "reshare-app-leipzig",
   "version": "0.1.0",
   "description": "A Coyotiv School Of Software Design example Project",
   "main": "./bin/www",
@@ -27,15 +27,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/3vincent/example-project.git"
+    "url": "git+https://github.com/3vincent/reshare-app-leipzig.git"
   },
   "keywords": [],
   "author": "Ben Sukstorf <bsukstorf@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/3vincent/example-project/issues"
+    "url": "https://github.com/3vincent/reshare-app-leipzig/issues"
   },
-  "homepage": "https://github.com/3vincent/example-project#readme",
+  "homepage": "https://github.com/3vincent/reshare-app-leipzig#readme",
   "devDependencies": {
     "connect-livereload": "^0.6.1",
     "eslint": "^7.27.0",

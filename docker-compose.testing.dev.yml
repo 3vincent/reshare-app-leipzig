@@ -9,7 +9,7 @@ services:
       - MONGODB_USERNAME
       - MONGODB_PASSWORD
       - MONGODB_DATABASE
-      - MONGODB_CONNECTION_STRING=mongodb://mongo/example-project
+      - MONGODB_CONNECTION_STRING=mongodb://mongo/reshare-app-leipzig
       - MONKEYLEARNAPITOKEN
     ports:
       - 3000:3000
