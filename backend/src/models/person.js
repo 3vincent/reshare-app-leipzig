@@ -15,6 +15,7 @@ const personSchema = new mongoose.Schema({
   },
   age: {
     type: Number,
+    default: null,
   },
   profilePhoto: {
     type: String,
