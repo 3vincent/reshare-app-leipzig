@@ -17,8 +17,8 @@
       like Telegram.
     </p>
     <p>
-      <span class="bold">Important:</span>This App is just a demo. Do not upload real content. Please use the demo users
-      to log in, or create your own demo user :)
+      <span class="bold">Important: </span>This App is just a demo. Do not upload real content. Please use the demo
+      users to log in or create your own demo user :)
     </p>
     <h2>'Thank you' notes go out to:</h2>
     <ul>
