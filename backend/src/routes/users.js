@@ -125,6 +125,17 @@ router.post(
   }
 )
 
+router.post('/deleteOffer', async (req, res) => {
+  const { offerId } = req.body
+  try {
+    await Offer.deleteOne({ _id: offerId })
+    res.sendStatus(200)
+  } catch (e) {
+    console.log(e)
+    res.sendStatus(400)
+  }
+})
+
 // This could be used to show users like website.com/users/ben
 // Together with the above route handler /:userID it could work with both, /users/ben and /users/someId34-092-3e3/json
 // But for now, I'll comment this part out
