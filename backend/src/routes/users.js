@@ -97,6 +97,34 @@ router.get('/:userId', async (req, res) => {
   }
 })
 
+router.post(
+  '/createOffer',
+  celebrate({
+    [Segments.BODY]: {
+      title: Joi.string().required(),
+      location: Joi.array().items(Joi.string()),
+      photos: Joi.array().items(Joi.string()),
+      status: Joi.string(),
+      category: Joi.string().required(),
+      description: Joi.string().required(),
+    },
+  }),
+  async (req, res, next) => {
+    const { title, location, photos, status, category, description } = req.body
+    const owner = req.user
+    const user = await Person.findById(owner)
+    try {
+      const newOffer = await Offer.create({ owner, title, location, photos, status, category, description })
+      user.offers.push(newOffer)
+      await user.save()
+      res.send(newOffer)
+    } catch (e) {
+      console.log(e)
+      next(e)
+    }
+  }
+)
+
 // This could be used to show users like website.com/users/ben
 // Together with the above route handler /:userID it could work with both, /users/ben and /users/someId34-092-3e3/json
 // But for now, I'll comment this part out
