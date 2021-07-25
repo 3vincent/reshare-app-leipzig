@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="user">
     <div>
       <h1>Profile</h1>
       <router-link to="/"> <span class="bold back">&#9747; </span> </router-link>
