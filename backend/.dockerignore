@@ -5,6 +5,7 @@ node_modules
 .prettierrc
 Dockerfile
 Dockerfile.production
+Dockerfile.backend-test
 dev.Dockerfile
 docker-compose.yml
 __tests__

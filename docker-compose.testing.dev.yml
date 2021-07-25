@@ -1,0 +1,22 @@
+version: "3"
+services:
+  backend:
+    image: backend
+    build:
+      context: backend
+      dockerfile: Dockerfile.backend-test
+    environment:
+      - MONGODB_USERNAME
+      - MONGODB_PASSWORD
+      - MONGODB_DATABASE
+      - MONGODB_CONNECTION_STRING=mongodb://mongo/example-project
+      - MONKEYLEARNAPITOKEN
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/__tests__:/app/__tests__
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
