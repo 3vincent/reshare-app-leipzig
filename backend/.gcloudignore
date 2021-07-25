@@ -4,6 +4,7 @@ node_modules
 .prettierignore
 .prettierrc
 dev.Dockerfile
+Dockerfile.backend-test
 docker-compose.yml
 __tests__
 env-var-mongodb

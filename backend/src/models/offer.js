@@ -15,7 +15,11 @@ const offerSchema = new mongoose.Schema({
   location: [],
   category: String,
   description: String,
-  photos: [],
+  photos: {
+    type: Array,
+    default: ['/img/offer-images/placeholder-view-vector.svg'],
+    // CC License Image, source: https://commons.wikimedia.org/wiki/File:Placeholder_view_vector.svg by https://commons.wikimedia.org/wiki/User:Flanoz
+  },
   creationTime: {
     type: Date,
     default: Date.now,
@@ -26,9 +30,12 @@ const offerSchema = new mongoose.Schema({
   },
   offerUUID: {
     type: String,
-    default: uuidv4, // will be replaced with a singleton soon
+    default: uuidv4, // mocks a unique offer ID
   },
-  status: String,
+  status: {
+    type: String,
+    default: 'open',
+  },
   likedBy: [
     {
       type: mongoose.Schema.Types.ObjectId,

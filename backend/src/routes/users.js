@@ -43,7 +43,7 @@ router.get('/initialize', async (req, res) => {
   await Comment.deleteMany({})
 
   const ginger = new Person({
-    name: 'ginger39',
+    name: 'baker39',
     givenName: 'Ginger Baker',
     email: 'ginger@baker.com',
     age: 80,
@@ -82,39 +82,6 @@ router.get('/initialize', async (req, res) => {
   }
 
   await ginger.createOffer(gingersOffer)
-  // await armagan.leaveComment(gingersOfferId, 'These are great!!')
-
-  // await ginger.likeOffer(gingersOffer)
-  // await armagan.likeOffer(gingersOffer)
-
-  // const gingersOffer2 = await Offer.create({
-  //   title: 'Wash dishes',
-  //   location: ['Leipzig', '04277'],
-  //   photos: ['/img/offer-images/wash-dishes.jpg'],
-  //   status: 'open',
-  //   category: 'Services',
-  //   description: 'My job is to do the dishes. I can help you clean if you need help 😉😉',
-  // })
-  // await ginger.createOffer(gingersOffer2)
-  // await armagan.likeOffer(gingersOffer2)
-  // await ginger.leaveComment(gingersOffer2, 'Awesome!!! 🙂')
-  // setTimeout(async () => {
-  //   await armagan.leaveComment(gingersOffer2, 'very nice')
-  // }, 5000)
-
-  // const armaganOffer = await Offer.create({
-  //   title: 'Dish Washer',
-  //   location: ['Berlin', '11234'],
-  //   photos: ['/img/offer-images/dish-washer.jpg'],
-  //   status: 'open',
-  //   category: 'Electrical Devices',
-  //   description: 'It is like new. Give it as-is.',
-  // })
-  // await armagan.createOffer(armaganOffer)
-  // await ginger.likeOffer(armaganOffer)
-  // await ginger.leaveComment(armaganOffer, 'This is a good dish washer')
-  // await ginger.leaveComment(armaganOffer, 'Stil there?')
-  // await armagan.leaveComment(armaganOffer, 'bump')
 
   res.sendStatus(200)
 })
@@ -127,6 +94,45 @@ router.get('/:userId', async (req, res) => {
   } catch (err) {
     console.log(err)
     res.sendStatus(500)
+  }
+})
+
+router.post(
+  '/createOffer',
+  celebrate({
+    [Segments.BODY]: {
+      title: Joi.string().required(),
+      location: Joi.array().items(Joi.string()),
+      photos: Joi.array().items(Joi.string()),
+      status: Joi.string(),
+      category: Joi.string().required(),
+      description: Joi.string().required(),
+    },
+  }),
+  async (req, res, next) => {
+    const { title, location, photos, status, category, description } = req.body
+    const owner = req.user
+    const user = await Person.findById(owner)
+    try {
+      const newOffer = await Offer.create({ owner, title, location, photos, status, category, description })
+      user.offers.push(newOffer)
+      await user.save()
+      res.send(newOffer)
+    } catch (e) {
+      console.log(e)
+      next(e)
+    }
+  }
+)
+
+router.post('/deleteOffer', async (req, res) => {
+  const { offerId } = req.body
+  try {
+    await Offer.deleteOne({ _id: offerId })
+    res.sendStatus(200)
+  } catch (e) {
+    console.log(e)
+    res.sendStatus(400)
   }
 })
 

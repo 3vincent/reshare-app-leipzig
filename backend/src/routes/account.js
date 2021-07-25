@@ -16,7 +16,7 @@ router.post(
     [Segments.BODY]: {
       name: Joi.string().required(),
       givenName: Joi.string(),
-      age: Joi.number().required(),
+      age: Joi.number(),
       email: Joi.string().email().required(),
       location: Joi.array().items(Joi.string()).required(),
       profilePhoto: Joi.string(),

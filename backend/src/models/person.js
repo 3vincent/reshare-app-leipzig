@@ -3,7 +3,6 @@ const autopopulate = require('mongoose-autopopulate')
 const passportLocalMongoose = require('passport-local-mongoose')
 
 const Offer = require('./offer')
-const Comment = require('./comment')
 
 const personSchema = new mongoose.Schema({
   name: {
@@ -16,6 +15,7 @@ const personSchema = new mongoose.Schema({
   },
   age: {
     type: Number,
+    default: null,
   },
   profilePhoto: {
     type: String,
@@ -73,18 +73,6 @@ class Person {
     this.saved.push(offer)
     await this.save()
   }
-
-  // now in route handler directly
-  // async leaveComment(offer, comment, classification) {
-  //   const newComment = await Comment.create({ offer, classification, comment, sender: this })
-  //   this.comments.push(newComment)
-  //   offer.comments.push(newComment)
-
-  //   await offer.save()
-  //   await this.save()
-
-  //   return newComment
-  // }
 }
 
 personSchema.loadClass(Person)
