@@ -10,7 +10,7 @@
     </p>
     <p>
       This project is open Source! It is published under the MIT License. View the complete source code in my
-      <a href="https://www.github.com/3vincent" target="_blank">github profile</a>.
+      <a href="https://github.com/3vincent/reshare-app-leipzig" target="_blank">github profile</a>.
     </p>
     <p>
       The purpose of this App is to free 'sharing is caring'-groups out of social media sites like facebook or networks
