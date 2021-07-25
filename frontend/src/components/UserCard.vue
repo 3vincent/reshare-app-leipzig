@@ -6,7 +6,7 @@
       </div>
       <h1>{{ user.givenName }}</h1>
       <p><span class="bold">Username: </span>{{ user.name }}</p>
-      <p><span class="bold">Age: </span>{{ user.age }}</p>
+      <p v-if="user.age != null"><span class="bold">Age: </span>{{ user.age }}</p>
       <p>
         <span class="bold">Location: </span
         >{{
