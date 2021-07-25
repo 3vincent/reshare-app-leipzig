@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>
+  <div class="container">
+    <div class="userProfileContainer">
       <div class="userAvatarContainer">
         <div class="userAvatar" :style="{ backgroundImage: 'url(' + user.profilePhoto + ')' }"></div>
       </div>
@@ -19,7 +19,7 @@
       </p>
       <div v-if="user.offers.length">
         <h2 class="bold">{{ user.givenName }}'s Offers</h2>
-        <div v-for="offer in user.offers" v-bind:key="offer._id + '-label'">
+        <div v-for="offer in user.offers.slice().reverse()" v-bind:key="offer._id + '-label'">
           <OfferCard :offerId="offer._id" v-if="offer"></OfferCard>
         </div>
       </div>
