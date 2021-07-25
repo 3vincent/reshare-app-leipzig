@@ -1,11 +1,12 @@
 <template>
   <div class="home">
     <NavBar></NavBar>
-    <h1>Leipzig Sharing - Hello {{ user.givenName }}</h1>
+    <h1 v-if="user.givenName">Leipzig Share App - Hello {{ user.givenName }}</h1>
+    <h1 v-else>Leipzig Share App - Hello {{ user.name }}</h1>
     <h3>This is your user Profile:</h3>
     <UserCard :user="user" :if="user"></UserCard>
     <div v-for="liked in user.likes" v-bind:key="liked + '-label'">
-      {{ liked }}
+      <p>Offers I liked: {{ liked }}</p>
     </div>
     <h3>Users on our Platform</h3>
     <div v-for="user in users" v-bind:key="user">
