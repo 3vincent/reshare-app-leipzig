@@ -198,6 +198,7 @@ export default {
   }
   .viewFooter {
     background-color: #7f909e;
+    box-shadow: inset 0px 1px 6px 0px rgb(80, 80, 80);
     border-bottom-left-radius: 0.9rem;
     border-bottom-right-radius: 0.9rem;
     margin: 0;
