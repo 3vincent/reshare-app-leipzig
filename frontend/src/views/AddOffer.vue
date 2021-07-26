@@ -56,8 +56,10 @@
         </div>
       </form>
     </div>
-    <div v-if="backendError">{{ backendError }}</div>
-    <div>Something went wront creating your new offer</div>
+    <div v-if="backendError">
+      <p>Something went wront creating your new offer</p>
+      <p>{{ backendError }}</p>
+    </div>
   </div>
 </template>
 
