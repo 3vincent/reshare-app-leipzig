@@ -20,7 +20,7 @@ import OfferCard from '@/components/OfferCard.vue'
 import NavBar from '@/components/NavBar.vue'
 import Counter from '@/components/Counter.vue'
 import AddOfferButton from '@/components/AddOfferButton.vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Home',
@@ -42,6 +42,9 @@ export default {
   },
   methods: {
     ...mapActions(['fetchOffers', 'fetchUsers']),
+  },
+  computed: {
+    ...mapState(['user']),
   },
 }
 </script>
