@@ -45,7 +45,7 @@ export default {
   top: 0;
   padding: 0;
   margin-bottom: 0;
-  z-index: 1000;
+  z-index: 500;
   ul {
     padding: 0;
     margin: 0;

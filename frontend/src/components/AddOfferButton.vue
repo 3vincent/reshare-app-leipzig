@@ -18,6 +18,7 @@ export default {
 <style lang="scss" scoped>
 .fixedContainer {
   position: fixed;
+  z-index: 1000;
   width: 100%;
   bottom: 0;
   display: block;
