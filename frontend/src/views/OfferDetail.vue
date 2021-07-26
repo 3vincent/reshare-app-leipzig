@@ -2,7 +2,7 @@
   <div>
     <div>
       <h1>Offer</h1>
-      <router-link to="/"> <span class="bold back">&#9747; </span> </router-link>
+      <router-link to="/"> <span class="bold backButton">&#9747; </span> </router-link>
     </div>
     <div>
       <OfferCard :offerId="offer._id" :if="offer"></OfferCard>
@@ -45,21 +45,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.back {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  font-size: 2.3rem;
-  line-height: 3rem;
-  height: 3rem;
-  width: 3rem;
-  border-radius: 5%;
-  border: 1px solid lightslategray;
-  background-color: #ffffff;
-}
-a:link,
-a:visited {
-  color: #000;
-}
-</style>
+<style lang="scss" scoped></style>
