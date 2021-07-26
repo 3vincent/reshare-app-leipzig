@@ -46,7 +46,7 @@
               v-model="description"
               id="description"
               type="text"
-              placeholder="Descripe your offer"
+              placeholder="Describe your offer"
               required="required"
             />
           </label>
