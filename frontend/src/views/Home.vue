@@ -4,7 +4,9 @@
       <h1>RESHARE APP LEIPZIG</h1>
     </header>
     <NavBar></NavBar>
-    <AddOfferButton></AddOfferButton>
+    <div v-if="user">
+      <AddOfferButton></AddOfferButton>
+    </div>
     <div v-for="offer in offers.slice().reverse()" v-bind:key="offer._id + '-label'">
       <OfferCard :offerId="offer._id" v-if="offer"></OfferCard>
     </div>

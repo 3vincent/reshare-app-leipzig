@@ -69,6 +69,11 @@ export default function init(store) {
           return next()
         },
       },
+      {
+        path: '/addOffer',
+        name: 'AddOffer',
+        component: () => import(/* webpackChunkName: "AddOffer" */ '../views/AddOffer.vue'),
+      },
     ],
   })
 }
