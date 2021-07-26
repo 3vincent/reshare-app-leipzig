@@ -54,7 +54,6 @@ export default {
     a {
       text-decoration: none;
       font-weight: bold;
-      // color: #25383c;
       color: #3d3c3a;
       &.router-link-exact-active > li {
         border-bottom: 2px solid rgb(228, 148, 0);

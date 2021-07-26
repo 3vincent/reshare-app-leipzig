@@ -79,11 +79,11 @@ li {
 }
 a:link,
 a:visited {
-  color: #00a86b;
+  color: #4fa477;
   text-decoration: none;
   border-bottom: 1px solid grey;
   &:hover {
-    border-bottom: 1px solid #ef820d;
+    border-bottom: 1px solid #a4774f;
   }
 }
 </style>

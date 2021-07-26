@@ -52,7 +52,7 @@ header {
     font-size: 4.5rem;
     line-height: 4.5rem;
     text-align: left;
-    color: rgba(0, 0, 0, 0.8);
+    color: #a4774fce;
     margin: 0;
     padding: 0;
   }

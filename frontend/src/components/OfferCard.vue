@@ -66,9 +66,9 @@ export default {
   data() {
     return {
       offer: null,
-      offerAvailableColor: '#337B24',
-      offerReservedColor: '#F99D41',
-      offerExpiredColor: 'red',
+      offerAvailableColor: '#7CA44F',
+      offerReservedColor: '#A49B4F',
+      offerExpiredColor: '#A4524F',
     }
   },
   async created() {
@@ -197,7 +197,7 @@ export default {
     }
   }
   .viewFooter {
-    background-color: #7f909e;
+    background-color: #4f7ca4;
     box-shadow: inset 0px 1px 6px 0px rgb(80, 80, 80);
     border-bottom-left-radius: 0.9rem;
     border-bottom-right-radius: 0.9rem;
@@ -227,9 +227,9 @@ span.tag {
   border-radius: 3px;
 }
 .box:hover {
-  border: 1px solid #e4b20d;
+  border: 1px solid #a4774f;
   .viewFooter {
-    background-color: #465058;
+    background-color: #283e52;
   }
 }
 button:hover {
