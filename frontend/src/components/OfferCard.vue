@@ -198,7 +198,7 @@ export default {
   }
   .viewFooter {
     background-color: #4f7ca4;
-    box-shadow: inset 0px 1px 6px 0px rgb(80, 80, 80);
+    box-shadow: inset 0px 4px 6px 0px #505050;
     border-bottom-left-radius: 0.9rem;
     border-bottom-right-radius: 0.9rem;
     margin: 0;
@@ -230,6 +230,7 @@ span.tag {
   border: 1px solid #a4774f;
   .viewFooter {
     background-color: #283e52;
+    box-shadow: 0;
   }
 }
 button:hover {
