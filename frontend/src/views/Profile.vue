@@ -5,7 +5,7 @@
     <h1 v-else>Leipzig Share App - Hello {{ user.name }}</h1>
     <h3>This is your user Profile:</h3>
     <UserCard :user="user" :if="user"></UserCard>
-    <div v-for="liked in user.likes" v-bind:key="liked + '-label'">
+    <div v-for="liked in user.likes" v-bind:key="liked">
       <p>Offers I liked: {{ liked }}</p>
     </div>
     <h3>Users on our Platform</h3>
@@ -39,13 +39,11 @@
 <script>
 import NavBar from '@/components/NavBar.vue'
 import UserCard from '@/components/UserCard.vue'
-// import Counter from '@/components/Counter.vue'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Profile',
   components: {
-    // Counter,
     NavBar,
     UserCard,
   },
