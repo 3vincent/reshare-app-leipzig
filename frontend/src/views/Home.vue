@@ -4,6 +4,7 @@
       <h1>RESHARE APP LEIPZIG</h1>
     </header>
     <NavBar></NavBar>
+    <AddOfferButton></AddOfferButton>
     <div v-for="offer in offers.slice().reverse()" v-bind:key="offer._id + '-label'">
       <OfferCard :offerId="offer._id" v-if="offer"></OfferCard>
     </div>
@@ -16,6 +17,7 @@
 import OfferCard from '@/components/OfferCard.vue'
 import NavBar from '@/components/NavBar.vue'
 import Counter from '@/components/Counter.vue'
+import AddOfferButton from '@/components/AddOfferButton.vue'
 import { mapActions } from 'vuex'
 
 export default {
@@ -24,6 +26,7 @@ export default {
     OfferCard,
     NavBar,
     Counter,
+    AddOfferButton,
   },
   data() {
     return {

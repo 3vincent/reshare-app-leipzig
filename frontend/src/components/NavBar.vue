@@ -44,7 +44,7 @@ export default {
   position: sticky;
   top: 0;
   padding: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   z-index: 1000;
   ul {
     padding: 0;
