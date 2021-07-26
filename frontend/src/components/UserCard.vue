@@ -45,15 +45,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.userAvatar {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 4px 2px 30px 3px rgb(150, 150, 150);
-}
 .userAvatarContainer {
   margin: 0 auto;
   border-radius: 50%;
@@ -63,5 +54,14 @@ export default {
   // border: 4px solid blue;
   width: 100px;
   height: 100px;
+}
+.userAvatar {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 4px 2px 30px 3px rgb(150, 150, 150);
 }
 </style>
