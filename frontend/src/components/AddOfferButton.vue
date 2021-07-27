@@ -33,25 +33,26 @@ export default {
   border: 4px solid #4f7ca4;
   // alternative to border, from here https://stackoverflow.com/a/51496341
   // background: linear-gradient(140deg, red, yellow, green), linear-gradient(to right, #9c20aa, #fb3570);
-  width: 100px;
-  height: 100px;
-  margin-bottom: -60px;
-  transition: margin-bottom 0.3s ease 50ms, transform 0.5s ease 0ms;
+  width: 6rem;
+  height: 6rem;
+  margin-bottom: -4rem;
+  transition: margin-bottom 0.5s ease 50ms, transform 0.5s ease 0ms, margin 0.5s ease 0ms;
   &:hover {
-    margin-bottom: 0px;
-    transition: margin-bottom 0.3s ease 50ms, transform 0.5s ease 0ms;
+    margin-bottom: 0rem;
+    transition: margin-bottom 0.5s ease 50ms, transform 0.5s ease 0ms, margin 0.5s ease 0ms;
     transform: rotate(90deg);
     border: 4px solid #7ca44f;
+    padding: 6px;
   }
 }
 .addSign {
   position: relative;
   margin: 0 auto;
-  margin-top: 5px;
   background-color: #4f7ca4;
-  width: 90px;
-  height: 90px;
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
+  padding: 0;
 }
 
 // CSS Plus sign gratefully copied from here https://stackoverflow.com/questions/41051094/making-a-plus-sign-with-css
