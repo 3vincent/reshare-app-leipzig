@@ -41,6 +41,7 @@ export default {
 <style scoped lang="scss">
 #nav {
   background-color: #ffffff;
+  border-bottom: 1px solid #ecebeb;
   position: sticky;
   top: 0;
   padding: 0;
