@@ -40,7 +40,7 @@ export default {
   &:hover {
     margin-bottom: 0px;
     transition: margin-bottom 0.3s ease 50ms, transform 0.5s ease 0ms;
-    transform: rotate(180deg);
+    transform: rotate(90deg);
     border: 4px solid #7ca44f;
   }
 }
