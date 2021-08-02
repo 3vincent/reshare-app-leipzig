@@ -31,4 +31,19 @@ export default {
 .bold {
   font-weight: 600;
 }
+.backButton {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-size: 2.3rem;
+  line-height: 3rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 5%;
+  border: 1px solid lightslategray;
+  background-color: #ffffff;
+  & {
+    color: #000;
+  }
+}
 </style>

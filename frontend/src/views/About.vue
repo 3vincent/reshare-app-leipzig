@@ -10,15 +10,15 @@
     </p>
     <p>
       This project is open Source! It is published under the MIT License. View the complete source code in my
-      <a href="https://www.github.com/3vincent" target="_blank">github profile</a>.
+      <a href="https://github.com/3vincent/reshare-app-leipzig" target="_blank">github profile</a>.
     </p>
     <p>
       The purpose of this App is to free 'sharing is caring'-groups out of social media sites like facebook or networks
       like Telegram.
     </p>
     <p>
-      <span class="bold">Important:</span>This App is just a demo. Do not upload real content. Please use the demo users
-      to log in, or create your own demo user :)
+      <span class="bold">Important: </span>This App is just a demo. Do not upload real content. Please use the demo
+      users to log in or create your own demo user :)
     </p>
     <h2>'Thank you' notes go out to:</h2>
     <ul>
@@ -33,6 +33,17 @@
             by
             <a href="https://commons.wikimedia.org/wiki/User:Flanoz" target="_blank"
               >https://commons.wikimedia.org/wiki/User:Flanoz</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <span class="bold">List Views Header Image </span>
+        <ul>
+          <li>
+            unsplash, Steven Kamenar @skamenar:
+            <a href="https://unsplash.com/photos/MMJx78V7xS8" target="_blank"
+              >https://unsplash.com/photos/MMJx78V7xS8</a
             >
           </li>
         </ul>
@@ -68,11 +79,11 @@ li {
 }
 a:link,
 a:visited {
-  color: #00a86b;
+  color: #4fa477;
   text-decoration: none;
   border-bottom: 1px solid grey;
   &:hover {
-    border-bottom: 1px solid #ef820d;
+    border-bottom: 1px solid #a4774f;
   }
 }
 </style>

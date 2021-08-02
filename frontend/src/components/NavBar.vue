@@ -41,11 +41,12 @@ export default {
 <style scoped lang="scss">
 #nav {
   background-color: #ffffff;
+  border-bottom: 1px solid #ecebeb;
   position: sticky;
   top: 0;
   padding: 0;
-  margin-bottom: 2rem;
-  z-index: 1000;
+  margin-bottom: 0;
+  z-index: 500;
   ul {
     padding: 0;
     margin: 0;
@@ -54,7 +55,6 @@ export default {
     a {
       text-decoration: none;
       font-weight: bold;
-      // color: #25383c;
       color: #3d3c3a;
       &.router-link-exact-active > li {
         border-bottom: 2px solid rgb(228, 148, 0);

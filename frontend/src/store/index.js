@@ -65,6 +65,14 @@ const store = new Vuex.Store({
       const offersRequest = await axios.get('/api/offers')
       return offersRequest.data
     },
+    async postOffer(store, payload) {
+      const { title, category, location, description } = payload
+      try {
+        await axios.post(`/api/users/createOffer`, { title, category, location, description })
+      } catch (e) {
+        throw e
+      }
+    },
     async likeOffer(store, id) {
       try {
         await axios.post(`/api/offers/${id}/like`)

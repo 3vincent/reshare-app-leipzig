@@ -1,4 +1,4 @@
-// Stolen from Stackoverflow
+// Gratefully copied from Stackoverflow
 // https://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid
 //
 module.exports = function uuidv4() {

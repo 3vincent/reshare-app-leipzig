@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>
+  <div class="container">
+    <div class="userProfileContainer">
       <div class="userAvatarContainer">
         <div class="userAvatar" :style="{ backgroundImage: 'url(' + user.profilePhoto + ')' }"></div>
       </div>
@@ -19,7 +19,7 @@
       </p>
       <div v-if="user.offers.length">
         <h2 class="bold">{{ user.givenName }}'s Offers</h2>
-        <div v-for="offer in user.offers" v-bind:key="offer._id + '-label'">
+        <div v-for="offer in user.offers.slice().reverse()" v-bind:key="offer._id + '-label'">
           <OfferCard :offerId="offer._id" v-if="offer"></OfferCard>
         </div>
       </div>
@@ -45,15 +45,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.userAvatar {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 4px 2px 30px 3px rgb(150, 150, 150);
-}
 .userAvatarContainer {
   margin: 0 auto;
   border-radius: 50%;
@@ -63,5 +54,14 @@ export default {
   // border: 4px solid blue;
   width: 100px;
   height: 100px;
+}
+.userAvatar {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 4px 2px 30px 3px rgb(150, 150, 150);
 }
 </style>

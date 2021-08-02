@@ -1,15 +1,13 @@
 <template>
   <div class="home">
-    <h1>LEIPZIG SHARE APP</h1>
+    <header>
+      <h1>RESHARE APP LEIPZIG</h1>
+    </header>
     <NavBar></NavBar>
-
-    <!-- User List Preview -->
-    <div v-for="user in users" :key="user.name + '-label'">
-      User: <router-link :to="`/users/${user._id}`">{{ user.name }}</router-link
-      >, {{ user.age }} years old. {{ user.givenName }} lives in {{ user.location[1] }} {{ user.location[0] }}
+    <div v-if="user">
+      <AddOfferButton></AddOfferButton>
     </div>
-
-    <div v-for="offer in offers" v-bind:key="offer._id + '-label'">
+    <div v-for="offer in offers.slice().reverse()" v-bind:key="offer._id + '-label'">
       <OfferCard :offerId="offer._id" v-if="offer"></OfferCard>
     </div>
     <Counter></Counter>
@@ -21,7 +19,8 @@
 import OfferCard from '@/components/OfferCard.vue'
 import NavBar from '@/components/NavBar.vue'
 import Counter from '@/components/Counter.vue'
-import { mapActions } from 'vuex'
+import AddOfferButton from '@/components/AddOfferButton.vue'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Home',
@@ -29,6 +28,7 @@ export default {
     OfferCard,
     NavBar,
     Counter,
+    AddOfferButton,
   },
   data() {
     return {
@@ -43,12 +43,26 @@ export default {
   methods: {
     ...mapActions(['fetchOffers', 'fetchUsers']),
   },
+  computed: {
+    ...mapState(['user']),
+  },
 }
 </script>
 
 <style scoped lang="scss">
-h1 {
-  font-size: 4rem;
-  text-align: left;
+header {
+  background-image: url('/img/backgrounds/header_hero.jpg');
+  background-size: cover;
+  padding: 4rem;
+
+  h1 {
+    display: block;
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    text-align: left;
+    color: #a4774fce;
+    margin: 0;
+    padding: 0;
+  }
 }
 </style>
