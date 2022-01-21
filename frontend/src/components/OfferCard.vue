@@ -111,7 +111,7 @@ export default {
   margin: 12px;
   display: grid;
   grid-template-columns: calc(120px + 2rem) 1.3fr 1.3fr;
-  grid-template-rows: 0.25fr 0.25fr 0.5fr 60px;
+  grid-template-rows: 60px 40px 1fr 60px;
   gap: 0rem 0rem;
   grid-auto-flow: row;
   grid-template-areas:
