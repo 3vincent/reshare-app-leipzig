@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "moment": "^2.29.3",
     "register-service-worker": "^1.7.1",
     "socket.io-client": "^4.1.2",
     "vue": "^2.6.11",
