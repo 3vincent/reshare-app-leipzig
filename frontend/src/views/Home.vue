@@ -53,16 +53,22 @@ export default {
 header {
   background-image: url('/img/backgrounds/header_hero.jpg');
   background-size: cover;
-  padding: 4rem;
-
+  height: 30vh;
+  max-height: 250px;
   h1 {
     display: block;
     font-size: 4.5rem;
     line-height: 4.5rem;
+    padding: 4rem;
+    margin: 0 auto;
     text-align: left;
     color: #a4774fce;
-    margin: 0;
-    padding: 0;
+  }
+  @media (max-width: 700px) {
+    h1 {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
   }
 }
 </style>

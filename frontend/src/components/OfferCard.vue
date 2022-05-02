@@ -29,7 +29,8 @@
               .join(' ')
           }}
         </p>
-        <p><span class="bold">Creation Time: </span>{{ offer.creationTime }}</p>
+        <p><span class="bold">Creation Time: </span>{{ timestamp }}</p>
+
         <p>
           <span class="bold">Owner: </span>
           <router-link :to="`/users/${offer.owner._id}`"
@@ -56,6 +57,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import { mapActions } from 'vuex'
 
 export default {
@@ -101,6 +103,9 @@ export default {
           '--availability-status-color': this.offerExpiredColor,
         }
       }
+    },
+    timestamp: function () {
+      return `${moment(this.offer.creationTime).format('YYYY-MM-DD, HH:mm')}h`
     },
   },
 }
