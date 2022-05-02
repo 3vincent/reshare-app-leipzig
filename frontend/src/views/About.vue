@@ -1,62 +1,65 @@
 <template>
   <div class="about">
     <NavBar></NavBar>
-    <h1>About Leipzig Share App</h1>
-    <p>
-      This App is made as an <span class="bold">Exmaple Project</span> while attending
-      <a href="https://www.coyotiv.com/school-of-software-engineering/" target="_blank"
-        >Coyotiv School Of Software Engineering</a
-      >.
-    </p>
-    <p>
-      This project is open Source! It is published under the MIT License. View the complete source code in my
-      <a href="https://github.com/3vincent/reshare-app-leipzig" target="_blank">github profile</a>.
-    </p>
-    <p>
-      The purpose of this App is to free 'sharing is caring'-groups out of social media sites like facebook or networks
-      like Telegram.
-    </p>
-    <p>
-      <span class="bold">Important: </span>This App is just a demo. Do not upload real content. Please use the demo
-      users to log in or create your own demo user :)
-    </p>
-    <h2>'Thank you' notes go out to:</h2>
-    <ul>
-      <li>
-        <span class="bold">Default Image for Offer List Views: </span>
-        <ul>
-          <li>
-            CC License Image, source:
-            <a href="https://commons.wikimedia.org/wiki/File:Placeholder_view_vector.svg" target="_blank"
-              >https://commons.wikimedia.org/wiki/File:Placeholder_view_vector.svg</a
-            >
-            by
-            <a href="https://commons.wikimedia.org/wiki/User:Flanoz" target="_blank"
-              >https://commons.wikimedia.org/wiki/User:Flanoz</a
-            >
-          </li>
-        </ul>
-      </li>
-      <li>
-        <span class="bold">List Views Header Image </span>
-        <ul>
-          <li>
-            unsplash, Steven Kamenar @skamenar:
-            <a href="https://unsplash.com/photos/MMJx78V7xS8" target="_blank"
-              >https://unsplash.com/photos/MMJx78V7xS8</a
-            >
-          </li>
-        </ul>
-      </li>
-      <li>
-        <span class="bold">Sentiment Text Analysis by Monkeylearn: </span>
-        <ul>
-          <li>
-            <a href="https://app.monkeylearn.com/" target="_blank">https://app.monkeylearn.com/</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <div class="container">
+      <h1>About Leipzig Share App</h1>
+      <p>
+        This App is made as an <span class="bold">Example Project</span> while attending
+        <a href="https://www.coyotiv.com/school-of-software-engineering/" target="_blank"
+          >Coyotiv School Of Software Engineering</a
+        >.
+      </p>
+      <p>
+        This project is open Source! It is published under the MIT License. View the complete source code in my
+        <a href="https://github.com/3vincent/reshare-app-leipzig" target="_blank">github profile</a>.
+      </p>
+      <p>
+        The purpose of this App is to free 'sharing is caring'-groups out of social media sites like facebook or
+        networks like Telegram.
+      </p>
+      <p>
+        <span class="bold">Important: </span>This App is just a demo. Do not upload real content. Please use the demo
+        users to log in or create your own demo user :)
+      </p>
+      <p>This demo only works correctly in Google Chrome :(</p>
+      <h2>'Thank you' notes go out to:</h2>
+      <ul>
+        <li>
+          <span class="bold">Default Image for Offer List Views: </span>
+          <ul>
+            <li>
+              CC License Image, source:
+              <a href="https://commons.wikimedia.org/wiki/File:Placeholder_view_vector.svg" target="_blank"
+                >https://commons.wikimedia.org/wiki/File:Placeholder_view_vector.svg</a
+              >
+              by
+              <a href="https://commons.wikimedia.org/wiki/User:Flanoz" target="_blank"
+                >https://commons.wikimedia.org/wiki/User:Flanoz</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="bold">List Views Header Image </span>
+          <ul>
+            <li>
+              unsplash, Steven Kamenar @skamenar:
+              <a href="https://unsplash.com/photos/MMJx78V7xS8" target="_blank"
+                >https://unsplash.com/photos/MMJx78V7xS8</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class="bold">Sentiment Text Analysis by Monkeylearn: </span>
+          <ul>
+            <li>
+              <a href="https://app.monkeylearn.com/" target="_blank">https://app.monkeylearn.com/</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -70,9 +73,34 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.container {
+  margin: 0 auto;
+  width: 90vw;
+  max-width: 800px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  padding-top: 2vh;
+}
+p {
+  text-align: left;
+}
 ul {
   text-align: left;
   list-style-position: inside;
+  max-width: 100%;
 }
 li {
   padding-bottom: 1rem;
