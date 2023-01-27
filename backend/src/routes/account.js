@@ -15,11 +15,11 @@ router.post(
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
-      givenName: Joi.string(),
-      age: Joi.number(),
+      givenName: Joi.string().optional().allow('').min(2).max(120),
+      age: Joi.string(),
       email: Joi.string().email().required(),
       location: Joi.array().items(Joi.string()).required(),
-      profilePhoto: Joi.string(),
+      // profilePhoto: Joi.string(),
       password: Joi.string().required(),
     },
   }),
