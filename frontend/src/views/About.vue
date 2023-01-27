@@ -60,6 +60,11 @@
         </li>
       </ul>
     </div>
+
+    <h2>Reset Database</h2>
+    <button>
+      <a :href="`${backendPath}/api/users/initialize`">👾 Init Test Data to DB👾</a>
+    </button>
   </div>
 </template>
 <script>
@@ -69,6 +74,11 @@ export default {
   name: 'About',
   components: {
     NavBar,
+  },
+  data() {
+    return {
+      backendPath: process.env.VUE_APP_BASE_URL ? process.env.VUE_APP_BASE_URL : '',
+    }
   },
 }
 </script>
@@ -112,6 +122,20 @@ a:visited {
   border-bottom: 1px solid grey;
   &:hover {
     border-bottom: 1px solid #a4774f;
+  }
+}
+
+button {
+  height: 3rem;
+  min-width: 14rem;
+}
+
+button a:link {
+  text-decoration: none;
+  border: none;
+
+  &:hover {
+    border: none;
   }
 }
 </style>

@@ -4,7 +4,6 @@
       <router-link to="/"><li>Homepage</li></router-link>
       <router-link to="/profile"><li>Profile</li></router-link>
       <router-link to="/about"><li>About</li></router-link>
-      <a :href="`${backendPath}/api/users/initialize`"><li>👾 Init Test Data to DB👾</li></a>
       <router-link v-if="!user" to="/register" class="loginLogoutRegisterButton registerButton"
         ><li>Register</li></router-link
       >
@@ -20,11 +19,7 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'NavBar',
   props: {},
-  data() {
-    return {
-      backendPath: process.env.VUE_APP_BASE_URL ? process.env.VUE_APP_BASE_URL : '',
-    }
-  },
+
   methods: {
     ...mapActions(['logout']),
     async doLogout() {
