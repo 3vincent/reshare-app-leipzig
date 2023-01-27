@@ -24,18 +24,6 @@ const accountRouter = require('./routes/account')
 
 const app = express()
 
-app.use(helmet())
-app.use(helmet.contentSecurityPolicy())
-app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      'script-src': ["'self'", 'frontend-eu5nphth4a-ew.a.run.app'],
-      'style-src': null,
-    },
-  })
-)
-
 app.use(
   cors({
     origin: app.get('env') == 'development' ? true : 'https://frontend-eu5nphth4a-ew.a.run.app',
@@ -56,7 +44,7 @@ app.set('trust proxy', 1)
 // }
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'))
+// app.set('views', path.join(__dirname, 'views'))
 // app.set('view engine', 'pug')
 
 app.set('io', socketService)
@@ -64,7 +52,6 @@ app.set('io', socketService)
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(mongoSanitize({ replaceWith: '_' }))
 app.use(cookieParser())
 
 app.use(
@@ -80,6 +67,8 @@ app.use(
       sameSite: process.env.NODE_ENV == 'production' ? 'none' : 'strict',
       secure: process.env.NODE_ENV == 'production',
     },
+    // resave: false,
+    // saveUninitialized: false,
   })
 )
 
@@ -95,6 +84,20 @@ passport.serializeUser(Person.serializeUser())
 passport.deserializeUser(Person.deserializeUser())
 
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(helmet())
+// app.use(helmet.contentSecurityPolicy())
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     useDefaults: true,
+//     directives: {
+//       'script-src': ["'self'", 'frontend-eu5nphth4a-ew.a.run.app'],
+//       'style-src': null,
+//     },
+//   })
+// )
+
+app.use(mongoSanitize({ replaceWith: '_' }))
 
 app.use('/api', (req, res, next) => {
   req.session.viewCount = req.session.viewCount || 0
