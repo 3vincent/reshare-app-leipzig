@@ -4,6 +4,8 @@
       <router-link to="/"><li>Homepage</li></router-link>
       <router-link to="/profile"><li>Profile</li></router-link>
       <router-link to="/about"><li>About</li></router-link>
+    </ul>
+    <ul>
       <router-link v-if="!user" to="/register" class="loginLogoutRegisterButton registerButton"
         ><li>Register</li></router-link
       >
@@ -42,6 +44,11 @@ export default {
   padding: 0;
   margin-bottom: 0;
   z-index: 500;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   ul {
     padding: 0;
     margin: 0;
@@ -95,6 +102,8 @@ export default {
 @media (max-width: 660px) {
   #nav {
     position: relative;
+    flex-direction: column;
+
     ul {
       display: block;
       margin: 0 auto;
