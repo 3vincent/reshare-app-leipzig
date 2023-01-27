@@ -20,11 +20,11 @@
       </label>
       <label for="areaCode"
         >Area Code:&nbsp;
-        <input v-model="areaCode" id="areaCode" type="areaCode" placeholder="Your Area Code" required="required" />
+        <input v-model="areaCode" id="areaCode" type="text" placeholder="Your Area Code" required="required" />
       </label>
       <label for="city"
         >City:&nbsp;
-        <input v-model="city" id="city" type="city" placeholder="Your city" required="required" />
+        <input v-model="city" id="city" type="text" placeholder="Your city" required="required" />
       </label>
       <label for="password"
         >Password:&nbsp;
@@ -79,8 +79,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-label {
-  display: block;
-  margin: 1rem 0;
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  label {
+    text-align: right;
+    margin: 0;
+  }
+
+  input {
+    height: 2rem;
+    min-width: 200px;
+  }
 }
 </style>
