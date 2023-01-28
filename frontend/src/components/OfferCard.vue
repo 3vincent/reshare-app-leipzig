@@ -47,7 +47,7 @@
         >
       </div>
       <div class="viewFooter">
-        <p>
+        <p v-if="user">
           <Button @click="userLikeOffer">Like</Button>
           <Button>Save</Button>
         </p>
@@ -58,7 +58,7 @@
 
 <script>
 import moment from 'moment'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'OfferCard',
@@ -89,6 +89,7 @@ export default {
     },
   },
   computed: {
+    ...mapState(['user']),
     cssProps() {
       if (this.offer.status == 'open')
         return {
