@@ -2,7 +2,7 @@
   <div id="nav">
     <ul>
       <router-link to="/"><li>Homepage</li></router-link>
-      <router-link to="/profile"><li>Profile</li></router-link>
+      <router-link v-if="user" to="/profile"><li>Profile</li></router-link>
       <router-link to="/about"><li>About</li></router-link>
     </ul>
     <ul>
